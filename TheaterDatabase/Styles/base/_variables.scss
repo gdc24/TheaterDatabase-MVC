@@ -1,0 +1,75 @@
+﻿
+/***************************** approved fonts *****************************/
+$segoe-ui: 'Segoe UI', sans-serif;
+$open-sans: 'Open Sans', serif;
+$font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
+$font-family-headings: "PT Sans", Arial, sans-serif;
+
+/***************************** approved colors *****************************/
+
+/* company primary color palette */
+$primary-color: #00afba; // teal
+$secondary-color: #000000; // black
+$tertiary-color: #ffffff; // white
+/* approved color tints */
+$primary-color-75: #40C3CB; // 75% teal
+$primary-color-50: #80D7DD; // 50% teal
+$primary-color-25: #BFEBEE; // 25% teal
+$secondary-color-75: #404040; // 75% black
+$secondary-color-50: #808080; // 50% black
+$secondary-color-25: #BFBFBF; // 25% black
+$secondary-color-10: #E6E6E6; // 10% black
+
+
+
+/* company secondary color palette */
+$secondary-color-yellow: #f4d441; // yellow
+$secondary-color-red: #e85740; // red
+$secondary-color-purple: #96268f; // purple
+$secondary-color-green: #91c84c; // green
+$secondary-color-darkblue: #002237; // dark blue
+
+/* bootstrap color overrides */
+$theme-colors: ( "primary": $primary-color, "secondary": $secondary-color );
+
+
+/* bootstrap Sass variable overrides */
+//  Specifies the default spacer value to programmatically generate our spacer utilities.
+$spacer: 1rem; // 1rem (default), or any value > 0
+
+// Enables predefined border-radius styles on various components.
+$enable-rounded: true; // true (default) or false
+
+// Enables predefined box-shadow styles on various components.
+$enable-shadows: false; // true or false (default)
+
+// Enables predefined gradients via background-image styles on various components.
+$enable-gradients: false; // true or false (default)
+
+// Enables predefined transitions on various components.
+$enable-transitions: true; // true (default) or false
+
+// Enables the prefers-reduced-motion media query, which suppresses certain animations/transitions based on the users’ browser/operating system preferences.
+$enable-prefers-reduced-motion-media-query: true; // true (default) or false
+
+// Enables the generation of CSS classes for the grid system (e.g., .container, .row, .col-md-1, etc.).
+$enable-grid-classes: true; // true (default) or false
+
+// Enables pseudo element caret on .dropdown-toggle.
+$enable-caret: true; // true (default) or false
+
+// Add “hand” cursor to non-disabled button elements.
+$enable-pointer-cursor-for-buttons: true; // true (default) or false
+
+// Enables styles for optimizing printing.
+$enable-print-styles: true; // true (default) or false
+
+// Enables responsive font sizes.
+$enable-responsive-font-sizes: false; // true or false (default)
+
+// Enables background-image icons within textual inputs and some custom forms for validation states.
+$enable-validation-icons: true; // true (default) or false
+
+// Set to true to show warnings when using any of the deprecated mixins and functions that are planned to be removed in v5.
+$enable-deprecation-messages: false; // true or false (default)
