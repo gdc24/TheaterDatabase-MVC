@@ -1,2 +1,61 @@
-﻿
-    <p>hi</p>
+﻿@model TheaterDatabase.ViewModels.CRUD_VMs.ShowsVM
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.IntShowID)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.StrName)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.StrAuthor)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.IntBudget)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.YsnIsMusical)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.Club)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.Date)</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.LstShows)
+                    {
+                        <tr>
+                            <td>
+                                <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntShowID)</span>
+                            </td>
+                            <td>
+                                <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
+                            </td>
+                            <td>
+                                <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrAuthor)</span>
+                            </td>
+                            <td>
+                                <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntBudget)</span>
+                            </td>
+                            <td>
+                                <span class="divNoEditing">@Html.DisplayFor(modelItem => item.YsnIsMusical)</span>
+                            </td>
+                            <td>
+                                <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
+                            </td>
+                            <td>
+                                <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Date.StrSemester) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>

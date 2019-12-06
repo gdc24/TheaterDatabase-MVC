@@ -14,10 +14,11 @@ namespace TheaterDatabase.DAL
         private static Club GetClubFromDR(NpgsqlDataReader dr)
         {
             int id = Convert.ToInt32(dr["intClubID"]);
-            String strClubName = dr["strClubName"].ToString();
-            String strAdvisor = dr["strAdvisor"].ToString();
-            UmbrellaOrg strUmbrellaOrg = (UmbrellaOrg)Enum.Parse(typeof(UmbrellaOrg), dr["strUmbrellaOrg"].ToString());
-            Club club = Club.of(id, strClubName, strAdvisor, strUmbrellaOrg);
+            string strClubName = dr["strClubName"].ToString();
+            string strAdvisor = dr["strAdvisor"].ToString();
+            string strUmbrellaOrg = dr["strUmbrellaOrg"].ToString();
+            UmbrellaOrg umbrellaOrg = (UmbrellaOrg)Enum.Parse(typeof(UmbrellaOrg), strUmbrellaOrg, true);
+            Club club = Club.Of(id, strClubName, strAdvisor, strUmbrellaOrg, umbrellaOrg);
             return club;
         }
 
@@ -26,11 +27,11 @@ namespace TheaterDatabase.DAL
             Club retval = null;
 
             // create and open a connection
-            NpgsqlConnection conn = DatabaseConnection.getConnection();
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            String query = "SELECT * FROM clubs WHERE intClubID = " + intClubID;
+            string query = "SELECT * FROM clubs WHERE \"intClubID\" = " + intClubID;
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -51,14 +52,14 @@ namespace TheaterDatabase.DAL
 
         public static IEnumerable<Club> GetAllClubs()
         {
-            IEnumerable<Club> retval = null;
+            List<Club> retval = new List<Club>();
 
             // create and open a connection
-            NpgsqlConnection conn = DatabaseConnection.getConnection();
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            String query = "SELECT intClubID, strClubName, strAdvisor, strUmbrellaOrg FROM clubs";
+            string query = "SELECT intClubID, strClubName, strAdvisor, strUmbrellaOrg FROM clubs";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -67,7 +68,7 @@ namespace TheaterDatabase.DAL
             while (dr.Read())
             {
                 Club club = GetClubFromDR(dr);
-                retval.Append(club);
+                retval.Add(club);
             }
 
             conn.Close();
@@ -79,11 +80,11 @@ namespace TheaterDatabase.DAL
         {
 
             // create and open a connection
-            NpgsqlConnection conn = DatabaseConnection.getConnection();
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            String query = "INSERT INTO clubs" +
+            string query = "INSERT INTO clubs" +
                            " (\"strClubName\", \"strAdvisor\", \"strUmbrellaOrg\")" +
                            " VALUES" +
                            " (@strClubName, @strAdvisor, @strUmbrellaOrg);";
@@ -107,11 +108,11 @@ namespace TheaterDatabase.DAL
         {
 
             // create and open a connection
-            NpgsqlConnection conn = DatabaseConnection.getConnection();
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            String query = "UPDATE clubs " +
+            string query = "UPDATE clubs " +
                            " SET \"strClubName\" = @strClubName" +
                            " \"strAdvisor\" = @strAdvisor" +
                            " \"strUmbrellaOrg\" = @strUmbrellaOrg" +
@@ -138,11 +139,11 @@ namespace TheaterDatabase.DAL
         {
 
             // create and open a connection
-            NpgsqlConnection conn = DatabaseConnection.getConnection();
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            String query = "DELETE FROM clubs WHERE \"intClubID\" = @intClubID ";
+            string query = "DELETE FROM clubs WHERE \"intClubID\" = @intClubID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("intClubID", club.IntClubID);
 

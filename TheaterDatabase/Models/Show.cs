@@ -31,6 +31,25 @@ namespace TheaterDatabase.Models
         public Date Date { get; set; }
 
 
+        public Show(int intShowID, string strName, string strAuthor, int intBudget, bool ysnIsMusical, int intClubID, Club club, int intDateID, Date date)
+        {
+            this.IntShowID = intShowID;
+            this.StrName = strName;
+            this.StrAuthor = strAuthor;
+            this.IntBudget = intBudget;
+            this.YsnIsMusical = ysnIsMusical;
+            this.IntClubID = intClubID;
+            this.Club = club;
+            this.IntDateID = intDateID;
+            this.Date = date;
+        }
+
+        public Show() { }
+
+        public static Show Of(int intShowID, string strName, string strAuthor, int intBudget, bool ysnIsMusical, int intClubID, Club club, int intDateID, Date date)
+        {
+            return new Show(intShowID, strName, strAuthor, intBudget, ysnIsMusical, intClubID, club, intDateID, date);
+        }
 
 
 

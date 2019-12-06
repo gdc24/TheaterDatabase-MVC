@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TheaterDatabase.DAL;
+using TheaterDatabase.ViewModels.CRUD_VMs;
 
 namespace TheaterDatabase.Controllers
 {
@@ -15,10 +17,21 @@ namespace TheaterDatabase.Controllers
 
         public ActionResult Crud()
         {
-            ViewBag.Message = "Eventually the CRUD tabs";
+            ViewBag.Message = "Create, Read, Update, and Delete table info here";
 
-            return View();
+            CRUDVM model = new CRUDVM();
+            model._shows_vm.LstShows = ShowsDAL.GetAllShows();
+
+            return View(model);
         }
+
+        //public ActionResult Partials_Shows()
+        //{
+        //    ShowsVM model = new ShowsVM();
+        //    model.LstShows = ShowsDAL.GetAllShows();
+
+        //    return View(model);
+        //}
 
         public ActionResult Analytics()
         {
