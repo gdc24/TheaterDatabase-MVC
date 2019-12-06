@@ -13,16 +13,16 @@ namespace TheaterDatabase.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Crud()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Eventually the CRUD tabs";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Analytics()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Analytics";
 
             return View();
         }

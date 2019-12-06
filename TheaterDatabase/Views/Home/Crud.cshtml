@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "CRUD (Create Read Update Delete) Operations";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#shows">Shows</a></li>
+    <li><a data-toggle="tab" href="#members">Members</a></li>
+    <li><a data-toggle="tab" href="#exec">Exec</a></li>
+    <li><a data-toggle="tab" href="#casts">Casts</a></li>
+    <li><a data-toggle="tab" href="#staff">Staff</a></li>
+    <li><a data-toggle="tab" href="#pits">Pits</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="shows" class="tab-pane fade in active">
+        <h3>Shows</h3>
+        @{ Html.RenderPartial("CRUDPartials/_Shows"); }
+    </div>
+    <div id="members" class="tab-pane fade">
+        <h3>Members</h3>
+        @{ Html.RenderPartial("CRUDPartials/_Members"); }
+    </div>
+    <div id="exec" class="tab-pane fade">
+        <h3>Exec</h3>
+        @{ Html.RenderPartial("CRUDPartials/_Exec"); }
+    </div>
+    <div id="casts" class="tab-pane fade">
+        <h3>Casts</h3>
+        @{ Html.RenderPartial("CRUDPartials/_Casts"); }
+    </div>
+    <div id="staff" class="tab-pane fade">
+        <h3>Staff</h3>
+        @{ Html.RenderPartial("CRUDPartials/_Staff"); }
+    </div>
+    <div id="pits" class="tab-pane fade">
+        <h3>Pits</h3>
+        @{ Html.RenderPartial("CRUDPartials/_Pits"); }
+    </div>
+</div>

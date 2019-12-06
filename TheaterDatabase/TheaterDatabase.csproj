@@ -124,6 +124,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Shows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\global.js" />
+    <Content Include="Styles\global.css" />
+    <Content Include="Styles\global.min.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -147,15 +150,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Analytics.cshtml" />
+    <Content Include="Views\Home\Crud.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Plugins\" />
-    <Folder Include="Styles\" />
+    <Folder Include="Styles\bootstrap\mixins\" />
+    <Folder Include="Styles\bootstrap\utilities\" />
+    <Folder Include="Styles\bootstrap\vendor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -166,7 +170,64 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <Content Include="Styles\base\_mixins.scss" />
+    <Content Include="Styles\base\_placeholders.scss" />
+    <Content Include="Styles\base\_variables.scss" />
+    <Content Include="Styles\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Styles\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Styles\bootstrap\bootstrap.scss" />
+    <Content Include="Styles\bootstrap\_alert.scss" />
+    <Content Include="Styles\bootstrap\_badge.scss" />
+    <Content Include="Styles\bootstrap\_breadcrumb.scss" />
+    <Content Include="Styles\bootstrap\_button-group.scss" />
+    <Content Include="Styles\bootstrap\_buttons.scss" />
+    <Content Include="Styles\bootstrap\_card.scss" />
+    <Content Include="Styles\bootstrap\_carousel.scss" />
+    <Content Include="Styles\bootstrap\_close.scss" />
+    <Content Include="Styles\bootstrap\_code.scss" />
+    <Content Include="Styles\bootstrap\_custom-forms.scss" />
+    <Content Include="Styles\bootstrap\_dropdown.scss" />
+    <Content Include="Styles\bootstrap\_forms.scss" />
+    <Content Include="Styles\bootstrap\_functions.scss" />
+    <Content Include="Styles\bootstrap\_grid.scss" />
+    <Content Include="Styles\bootstrap\_images.scss" />
+    <Content Include="Styles\bootstrap\_input-group.scss" />
+    <Content Include="Styles\bootstrap\_jumbotron.scss" />
+    <Content Include="Styles\bootstrap\_list-group.scss" />
+    <Content Include="Styles\bootstrap\_media.scss" />
+    <Content Include="Styles\bootstrap\_mixins.scss" />
+    <Content Include="Styles\bootstrap\_modal.scss" />
+    <Content Include="Styles\bootstrap\_nav.scss" />
+    <Content Include="Styles\bootstrap\_navbar.scss" />
+    <Content Include="Styles\bootstrap\_pagination.scss" />
+    <Content Include="Styles\bootstrap\_popover.scss" />
+    <Content Include="Styles\bootstrap\_print.scss" />
+    <Content Include="Styles\bootstrap\_progress.scss" />
+    <Content Include="Styles\bootstrap\_reboot.scss" />
+    <Content Include="Styles\bootstrap\_root.scss" />
+    <Content Include="Styles\bootstrap\_spinners.scss" />
+    <Content Include="Styles\bootstrap\_tables.scss" />
+    <Content Include="Styles\bootstrap\_toasts.scss" />
+    <Content Include="Styles\bootstrap\_tooltip.scss" />
+    <Content Include="Styles\bootstrap\_transitions.scss" />
+    <Content Include="Styles\bootstrap\_type.scss" />
+    <Content Include="Styles\bootstrap\_utilities.scss" />
+    <Content Include="Styles\bootstrap\_variables.scss" />
+    <Content Include="Styles\framework\_breakpoints.scss" />
+    <Content Include="Styles\global.scss" />
+    <Content Include="Styles\_normalize.scss" />
+    <Content Include="Styles\modules\home\home.scss" />
+    <Content Include="Views\Home\CRUDPartials\_Shows.cshtml" />
+    <Content Include="Views\Home\CRUDPartials\_Members.cshtml" />
+    <Content Include="Views\Home\CRUDPartials\_Exec.cshtml" />
+    <Content Include="Views\Home\CRUDPartials\_Casts.cshtml" />
+    <Content Include="Views\Home\CRUDPartials\_Staff.cshtml" />
+    <Content Include="Views\Home\CRUDPartials\_Pits.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
