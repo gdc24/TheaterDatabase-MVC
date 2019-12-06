@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TheaterDatabase.Models
 {
-    public class Shows
+    public class Show
     {
         [Key]
         [Display(Name = "Show ID")]
