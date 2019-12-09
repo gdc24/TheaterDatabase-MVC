@@ -14,11 +14,14 @@ namespace TheaterDatabase.DAL
         {
             int intExecID = Convert.ToInt32(dr["intExecID"]);
             string strPosition = dr["strPosition"].ToString();
+            int intMemberID = Convert.ToInt32(dr["intMemberID"]);
+            int intDateID = Convert.ToInt32(dr["intDateID"]);
 
-            Club club = ClubsDAL.GetClub(intClubID);
+            Member member = MembersDAL.GetMember(intMemberID);
             Date date = DatesDAL.GetDate(intDateID);
+            
 
-            Exec exec = Exec.Of(intExecID, strPosition);
+            Exec exec = Exec.Of(intExecID, strPosition, intMemberID, member, intDateID, date);
             return exec;
         }
         
@@ -86,10 +89,14 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "INSERT INTO exec" +
                            " (\"strPosition\")" +
+                           " (\"intMemebrID\")" +
+                           " (\"intDateID\")"
                            " VALUES" +
-                           " (@strMemberName);";
+                           " (@strMemberName, @intMemberID, @intDateID);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("strExecName", show.StrExecName);
+            cmd.Parameters.AddWithValue("intMemberID", show.IntMemberID);
+            cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
             
 
             // Execute a query
@@ -113,9 +120,13 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "UPDATE exec " +
                            " SET \"strPosition\" = @strPosition" +
+                           " \"intMemberID\" = @intMemberID" +
+                           " \"intDateID\" = @intDateID" +
                            " WHERE \"intExecID\" = @intExecID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("strPosition", show.StrPosition);
+            cmd.Parameters.AddWithValue("intMemberID", show.IntMemberID);
+            cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
             cmd.Parameters.AddWithValue("intExecID", show.IntExecID);
             
             // Execute a query
