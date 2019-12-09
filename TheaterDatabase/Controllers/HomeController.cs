@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TheaterDatabase.DAL;
@@ -25,19 +26,30 @@ namespace TheaterDatabase.Controllers
             return View(model);
         }
 
-        //public ActionResult Partials_Shows()
-        //{
-        //    ShowsVM model = new ShowsVM();
-        //    model.LstShows = ShowsDAL.GetAllShows();
-
-        //    return View(model);
-        //}
-
         public ActionResult Analytics()
         {
             ViewBag.Message = "Analytics";
 
             return View();
         }
+
+        #region REGION - SHOWS
+
+        public ActionResult EditShows(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var employee = _context.Employees.SingleOrDefault(e => e.EmployeeId == id);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(employee);
+        }
+
+        #endregion
     }
 }
