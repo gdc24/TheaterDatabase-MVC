@@ -14,17 +14,23 @@ namespace TheaterDatabase.Models
         
         public string StrPosition {  get; set;  }
         
-        public Staff(int intStaffID, string strPosition)
+        public Member Member {  get; set;  }
+        
+        public int IntMemberID {  get; set;  }
+        
+        public Staff(int intStaffID, string strPosition, int intMemberID, Member member)
         {
             this.IntStaffID = intStaffID;
             this.StrPosition = strPosition;
+            this.IntMemberID = intMemberID;
+            this.Member = member;
         }
         
         public Staff() { }
         
-        public static Staff Of(int intStaffID, string strPosition)
+        public static Staff Of(int intStaffID, string strPosition, int intMemberID, Member member)
         {
-            return new Staff(intStaffID, strPosition);
+            return new Staff(intStaffID, strPosition, intMemberID, member);
         }
     }
 }
