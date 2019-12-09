@@ -72,6 +72,89 @@ namespace TheaterDatabase.DAL
 
             return retval;
         }
+        
+        public static bool InsertClub(Date date)
+        {
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "INSERT INTO dates" +
+                           " (\"strDateName\", \"strAdvisor\", \"strUmbrellaOrg\")" +
+                           " VALUES" +
+                           " (@strDateName, @strAdvisor, @strUmbrellaOrg);";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("strDateName", club.StrDateName);
+            cmd.Parameters.AddWithValue("strAdvisor", club.StrAdvisor);
+            cmd.Parameters.AddWithValue("strUmbrellaOrg", club.UmbrellaOrg);
+
+            // Execute a query
+            int result = cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (result == 1)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool UpdateDate(Date date)
+        {
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "UPDATE dates " +
+                           " SET \"strDateName\" = @strDateName" +
+                           " \"strAdvisor\" = @strAdvisor" +
+                           " \"strUmbrellaOrg\" = @strUmbrellaOrg" +
+                           " WHERE \"intDateID\" = @intDateID;";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("strDateName", club.StrDateName);
+            cmd.Parameters.AddWithValue("strAdvisor", club.StrAdvisor);
+            cmd.Parameters.AddWithValue("strUmbrellaOrg", club.UmbrellaOrg);
+            cmd.Parameters.AddWithValue("intDateID", club.IntDateID);
+
+            // Execute a query
+            int result = cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (result == 1)
+                return true;
+            else
+                return false;
+
+        }
+
+        public static bool DeleteDate(Date date)
+        {
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "DELETE FROM dates WHERE \"intDateID\" = @intDateID ";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("intDateID", club.IntDateID);
+
+            // Execute a query
+            int result = cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (result == 1)
+                return true;
+            else
+                return false;
+        }
+
 
 
     }
