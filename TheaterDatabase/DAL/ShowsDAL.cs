@@ -92,7 +92,7 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "UPDATE dates " +
+            string query = "UPDATE shows " +
                            " SET \"strName\" = @strName" +
                            " \"strAuthor\" = @strAuthor" +
                            " \"intBudget\" = @intBudget" +
@@ -131,7 +131,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM shows WHERE \"id\" = @id ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intDateID", show.id);
+            cmd.Parameters.AddWithValue("id", show.id);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
