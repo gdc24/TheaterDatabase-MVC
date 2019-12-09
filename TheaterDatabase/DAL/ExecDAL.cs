@@ -90,13 +90,13 @@ namespace TheaterDatabase.DAL
             string query = "INSERT INTO exec" +
                            " (\"strPosition\")" +
                            " (\"intMemebrID\")" +
-                           " (\"intDateID\")"
+                           " (\"intDateID\")" +
                            " VALUES" +
                            " (@strMemberName, @intMemberID, @intDateID);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strExecName", show.StrExecName);
-            cmd.Parameters.AddWithValue("intMemberID", show.IntMemberID);
-            cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
+            cmd.Parameters.AddWithValue("strExecName", exec.StrExecName);
+            cmd.Parameters.AddWithValue("intMemberID", exec.IntMemberID);
+            cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
             
 
             // Execute a query
@@ -124,10 +124,10 @@ namespace TheaterDatabase.DAL
                            " \"intDateID\" = @intDateID" +
                            " WHERE \"intExecID\" = @intExecID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strPosition", show.StrPosition);
-            cmd.Parameters.AddWithValue("intMemberID", show.IntMemberID);
-            cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
-            cmd.Parameters.AddWithValue("intExecID", show.IntExecID);
+            cmd.Parameters.AddWithValue("strPosition", exec.StrPosition);
+            cmd.Parameters.AddWithValue("intMemberID", exec.IntMemberID);
+            cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
+            cmd.Parameters.AddWithValue("intExecID", exec.IntExecID);
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -151,7 +151,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM exec WHERE \"intExecID\" = @intExecID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intExecID", show.intExecID);
+            cmd.Parameters.AddWithValue("intExecID", exec.intExecID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
