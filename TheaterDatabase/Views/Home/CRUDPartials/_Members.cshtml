@@ -18,7 +18,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                @foreach (var item in Model.LstMember)
+                @foreach (var item in Model.LstMembers)
                 {
                 <tr>
                     <td>
@@ -28,7 +28,7 @@
                         <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
                     </td>
                     <td>
-                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Club.StrName)</span>
+                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.IntMemberID }) |
