@@ -33,6 +33,8 @@ namespace TheaterDatabase.Models
             this.IntYear = intYear;
         }
 
+        public Date() {  }
+
         public static Date Of(int intDateID, string strSemester, Semester semester, int intYear)
         {
             return new Date(intDateID, strSemester, semester, intYear);

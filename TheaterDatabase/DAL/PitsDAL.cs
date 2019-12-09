@@ -15,11 +15,14 @@ namespace TheaterDatabase.DAL
             int intPitID = Convert.ToInt32(dr["intPitID"]);
             string strInstrument = dr["strInstrument"].ToString();
             int intSeat = Convert.ToInt32(dr["intSeat"]);
+            int intMemberID = Convert.ToInt32(dr["intMemberID"]);
+            int intShowID = Convert.ToInt32(dr["intShowID"]);
+
 
             Show show = ShowsDAL.GetShow(intShowID);
             Member member = MembersDAL.GetMember(intMemberID);
 
-            Pit pit = Pit.Of(intPitID, strInstrument, intSeat);
+            Pit pit = Pit.Of(intPitID, strInstrument, intSeat, intMemberID, member, intShowID, show);
             return member;
         }
         
@@ -68,7 +71,7 @@ namespace TheaterDatabase.DAL
 
             while (dr.Read())
             {
-                Show show = GetPitFromDR(dr);
+                Pit pit = GetPitFromDR(dr);
                 retval.Add(pit);
             }
 
@@ -87,12 +90,15 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "INSERT INTO pits" +
                            " (\"strInstrument\")" +
-                           " (\"intSeat\")" +
+                           " (\"intSeat\")" + " (\"intMemebrID\")" +
+                           " (\"intShowID\")" + 
                            " VALUES" +
-                           " (@strInstrument, @intSeat);";
+                           " (@strInstrument, @intSeat, @intMemberID, @intShowID);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strInstrument", show.StrInstrument);
-            cmd.Parameters.AddWithValue("intSeat", show.IntSeat);
+            cmd.Parameters.AddWithValue("strInstrument", pit.StrInstrument);
+            cmd.Parameters.AddWithValue("intSeat", pit.IntSeat);
+            cmd.Parameters.AddWithValue("intMemberID", pit.IntMemberID);
+            cmd.Parameters.AddWithValue("intShowID", pit.IntShowID);
             
 
             // Execute a query
@@ -116,12 +122,15 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "UPDATE pits " +
                            " SET \"strInstrument\" = @strInstrument" +
-                           " SET \"intSeat\" = @intSeat" +
+                           " SET \"intSeat\" = @intSeat" + " \"intMemberID\" = @intMemberID" +
+                           " \"intShowID\" = @intShowID" +
                            " WHERE \"intPitID\" = @intPitID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strInstrument", show.StrInstrument);
-            cmd.Parameters.AddWithValue("intSeat", show.IntSeat);
-            cmd.Parameters.AddWithValue("intPitID", show.IntPitID);
+            cmd.Parameters.AddWithValue("strInstrument", pit.StrInstrument);
+            cmd.Parameters.AddWithValue("intSeat", pit.IntSeat);
+            cmd.Parameters.AddWithValue("intPitID", pit.IntPitID);
+            cmd.Parameters.AddWithValue("intMemberID", pit.IntMemberID);
+            cmd.Parameters.AddWithValue("intShowID", pit.IntShowID);
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -145,7 +154,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM pits WHERE \"intPitID\" = @intPitID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intPitID", show.intPitID);
+            cmd.Parameters.AddWithValue("intPitID", pit.intPitID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
