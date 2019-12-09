@@ -15,8 +15,8 @@ namespace TheaterDatabase.DAL
             int intStaffID = Convert.ToInt32(dr["intStaffID"]);
             string strPosition = dr["strPosition"].ToString();
 
-            Club club = ClubsDAL.GetClub(intClubID);
-            Date date = DatesDAL.GetDate(intDateID);
+            Show show = ShowsDAL.GetShow(intShowID);
+            Member member = MembersDAL.GetMember(intMemberID);
 
             Staff staff = Member.Of(intStaffID, strPosition);
             return staff;
