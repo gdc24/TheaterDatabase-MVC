@@ -20,7 +20,7 @@ namespace TheaterDatabase.DAL
             Show show = ShowsDAL.GetShow(intShowID);
             Member member = MembersDAL.GetMember(intMemberID);
 
-            Staff staff = Member.Of(intStaffID, strPosition, intMemberID, member, intShowID, show);
+            Staff staff = Staff.Of(intStaffID, strPosition, intMemberID, member, intShowID, show);
             return staff;
         }
         
@@ -149,7 +149,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM staff WHERE \"intStaffID\" = @intStaffID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intStaffID", staff.intStaffID);
+            cmd.Parameters.AddWithValue("intStaffID", staff.IntStaffID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();

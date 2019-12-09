@@ -17,27 +17,18 @@ namespace TheaterDatabase.Models
         
         public string StrName {  get; set;  }
         
-        [Display(Name = "Club")]
         
-        public Club Club {  get; set;  }
-        
-        [Display(Name = "Club ID")]
-        
-        public int IntClubID {  get; set;  }
-        
-        public Member(int intMemberID, string strName, int intClubID, Club club)
+        public Member(int intMemberID, string strName)
         {
             this.IntMemberID = intMemberID;
             this.StrName = strName;
-            this.IntClubID = intClubID;
-            this.Club = club;
         }
         
         public Member() { }
         
-        public static Member Of(int intMemberID, string strName, int intClubID, Club club) 
+        public static Member Of(int intMemberID, string strName) 
         {
-            return new Member(intMemberID, strName, intClubID, club);
+            return new Member(intMemberID, strName);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace TheaterDatabase.DAL
             Member member = MembersDAL.GetMember(intMemberID);
 
             Cast cast = Cast.Of(intCastID, strVoicePart, strRole, intMemberID, member, intShowID, show);
-            return member;
+            return cast;
         }
         
         public static Cast GetCast(int intCastID)
@@ -153,7 +153,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM casts WHERE \"intCastID\" = @intCastID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intCastID", cast.intCastID);
+            cmd.Parameters.AddWithValue("intCastID", cast.IntCastID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();

@@ -23,7 +23,7 @@ namespace TheaterDatabase.DAL
             Member member = MembersDAL.GetMember(intMemberID);
 
             Pit pit = Pit.Of(intPitID, strInstrument, intSeat, intMemberID, member, intShowID, show);
-            return member;
+            return pit;
         }
         
         public static Pit GetPit(int intPitID)
@@ -154,7 +154,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM pits WHERE \"intPitID\" = @intPitID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intPitID", pit.intPitID);
+            cmd.Parameters.AddWithValue("intPitID", pit.IntPitID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
