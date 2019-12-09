@@ -73,7 +73,7 @@ namespace TheaterDatabase.DAL
             return retval;
         }
         
-        public static bool InsertClub(Date date)
+        public static bool InsertDate(Date date)
         {
 
             // create and open a connection
