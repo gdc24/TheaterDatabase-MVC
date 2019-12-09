@@ -13,9 +13,15 @@ namespace TheaterDatabase.Models
         
         public int IntMemberID {  get; set;  }
         
+        [Display(Name = "Name")]
+        
         public string StrName {  get; set;  }
         
+        [Display(Name = "Club")]
+        
         public Club Club {  get; set;  }
+        
+        [Display(Name = "Club ID")]
         
         public int IntClubID {  get; set;  }
         
