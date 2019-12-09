@@ -7,7 +7,7 @@ using TheaterDatabase.Models;
 
 namespace TheaterDatabase.DAL
 {
-    public class MemebrsDAL
+    public class MembersDAL
     {
 
         private static Member GetMemberFromDR(NpgsqlDataReader dr)
