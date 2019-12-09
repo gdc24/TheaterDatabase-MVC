@@ -12,22 +12,36 @@ namespace TheaterDatabase.Models
         [Display(Name = "Show ID")]
         public int IntShowID { get; set; }
 
+        [Display(Name = "Name")]
+        
         public string StrName { get; set; }
 
+        [Display(Name = "Author")]
+        
         public string StrAuthor { get; set; }
 
+        [Display(Name = "Budget")]
+        
         public int IntBudget { get; set; }
 
+        [Display(Name = "Is Musical")]
+        
         public bool YsnIsMusical { get; set; }
 
+        [Display(Name = "Club ID")]
+        
         public int IntClubID { get; set; }
 
-
+        [Display(Name = "Club")]
+        
         public Club Club { get; set; }
 
+        [Display(Name = "Date ID")]
+        
         public int IntDateID { get; set; }
 
-
+        [Display(Name = "Date")]
+        
         public Date Date { get; set; }
 
 
