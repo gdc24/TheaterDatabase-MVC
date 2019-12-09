@@ -9,6 +9,6 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
     public class ExecVM : Exec
     {
 
-        public IEnumerable<Show> LstExec { get; set; }
+        public IEnumerable<Exec> LstExec { get; set; }
     }
 }

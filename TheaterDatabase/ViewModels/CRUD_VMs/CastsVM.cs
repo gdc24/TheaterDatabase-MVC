@@ -9,6 +9,6 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
     public class CastsVM : Cast
     {
 
-        public IEnumerable<Show> LstCasts { get; set; }
+        public IEnumerable<Cast> LstCasts { get; set; }
     }
 }

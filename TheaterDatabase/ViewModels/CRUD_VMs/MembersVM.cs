@@ -8,6 +8,6 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
 {
     public class MembersVM : Member
     {
-        public IEnumerable<Show> LstMembers { get; set; }
+        public IEnumerable<Member> LstMembers { get; set; }
     }
 }

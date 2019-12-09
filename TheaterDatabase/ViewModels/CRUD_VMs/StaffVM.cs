@@ -8,6 +8,6 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
 {
     public class StaffVM : Staff
     {
-        public IEnumerable<Show> LstStaff { get; set; }
+        public IEnumerable<Staff> LstStaff { get; set; }
     }
 }
