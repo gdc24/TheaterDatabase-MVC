@@ -87,6 +87,7 @@ INSERT INTO members ("strName") VALUES ('Alyse Ostojic');
 INSERT INTO members ("strName") VALUES ('Kathryn Lemoine');
 INSERT INTO members ("strName") VALUES ('Brian Gould');
 INSERT INTO members ("strName") VALUES ('Caroline Vieira');
+INSERT INTO members ("strName") VALUES ('Nathan Waniorek');  -- 65
 
 -- all staff inserts
 ALTER SEQUENCE "staff_intStaffID_seq" RESTART WITH 1 INCREMENT BY 1;
@@ -120,7 +121,6 @@ INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Scenic De
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Scenic Designer', 29, 4);
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Master Carpenter', 29, 4);
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Scenic Designer', 29, 5);
-INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Scenic Designer', 29, 6);
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Tech Director', 29, 2);
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Tech Director', 29, 3);
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Master Carpenter', 30, 5);
@@ -165,6 +165,7 @@ INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Sound Des
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Sound Designer', 63, 6);
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Props Master', 63, 5);
 INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Props Master', 64, 5);
+INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Costume Designer', 65, 6);
 
 -- all pits inserts
 ALTER SEQUENCE "pits_intPitID_seq" RESTART WITH 1 INCREMENT BY 1;
