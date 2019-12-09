@@ -14,11 +14,13 @@ namespace TheaterDatabase.DAL
         {
             int intStaffID = Convert.ToInt32(dr["intStaffID"]);
             string strPosition = dr["strPosition"].ToString();
+            int intMemberID = Convert.ToInt32(dr["intMemberID"]);
+            int intShowID = Convert.ToInt32(dr["intShowID"]);
 
             Show show = ShowsDAL.GetShow(intShowID);
             Member member = MembersDAL.GetMember(intMemberID);
 
-            Staff staff = Member.Of(intStaffID, strPosition);
+            Staff staff = Member.Of(intStaffID, strPosition, intMemberID, member, intShowID, show);
             return staff;
         }
         
@@ -85,11 +87,14 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO staff" +
-                           " (\"strPosition\")" +
+                           " (\"strPosition\")" + " (\"intMemebrID\")" +
+                           " (\"intShowID\")" + 
                            " VALUES" +
                            " (@strPosition);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strPosition", show.StrPosition);
+            cmd.Parameters.AddWithValue("strPosition", staff.StrPosition);
+            cmd.Parameters.AddWithValue("intMemberID", staff.IntMemberID);
+            cmd.Parameters.AddWithValue("intShowID", staff.IntShowID);
             
 
             // Execute a query
@@ -112,11 +117,15 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE staff " +
-                           " SET \"strPosition\" = @strPosition" +
+                           " SET \"strPosition\" = @strPosition" + " \"intMemberID\" = @intMemberID" +
+                           " \"intShowID\" = @intShowID" +
                            " WHERE \"intStaffID\" = @intStaffID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strPosition", show.StrPosition);
-            cmd.Parameters.AddWithValue("intStaffID", show.IntStaffID);
+            cmd.Parameters.AddWithValue("strPosition", staff.StrPosition);
+            cmd.Parameters.AddWithValue("intStaffID", staff.IntStaffID);
+            cmd.Parameters.AddWithValue("intMemberID", staff.IntMemberID);
+            cmd.Parameters.AddWithValue("intShowID", staff.IntShowID);
+            
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -140,7 +149,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM staff WHERE \"intStaffID\" = @intStaffID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intStaffID", show.intStaffID);
+            cmd.Parameters.AddWithValue("intStaffID", staff.intStaffID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
