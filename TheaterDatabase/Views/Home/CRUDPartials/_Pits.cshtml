@@ -1,1 +1,55 @@
-﻿
+﻿@model TheaterDatabase.ViewModels.CRUD_VMs.PitsVM
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.IntPitID)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.StrInstrument)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.IntSeat)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.Member)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.Show)</span>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.LstPit)
+                {
+            <tr>
+                <td>
+                    <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntPitID)</span>
+                </td>
+                <td>
+                    <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrInstrument)</span>
+                </td>
+                <td>
+                    <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntSeat)</span>
+                </td>
+                <td>
+                    <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                </td>
+                <td>
+                    <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Show.StrName)</span>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IntPitID }) |
+                    @Html.ActionLink("Detail", "Detail", new { id = item.IntPitID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IntPitID })
+                </td>
+            </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
