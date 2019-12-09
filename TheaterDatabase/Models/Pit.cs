@@ -16,11 +16,24 @@ namespace TheaterDatabase.Models
         
         public int IntSeat {  get; set;  }
         
+        public Member Member {  get; set;  }
+        
+        public int IntMemberID {  get; set;  }
+        
+        public Pit(int intPitID, string strInstrument, int intSeat, int intMemberID, Member member) 
+        {
+            this.IntPitID = intPitID;
+            this.StrInstrument = strInstrument;
+            this.IntSeat = intSeat;
+            this.IntMemberID = intMemberID;
+            this.Member = member;
+        }
+        
         public Pit() {  }
         
-        public static Pit Of(int intPitID, string strInstrument, int intSeat)
+        public static Pit Of(int intPitID, string strInstrument, int intSeat, int intMemberID, Member member)
         {
-            return new Pit(intPitID, strInstrument, intSeat);
+            return new Pit(intPitID, strInstrument, intSeat, intMemberId, member);
         }
     }
 }
