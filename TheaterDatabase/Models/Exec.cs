@@ -13,13 +13,23 @@ namespace TheaterDatabase.Models
         
         public int IntExecID {  get; set;  }
         
+        [Display(Name = "Position")]
+        
         public string StrPosition {  get; set;  }
+        
+        [Display(Name = "Member")]
         
         public Member Member {  get; set;  }
         
+        [Display(Name = "Member ID")]
+        
         public int IntMemberID {  get; set;  }
         
+        [Display(Name = "Date")]
+        
         public Date Date {  get; set;  }
+        
+        [Display(Name = "Date ID")]
         
         public int IntDateID {  get; set;  }
         
