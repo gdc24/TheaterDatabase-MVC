@@ -29,7 +29,7 @@ namespace TheaterDatabase.Models
             this.Member = member;
         }
         
-        public Cast { }
+        public Cast() { }
         
         public static Cast Of(int intCastID, string strVoicePart, string strRole, int intMemberID, Member member)
         {
