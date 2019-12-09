@@ -56,7 +56,7 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "SELECT intDateID, strDateName, strAdvisor, strUmbrellaOrg FROM dates";
+            string query = "SELECT intDateID, strSemester, intYear FROM dates";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -82,13 +82,12 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO dates" +
-                           " (\"strDateName\", \"strAdvisor\", \"strUmbrellaOrg\")" +
+                           " (\"strSemester\", \"intYear\")" +
                            " VALUES" +
-                           " (@strDateName, @strAdvisor, @strUmbrellaOrg);";
+                           " (@strSemester, @intYear);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strDateName", date.StrDateName);
-            cmd.Parameters.AddWithValue("strAdvisor", date.StrAdvisor);
-            cmd.Parameters.AddWithValue("strUmbrellaOrg", date.UmbrellaOrg);
+            cmd.Parameters.AddWithValue("strSemester", date.StrSemesetr);
+            cmd.Parameters.AddWithValue("intYear", date.IntYear);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -110,14 +109,12 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE dates " +
-                           " SET \"strDateName\" = @strDateName" +
-                           " \"strAdvisor\" = @strAdvisor" +
-                           " \"strUmbrellaOrg\" = @strUmbrellaOrg" +
+                           " SET \"strSemester\" = @strSemester" +
+                           " \"intYear\" = @intYear" +
                            " WHERE \"intDateID\" = @intDateID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strDateName", date.StrDateName);
-            cmd.Parameters.AddWithValue("strAdvisor", date.StrAdvisor);
-            cmd.Parameters.AddWithValue("strUmbrellaOrg", date.UmbrellaOrg);
+            cmd.Parameters.AddWithValue("strSemester", date.StrDateName);
+            cmd.Parameters.AddWithValue("intYear", date.IntYear);
             cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
 
             // Execute a query
