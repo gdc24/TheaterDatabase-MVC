@@ -26,6 +26,34 @@ namespace TheaterDatabase.DAL
             Show show = Show.Of(intShowID, strName, strAuthor, intBudget, ysnIsMusical, intClubID, club, intDateID, date);
             return show;
         }
+        
+        public static Date GetShow(int intShowID)
+        {
+            Date retval = null;
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "SELECT * FROM shows WHERE \"intShowID\" = " + intShowID;
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            // Read all rows and output the first column in each row
+            while (dr.Read())
+            {
+
+                retval = GetShowFromDR(dr);
+                //Console.Write("{0}\n", dr[0]);
+            }
+
+            conn.Close();
+
+            return retval;
+        }
 
         public static IEnumerable<Show> GetAllShows()
         {
