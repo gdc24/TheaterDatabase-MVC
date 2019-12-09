@@ -7,13 +7,21 @@ namespace TheaterDatabase.Models
 {
     public class Date
     {
-
+        [Key]
+        [Display(Name = "Date ID")]
+        
         public int IntDateID { get; set; }
 
+        [Display(Name = "Year")]
+        
         public int IntYear { get; set; }
 
+        [Display(Name = "Semester")]
+        
         public string StrSemester { get; set; }
 
+        [Display(Name = "Semester")]
+        
         public Semester Semester { get; set; }
 
         private Date(int intDateID, string strSemester, Semester semester, int intYear)
