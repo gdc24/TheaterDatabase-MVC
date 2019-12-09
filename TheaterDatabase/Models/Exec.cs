@@ -18,19 +18,25 @@ namespace TheaterDatabase.Models
         
         public int IntMemberID {  get; set;  }
         
-        public Exec(int intExecID, string strPosition, int intMemberID, Member member)
+        public Date Date {  get; set;  }
+        
+        public int IntDateID {  get; set;  }
+        
+        public Exec(int intExecID, string strPosition, int intMemberID, Member member, int intDateID, Date date)
         {
             this.IntExecID = intExecID;
             this.StrPosition = strPosition;
             this.IntMemberID = intMemberID;
             this.member = member;
+            this.IntDateID = intDateID;
+            this.Date = date;
         }
         
         public Exec() { }
         
-        public static Exec Of(int intExecID, string strPosition, int intMemberID, Member member)
+        public static Exec Of(int intExecID, string strPosition, int intMemberID, Member member, int intDateID, Date date)
         {
-            return new Exec(intExecID, strPosition, intMemberID, member);
+            return new Exec(intExecID, strPosition, intMemberID, member, intDateID, date);
         }
     }
 }
