@@ -12,7 +12,7 @@ namespace TheaterDatabase.DAL
 
         private static Show GetShowFromDR(NpgsqlDataReader dr)
         {
-            int id = Convert.ToInt32(dr["intShowID"]);
+            int intShowID = Convert.ToInt32(dr["intShowID"]);
             string strName = dr["strName"].ToString();
             string strAuthor = dr["strAuthor"].ToString();
             int intBudget = Convert.ToInt32(dr["intBudget"]);
@@ -23,7 +23,7 @@ namespace TheaterDatabase.DAL
             Club club = ClubsDAL.GetClub(intClubID);
             Date date = DatesDAL.GetDate(intDateID);
 
-            Show show = Show.Of(id, strName, strAuthor, intBudget, ysnIsMusical, intClubID, club, intDateID, date);
+            Show show = Show.Of(intShowID, strName, strAuthor, intBudget, ysnIsMusical, intClubID, club, intDateID, date);
             return show;
         }
 
@@ -99,7 +99,7 @@ namespace TheaterDatabase.DAL
                            " \"ysnIsMusical\" = @ysnIsMusical" +
                            " \"intClubID\" = @intClubID" +
                            " \"intDateID\" = @intDateID" +
-                           " WHERE \"id\" = @id;";
+                           " WHERE \"intShowID\" = @intShowID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("strName", show.StrName);
             cmd.Parameters.AddWithValue("strAuthor", show.StrAuthor);
@@ -107,7 +107,7 @@ namespace TheaterDatabase.DAL
             cmd.Parameters.AddWithValue("ysnIsMusical", show.YsnIsMusical);
             cmd.Parameters.AddWithValue("intClubID", show.IntClubID);
             cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
-            cmd.Parameters.AddWithValue("id", show.Id);
+            cmd.Parameters.AddWithValue("intShowID", show.IntShowID);
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -129,9 +129,9 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "DELETE FROM shows WHERE \"id\" = @id ";
+            string query = "DELETE FROM shows WHERE \"intShowID\" = @intShowID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("id", show.id);
+            cmd.Parameters.AddWithValue("intShowID", show.intShowID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
