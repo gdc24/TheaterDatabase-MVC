@@ -7,7 +7,7 @@ namespace TheaterDatabase.Models
 {
     public enum UmbrellaOrg
     {
-        UMB,
-        USG
+        UniversityMediaBoard,
+        UniversityStudentGovernment
     }
 }
