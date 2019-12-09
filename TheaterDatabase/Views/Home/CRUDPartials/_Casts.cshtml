@@ -38,6 +38,7 @@
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "intMemberID", "StrName", new { @id = "dropdown", @class = "form-control" }))
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Show.StrName)</span>
