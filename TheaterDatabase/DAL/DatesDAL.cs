@@ -86,9 +86,9 @@ namespace TheaterDatabase.DAL
                            " VALUES" +
                            " (@strDateName, @strAdvisor, @strUmbrellaOrg);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strDateName", club.StrDateName);
-            cmd.Parameters.AddWithValue("strAdvisor", club.StrAdvisor);
-            cmd.Parameters.AddWithValue("strUmbrellaOrg", club.UmbrellaOrg);
+            cmd.Parameters.AddWithValue("strDateName", date.StrDateName);
+            cmd.Parameters.AddWithValue("strAdvisor", date.StrAdvisor);
+            cmd.Parameters.AddWithValue("strUmbrellaOrg", date.UmbrellaOrg);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -115,10 +115,10 @@ namespace TheaterDatabase.DAL
                            " \"strUmbrellaOrg\" = @strUmbrellaOrg" +
                            " WHERE \"intDateID\" = @intDateID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strDateName", club.StrDateName);
-            cmd.Parameters.AddWithValue("strAdvisor", club.StrAdvisor);
-            cmd.Parameters.AddWithValue("strUmbrellaOrg", club.UmbrellaOrg);
-            cmd.Parameters.AddWithValue("intDateID", club.IntDateID);
+            cmd.Parameters.AddWithValue("strDateName", date.StrDateName);
+            cmd.Parameters.AddWithValue("strAdvisor", date.StrAdvisor);
+            cmd.Parameters.AddWithValue("strUmbrellaOrg", date.UmbrellaOrg);
+            cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -142,7 +142,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM dates WHERE \"intDateID\" = @intDateID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intDateID", club.IntDateID);
+            cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
