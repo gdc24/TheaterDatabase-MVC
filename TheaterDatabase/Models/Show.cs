@@ -10,6 +10,7 @@ namespace TheaterDatabase.Models
     {
         [Key]
         [Display(Name = "Show ID")]
+        
         public int IntShowID { get; set; }
 
         [Display(Name = "Name")]
@@ -64,8 +65,5 @@ namespace TheaterDatabase.Models
         {
             return new Show(intShowID, strName, strAuthor, intBudget, ysnIsMusical, intClubID, club, intDateID, date);
         }
-
-
-
     }
 }
