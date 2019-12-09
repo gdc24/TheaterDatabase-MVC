@@ -19,5 +19,12 @@ namespace TheaterDatabase.Models
             this.IntMemberID = intMemberID;
             this.StrName = strName;
         }
+        
+        public Member() { }
+        
+        public static Member Of(int intMemberID, string strName) 
+        {
+            return new Member(intMemberID, strName);
+        }
     }
 }
