@@ -71,7 +71,7 @@ namespace TheaterDatabase.DAL
 
             while (dr.Read())
             {
-                Show show = GetPitFromDR(dr);
+                Pit pit = GetPitFromDR(dr);
                 retval.Add(pit);
             }
 
