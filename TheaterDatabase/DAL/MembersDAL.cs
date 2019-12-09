@@ -10,7 +10,7 @@ namespace TheaterDatabase.DAL
     public class MemebrsDAL
     {
 
-        private static Show GetMemberFromDR(NpgsqlDataReader dr)
+        private static Member GetMemberFromDR(NpgsqlDataReader dr)
         {
             int intMemberID = Convert.ToInt32(dr["intMemberID"]);
             string strMemberName = dr["strMemberName"].ToString();
@@ -22,7 +22,7 @@ namespace TheaterDatabase.DAL
             return member;
         }
         
-        public static Date GetMember(int intMemberID)
+        public static Member GetMember(int intMemberID)
         {
             Member retval = null;
 
