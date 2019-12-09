@@ -29,7 +29,7 @@ namespace TheaterDatabase.DAL
         
         public static Show GetShow(int intShowID)
         {
-            Date retval = null;
+            Show retval = null;
 
             // create and open a connection
             NpgsqlConnection conn = DatabaseConnection.GetConnection();
@@ -159,7 +159,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM shows WHERE \"intShowID\" = @intShowID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intShowID", show.intShowID);
+            cmd.Parameters.AddWithValue("intShowID", show.IntShowID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();

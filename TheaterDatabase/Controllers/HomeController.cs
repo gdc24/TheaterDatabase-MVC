@@ -35,20 +35,20 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - SHOWS
 
-        public ActionResult EditShows(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //public ActionResult EditShows(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
 
-            var employee = _context.Employees.SingleOrDefault(e => e.EmployeeId == id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
-        }
+        //    var employee = _context.Employees.SingleOrDefault(e => e.EmployeeId == id);
+        //    if (employee == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(employee);
+        //}
 
         #endregion
     }

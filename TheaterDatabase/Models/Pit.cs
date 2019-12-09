@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -39,7 +40,7 @@ namespace TheaterDatabase.Models
         
         public static Pit Of(int intPitID, string strInstrument, int intSeat, int intMemberID, Member member, int intShowID, Show show)
         {
-            return new Pit(intPitID, strInstrument, intSeat, intMemberId, member, intShowID, show);
+            return new Pit(intPitID, strInstrument, intSeat, intMemberID, member, intShowID, show);
         }
     }
 }

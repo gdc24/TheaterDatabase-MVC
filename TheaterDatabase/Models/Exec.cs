@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -27,7 +28,7 @@ namespace TheaterDatabase.Models
             this.IntExecID = intExecID;
             this.StrPosition = strPosition;
             this.IntMemberID = intMemberID;
-            this.member = member;
+            this.Member = member;
             this.IntDateID = intDateID;
             this.Date = date;
         }

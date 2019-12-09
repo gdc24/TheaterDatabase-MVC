@@ -86,7 +86,7 @@ namespace TheaterDatabase.DAL
                            " VALUES" +
                            " (@strSemester, @intYear);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strSemester", date.StrSemesetr);
+            cmd.Parameters.AddWithValue("strSemester", date.StrSemester);
             cmd.Parameters.AddWithValue("intYear", date.IntYear);
 
             // Execute a query
@@ -113,7 +113,7 @@ namespace TheaterDatabase.DAL
                            " \"intYear\" = @intYear" +
                            " WHERE \"intDateID\" = @intDateID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strSemester", date.StrDateName);
+            cmd.Parameters.AddWithValue("strSemester", date.StrSemester);
             cmd.Parameters.AddWithValue("intYear", date.IntYear);
             cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
 
