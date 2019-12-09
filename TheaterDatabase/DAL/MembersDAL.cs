@@ -1,4 +1,4 @@
-﻿using Npgsql;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,28 +7,31 @@ using TheaterDatabase.Models;
 
 namespace TheaterDatabase.DAL
 {
-    public class DatesDAL
+    public class MembersDAL
     {
-        private static Date GetDateFromDR(NpgsqlDataReader dr)
-        {
-            int id = Convert.ToInt32(dr["intDateID"]);
-            string strSemester = dr["strSemester"].ToString();
-            Semester semester = (Semester)Enum.Parse(typeof(Semester), strSemester, true);
-            int intYear = Convert.ToInt32(dr["intYear"]);
-            Date date = Date.Of(id, strSemester, semester, intYear);
-            return date;
-        }
 
-        public static Date GetDate(int intDateID)
+        private static Member GetMemberFromDR(NpgsqlDataReader dr)
         {
-            Date retval = null;
+            int intMemberID = Convert.ToInt32(dr["intMemberID"]);
+            string strMemberName = dr["strMemberName"].ToString();
+
+            Club club = ClubsDAL.GetClub(intClubID);
+            Date date = DatesDAL.GetDate(intDateID);
+
+            Member member = Member.Of(intMemberID, strMemberName);
+            return member;
+        }
+        
+        public static Member GetMember(int intMemberID)
+        {
+            Member retval = null;
 
             // create and open a connection
             NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            string query = "SELECT * FROM dates WHERE \"intDateID\" = " + intDateID;
+            string query = "SELECT * FROM members WHERE \"intMemberID\" = " + intMemberID;
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -38,7 +41,7 @@ namespace TheaterDatabase.DAL
             while (dr.Read())
             {
 
-                retval = GetDateFromDR(dr);
+                retval = GetMemberFromDR(dr);
                 //Console.Write("{0}\n", dr[0]);
             }
 
@@ -47,16 +50,16 @@ namespace TheaterDatabase.DAL
             return retval;
         }
 
-        public static IEnumerable<Date> GetAllDates()
+        public static IEnumerable<Member> GetAllMembers()
         {
-            List<Date> retval = new List<Date>();
+            List<Member> retval = new List<Member>();
 
             // create and open a connection
             NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            string query = "SELECT intDateID, strSemester, intYear FROM dates";
+            string query = "SELECT * FROM members";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -64,8 +67,8 @@ namespace TheaterDatabase.DAL
 
             while (dr.Read())
             {
-                Date date = GetDateFromDR(dr);
-                retval.Add(date);
+                Member member = GetMemberFromDR(dr);
+                retval.Add(member);
             }
 
             conn.Close();
@@ -73,7 +76,7 @@ namespace TheaterDatabase.DAL
             return retval;
         }
         
-        public static bool InsertDate(Date date)
+        public static bool InsertMember(Member member)
         {
 
             // create and open a connection
@@ -81,13 +84,13 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "INSERT INTO dates" +
-                           " (\"strSemester\", \"intYear\")" +
+            string query = "INSERT INTO members" +
+                           " (\"strMemberName\")" +
                            " VALUES" +
-                           " (@strSemester, @intYear);";
+                           " (@strMemberName);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strSemester", date.StrSemesetr);
-            cmd.Parameters.AddWithValue("intYear", date.IntYear);
+            cmd.Parameters.AddWithValue("strMemberName", show.StrMemberName);
+            
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -100,7 +103,7 @@ namespace TheaterDatabase.DAL
                 return false;
         }
 
-        public static bool UpdateDate(Date date)
+        public static bool UpdateMember(Member member)
         {
 
             // create and open a connection
@@ -108,15 +111,13 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "UPDATE dates " +
-                           " SET \"strSemester\" = @strSemester" +
-                           " \"intYear\" = @intYear" +
-                           " WHERE \"intDateID\" = @intDateID;";
+            string query = "UPDATE members " +
+                           " SET \"strMemberName\" = @strMemberName" +
+                           " WHERE \"intMemberID\" = @intMemberID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strSemester", date.StrDateName);
-            cmd.Parameters.AddWithValue("intYear", date.IntYear);
-            cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
-
+            cmd.Parameters.AddWithValue("strMemberName", show.StrMemberName);
+            cmd.Parameters.AddWithValue("intMemberID", show.IntMemberID);
+            
             // Execute a query
             int result = cmd.ExecuteNonQuery();
 
@@ -129,7 +130,7 @@ namespace TheaterDatabase.DAL
 
         }
 
-        public static bool DeleteDate(Date date)
+        public static bool DeleteMember(Member member)
         {
 
             // create and open a connection
@@ -137,9 +138,9 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "DELETE FROM dates WHERE \"intDateID\" = @intDateID ";
+            string query = "DELETE FROM members WHERE \"intMemberID\" = @intMemberID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
+            cmd.Parameters.AddWithValue("intMemberID", show.intMemberID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -151,7 +152,6 @@ namespace TheaterDatabase.DAL
             else
                 return false;
         }
-
 
 
     }

@@ -12,7 +12,7 @@ namespace TheaterDatabase.DAL
 
         private static Show GetShowFromDR(NpgsqlDataReader dr)
         {
-            int id = Convert.ToInt32(dr["intShowID"]);
+            int intShowID = Convert.ToInt32(dr["intShowID"]);
             string strName = dr["strName"].ToString();
             string strAuthor = dr["strAuthor"].ToString();
             int intBudget = Convert.ToInt32(dr["intBudget"]);
@@ -23,8 +23,36 @@ namespace TheaterDatabase.DAL
             Club club = ClubsDAL.GetClub(intClubID);
             Date date = DatesDAL.GetDate(intDateID);
 
-            Show show = Show.Of(id, strName, strAuthor, intBudget, ysnIsMusical, intClubID, club, intDateID, date);
+            Show show = Show.Of(intShowID, strName, strAuthor, intBudget, ysnIsMusical, intClubID, club, intDateID, date);
             return show;
+        }
+        
+        public static Show GetShow(int intShowID)
+        {
+            Date retval = null;
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "SELECT * FROM shows WHERE \"intShowID\" = " + intShowID;
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            // Read all rows and output the first column in each row
+            while (dr.Read())
+            {
+
+                retval = GetShowFromDR(dr);
+                //Console.Write("{0}\n", dr[0]);
+            }
+
+            conn.Close();
+
+            return retval;
         }
 
         public static IEnumerable<Show> GetAllShows()
@@ -52,6 +80,98 @@ namespace TheaterDatabase.DAL
 
             return retval;
         }
+        
+        public static bool InsertShow(Show show)
+        {
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "INSERT INTO shows" +
+                           " (\"strName\", \"strAuthor\", \"intBudget\", \"ysnIsMusical\", \"intClubID\", \"intDateID\")" +
+                           " VALUES" +
+                           " (@strName, @strAuthor, @intBudget, @ysnIsMusical, @intClubID, @intDateID);";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("strName", show.StrName);
+            cmd.Parameters.AddWithValue("strAuthor", show.StrAuthor);
+            cmd.Parameters.AddWithValue("intBudget", show.IntBudget);
+            cmd.Parameters.AddWithValue("ysnIsMusical", show.YsnIsMusical);
+            cmd.Parameters.AddWithValue("intClubID", show.IntClubID);
+            cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
+
+            // Execute a query
+            int result = cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (result == 1)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool UpdateShow(Show show)
+        {
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "UPDATE shows " +
+                           " SET \"strName\" = @strName" +
+                           " \"strAuthor\" = @strAuthor" +
+                           " \"intBudget\" = @intBudget" +
+                           " \"ysnIsMusical\" = @ysnIsMusical" +
+                           " \"intClubID\" = @intClubID" +
+                           " \"intDateID\" = @intDateID" +
+                           " WHERE \"intShowID\" = @intShowID;";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("strName", show.StrName);
+            cmd.Parameters.AddWithValue("strAuthor", show.StrAuthor);
+            cmd.Parameters.AddWithValue("intBudget", show.IntBudget);
+            cmd.Parameters.AddWithValue("ysnIsMusical", show.YsnIsMusical);
+            cmd.Parameters.AddWithValue("intClubID", show.IntClubID);
+            cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
+            cmd.Parameters.AddWithValue("intShowID", show.IntShowID);
+            
+            // Execute a query
+            int result = cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (result == 1)
+                return true;
+            else
+                return false;
+
+        }
+
+        public static bool DeleteShow(Show show)
+        {
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "DELETE FROM shows WHERE \"intShowID\" = @intShowID ";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("intShowID", show.intShowID);
+
+            // Execute a query
+            int result = cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (result == 1)
+                return true;
+            else
+                return false;
+        }
+
 
     }
 }

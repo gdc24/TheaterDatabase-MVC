@@ -1,4 +1,4 @@
-﻿using Npgsql;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,28 +7,32 @@ using TheaterDatabase.Models;
 
 namespace TheaterDatabase.DAL
 {
-    public class DatesDAL
+    public class PitsDAL
     {
-        private static Date GetDateFromDR(NpgsqlDataReader dr)
-        {
-            int id = Convert.ToInt32(dr["intDateID"]);
-            string strSemester = dr["strSemester"].ToString();
-            Semester semester = (Semester)Enum.Parse(typeof(Semester), strSemester, true);
-            int intYear = Convert.ToInt32(dr["intYear"]);
-            Date date = Date.Of(id, strSemester, semester, intYear);
-            return date;
-        }
 
-        public static Date GetDate(int intDateID)
+        private static Pit GetPitFromDR(NpgsqlDataReader dr)
         {
-            Date retval = null;
+            int intPitID = Convert.ToInt32(dr["intPitID"]);
+            string strInstrument = dr["strInstrument"].ToString();
+            int intSeat = Convert.ToInt32(dr["intSeat"]);
+
+            Show show = ShowsDAL.GetShow(intShowID);
+            Member member = MembersDAL.GetMember(intMemberID);
+
+            Pit pit = Pit.Of(intPitID, strInstrument, intSeat);
+            return member;
+        }
+        
+        public static Pit GetPit(int intPitID)
+        {
+            Pit retval = null;
 
             // create and open a connection
             NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            string query = "SELECT * FROM dates WHERE \"intDateID\" = " + intDateID;
+            string query = "SELECT * FROM pits WHERE \"intPitID\" = " + intPitID;
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -38,7 +42,7 @@ namespace TheaterDatabase.DAL
             while (dr.Read())
             {
 
-                retval = GetDateFromDR(dr);
+                retval = GetPitFromDR(dr);
                 //Console.Write("{0}\n", dr[0]);
             }
 
@@ -47,16 +51,16 @@ namespace TheaterDatabase.DAL
             return retval;
         }
 
-        public static IEnumerable<Date> GetAllDates()
+        public static IEnumerable<Pit> GetAllPits()
         {
-            List<Date> retval = new List<Date>();
+            List<Pit> retval = new List<Pit>();
 
             // create and open a connection
             NpgsqlConnection conn = DatabaseConnection.GetConnection();
             conn.Open();
 
             // Define a query
-            string query = "SELECT intDateID, strSemester, intYear FROM dates";
+            string query = "SELECT * FROM pits";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -64,8 +68,8 @@ namespace TheaterDatabase.DAL
 
             while (dr.Read())
             {
-                Date date = GetDateFromDR(dr);
-                retval.Add(date);
+                Show show = GetPitFromDR(dr);
+                retval.Add(pit);
             }
 
             conn.Close();
@@ -73,7 +77,7 @@ namespace TheaterDatabase.DAL
             return retval;
         }
         
-        public static bool InsertDate(Date date)
+        public static bool InsertPit(Pit pit)
         {
 
             // create and open a connection
@@ -81,13 +85,15 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "INSERT INTO dates" +
-                           " (\"strSemester\", \"intYear\")" +
+            string query = "INSERT INTO pits" +
+                           " (\"strInstrument\")" +
+                           " (\"intSeat\")" +
                            " VALUES" +
-                           " (@strSemester, @intYear);";
+                           " (@strInstrument, @intSeat);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strSemester", date.StrSemesetr);
-            cmd.Parameters.AddWithValue("intYear", date.IntYear);
+            cmd.Parameters.AddWithValue("strInstrument", show.StrInstrument);
+            cmd.Parameters.AddWithValue("intSeat", show.IntSeat);
+            
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -100,7 +106,7 @@ namespace TheaterDatabase.DAL
                 return false;
         }
 
-        public static bool UpdateDate(Date date)
+        public static bool UpdatePit(Pit pit)
         {
 
             // create and open a connection
@@ -108,15 +114,15 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "UPDATE dates " +
-                           " SET \"strSemester\" = @strSemester" +
-                           " \"intYear\" = @intYear" +
-                           " WHERE \"intDateID\" = @intDateID;";
+            string query = "UPDATE pits " +
+                           " SET \"strInstrument\" = @strInstrument" +
+                           " SET \"intSeat\" = @intSeat" +
+                           " WHERE \"intPitID\" = @intPitID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strSemester", date.StrDateName);
-            cmd.Parameters.AddWithValue("intYear", date.IntYear);
-            cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
-
+            cmd.Parameters.AddWithValue("strInstrument", show.StrInstrument);
+            cmd.Parameters.AddWithValue("intSeat", show.IntSeat);
+            cmd.Parameters.AddWithValue("intPitID", show.IntPitID);
+            
             // Execute a query
             int result = cmd.ExecuteNonQuery();
 
@@ -129,7 +135,7 @@ namespace TheaterDatabase.DAL
 
         }
 
-        public static bool DeleteDate(Date date)
+        public static bool DeletePit(Pit pit)
         {
 
             // create and open a connection
@@ -137,9 +143,9 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "DELETE FROM dates WHERE \"intDateID\" = @intDateID ";
+            string query = "DELETE FROM pits WHERE \"intPitID\" = @intPitID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intDateID", date.IntDateID);
+            cmd.Parameters.AddWithValue("intPitID", show.intPitID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -151,7 +157,6 @@ namespace TheaterDatabase.DAL
             else
                 return false;
         }
-
 
 
     }
