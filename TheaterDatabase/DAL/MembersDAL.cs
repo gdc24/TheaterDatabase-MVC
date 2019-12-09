@@ -67,7 +67,7 @@ namespace TheaterDatabase.DAL
 
             while (dr.Read())
             {
-                Show show = GetMemberFromDR(dr);
+                Member member = GetMemberFromDR(dr);
                 retval.Add(member);
             }
 
