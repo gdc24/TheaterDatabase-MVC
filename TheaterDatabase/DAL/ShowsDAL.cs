@@ -27,7 +27,7 @@ namespace TheaterDatabase.DAL
             return show;
         }
         
-        public static Date GetShow(int intShowID)
+        public static Show GetShow(int intShowID)
         {
             Date retval = null;
 
