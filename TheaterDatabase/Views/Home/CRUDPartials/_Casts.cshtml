@@ -1,1 +1,67 @@
-﻿
+@model TheaterDatabase.ViewModels.CRUD_VMs.CastsVM
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.IntCastID)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.StrVoicePart)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.StrRole)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.Member)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.IntMemberID)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.Show)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.IntShowID)</span>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.LstShows)
+                {
+                    <tr>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntCastID)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrVoicePart)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrRole)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntMemberID)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Show.StrName)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Show.IntShowID) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IntCastID }) |
+                            @Html.ActionLink("Detail", "Detail", new { id = item.IntCastID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IntCastID })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
