@@ -29,13 +29,41 @@
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.IntMemberID }) |
-                            @Html.ActionLink("Detail", "Detail", new { id = item.IntMemberID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.IntMemberID })
+                            <button onclick="updateMembers(@item.IntMemberID)" class="m-1 btn btn-primary divYesEditing">Update</button>
+                            <button onclick="editRow('members', @item.IntMemberID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
+                            <button onclick="deleteMembers(@item.IntMemberID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('members', @item.IntMemberID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
             </table>
         </div>
     </div>
+
+
+
+
+    <br />
+    <hr />
+    <br />
+
+    <div class="row divNoNewRow">
+        <div class="col">
+            <p class="float-right">
+                <button class="m-1 btn btn-primary" onclick="showInsertRow('members')">Insert Row</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3 divYesNewRow">
+            @Html.EditorFor(model => model.StrName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @data_cast = "new_strName" } })
+        </div>
+        <div class="col divYesNewRow">
+            <button class="m-1 btn btn-primary" onclick="insertMember()">Insert</button>
+            <button class="m-1 btn btn-primary" onclick="hideInsertRow('members')">Cancel Insert</button>
+        </div>
+    </div>
+
+
 </div>
