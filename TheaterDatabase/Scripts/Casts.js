@@ -1,4 +1,9 @@
 ﻿
+function initCastsTab() {
+    initDataTable('casts-table');
+}
+
+
 
 function updateCasts(id) {
 
@@ -12,6 +17,7 @@ function updateCasts(id) {
     AjaxCall('/Home/UpdateCasts', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#casts').html(response);
+        initCastsTab();
 
     }).fail(function (error) {
         console.log(error);

@@ -22,6 +22,24 @@ function hideInsertRow(tab) {
     $(context).find('.divYesNewRow').hide();
 }
 
+function initDataTable(tableName) {
+    $('#' + tableName).DataTable({
+        dom: '<"row my-4"Bf>tp',
+        buttons: [
+            {
+                extend: 'colvis',
+                columns: ':not(.hide)'
+            }
+        ],
+        "pageLength": 10,
+        "info": false,
+        "language": { search: '', searchPlaceholder: "Search..." }
+    });
+    $("#" + tableName + "_filter").addClass("col-xl-6 m-auto");
+    $(".dt-buttons").addClass("col-xl-6 mx-auto mb-2 d-inline");
+    $(".buttons-colvis").html("Show /  Hide Columns");
+}
+
 
 function AjaxCall(url, data, type) {
     return $.ajax({
