@@ -22,10 +22,13 @@ namespace TheaterDatabase.Controllers
 
             CRUDVM model = new CRUDVM();
             model._casts_vm.LstCasts = CastsDAL.GetAllCasts();
+            model._casts_vm.LstAllMembers = MembersDAL.GetAllMembers();
+            model._casts_vm.LstAllShows = ShowsDAL.GetAllShows();
             model._exec_vm.LstExec = ExecDAL.GetAllExec();
-            model._members_vm.LstMembers = MembersDAL.GetAllMembers();
+            model._members_vm.LstMembers = model._casts_vm.LstAllMembers;
             model._pits_vm.LstPits = PitsDAL.GetAllPits();
-            model._shows_vm.LstShows = ShowsDAL.GetAllShows();
+            model._shows_vm.LstShows = model._casts_vm.LstAllShows;
+            model._shows_vm.LstAllClubs = ClubsDAL.GetAllClubs();
             model._staff_vm.LstStaff = StaffDAL.GetAllStaff();
 
             return View(model);

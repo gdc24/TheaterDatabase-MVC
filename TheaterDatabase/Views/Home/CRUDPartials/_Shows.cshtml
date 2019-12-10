@@ -50,6 +50,7 @@
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
+                            @Html.DropDownListFor(model => model.IntClubID, new SelectList(Model.LstAllClubs, "IntClubID", "StrClubName"))
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Date.StrSemester) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>
