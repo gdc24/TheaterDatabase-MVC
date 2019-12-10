@@ -80,10 +80,57 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - MEMBERS
 
-        /*public ActionResult UpdeteMembers()
+        public ActionResult InsertMembers(string StrName)
         {
-            return View();
-        }*/
+            Member newMember = new Member
+            {
+                StrName = StrName
+            };
+
+            bool success = MembersDAL.InsertMember(newMember);
+
+            MembersVM model = new MembersVM()
+            {
+                LstMembers = MembersDAL.GetAllMembers()
+            };
+
+            return PartialView("CRUDPartials/_Members", model);
+        }
+
+        public ActionResult DeleteMembers(int IntMemberID)
+        {
+            Member remMember = new Member
+            {
+                IntMemberID = IntMemberID
+            };
+
+            bool success = MembersDAL.DeleteMember(remMember);
+
+            MembersVM model = new MembersVM()
+            {
+                LstMembers = MembersDAL.GetAllMembers()
+            };
+
+            return PartialView("CRUDPartials/_Members", model);
+        }
+
+        public ActionResult UpdateMembers(int IntMemberID, string StrName)
+        {
+            Member upMember = new Member
+            {
+                IntMemberID = IntMemberID,
+                StrName = StrName
+            };
+
+            bool success = MembersDAL.UpdateMember(upMember);
+
+            MembersVM model = new MembersVM()
+            {
+                LstMembers = MembersDAL.GetAllMembers()
+            };
+
+            return PartialView("CRUDPartials/_Members", model);
+        }
 
         #endregion
 
