@@ -53,10 +53,42 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - CLUBS
 
-        /*public ActionResult UpdateClubs()
+        public void InsertClubs(string StrClubName, string StrAdvisor, string StrUmbrellaOrg, UmbrellaOrg umbrellaOrg)
         {
-            return View();
-        }*/
+            Club newClub = new Club
+            {
+                StrClubName = StrClubName,
+                StrAdvisor = StrAdvisor,
+                StrUmbrellaOrg = StrUmbrellaOrg,
+                UmbrellaOrg = umbrellaOrg
+            };
+
+            bool success = ClubsDAL.InsertClub(newClub);
+        }
+
+        public void DeleteClubs(int IntClubID)
+        {
+            Club remClub = new Club
+            {
+                IntClubID = IntClubID
+            };
+
+            bool success = ClubsDAL.DeleteClub(remClub);
+        }
+
+        public void UpdateClubs(int IntClubID, string StrClubName, string StrAdvisor, string StrUmbrellaOrg, UmbrellaOrg umbrellaOrg)
+        {
+            Club upClup = new Club
+            {
+                IntClubID = IntClubID,
+                StrClubName = StrClubName,
+                StrAdvisor = StrAdvisor,
+                StrUmbrellaOrg = StrUmbrellaOrg,
+                UmbrellaOrg = umbrellaOrg
+            };
+
+            bool success = ClubsDAL.UpdateClub(upClup);
+        }
 
         #endregion
 
