@@ -71,10 +71,64 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - EXEC
 
-        /*public ActionResult UpdateExec()
+        public ActionResult InsertExec(string StrPosition, int IntMemberID, int IntDateID, int IntClubID)
         {
-            return View();
-        }*/
+            Exec newExec = new Exec
+            {
+                StrPosition = StrPosition,
+                IntMemberID = IntMemberID,
+                Member = MembersDAL.GetMember(IntMemberID),
+                IntDateID = IntDateID,
+                Date = DatesDAL.GetDate(IntDateID),
+                IntClubID = IntClubID,
+                Club = ClubsDAL.GetClub(IntClubID)
+            };
+
+            bool success = ExecDAL.InsertExec(newExec);
+
+            ExecVM model = new ExecVM()
+            {
+                LstExec = ExecDAL.GetAllExec()
+            };
+
+            return PartialView("CRUDPartials/_Exec", model);
+        }
+
+        public ActionResult DeleteExec(int IntExecID)
+        {
+            Exec remExec = new Exec
+            {
+                IntExecID = IntExecID
+            };
+
+            bool success = ExecDAL.DeleteExec(remExec);
+
+            ExecVM model = new ExecVM()
+            {
+                LstExec = ExecDAL.GetAllExec()
+            };
+
+            return PartialView("CRUDPartials/_Exec", model);
+        }
+
+        public ActionResult UpdateExec(int IntExecID, int IntMemberID)
+        {
+            Exec upExec = new Exec
+            {
+                IntExecID = IntExecID,
+                IntMemberID = IntMemberID,
+                Member = MembersDAL.GetMember(IntMemberID)
+            };
+
+            bool success = ExecDAL.UpdateExec(upExec);
+
+            ExecVM model = new ExecVM()
+            {
+                LstExec = ExecDAL.GetAllExec()
+            };
+
+            return PartialView("CRUDPartials/_Exec", model);
+        }
 
         #endregion
 
