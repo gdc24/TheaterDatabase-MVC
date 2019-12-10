@@ -32,8 +32,16 @@ namespace TheaterDatabase.Models
         [Display(Name = "Date ID")]
         
         public int IntDateID {  get; set;  }
+
+
+        [Display(Name = "Club")]
+        public Club Club { get; set; }
+
+
+        [Display(Name = "Club ID")]
+        public int IntClubID { get; set; }
         
-        public Exec(int intExecID, string strPosition, int intMemberID, Member member, int intDateID, Date date)
+        public Exec(int intExecID, string strPosition, int intMemberID, Member member, int intDateID, Date date, int intClubID, Club club)
         {
             this.IntExecID = intExecID;
             this.StrPosition = strPosition;
@@ -41,13 +49,15 @@ namespace TheaterDatabase.Models
             this.Member = member;
             this.IntDateID = intDateID;
             this.Date = date;
+            this.IntClubID = intClubID;
+            this.Club = club;
         }
         
         public Exec() { }
         
-        public static Exec Of(int intExecID, string strPosition, int intMemberID, Member member, int intDateID, Date date)
+        public static Exec Of(int intExecID, string strPosition, int intMemberID, Member member, int intDateID, Date date, int intClubID, Club club)
         {
-            return new Exec(intExecID, strPosition, intMemberID, member, intDateID, date);
+            return new Exec(intExecID, strPosition, intMemberID, member, intDateID, date, intClubID, club);
         }
     }
 }
