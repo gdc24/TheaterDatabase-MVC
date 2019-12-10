@@ -120,10 +120,20 @@ INSERT INTO members ("strName") VALUES ('Brian Liu');
 INSERT INTO members ("strName") VALUES ('Jessica Kwok');  -- 95
 INSERT INTO members ("strName") VALUES ('Ashley Roverson');
 INSERT INTO members ("strName") VALUES ('Maxwell Bertram Lowery');
-INSERT INTO members ("strName") VALUES ('Muayed Shahun');
+INSERT INTO members ("strName") VALUES ('Muayed Shahin');
 INSERT INTO members ("strName") VALUES ('Joshua Adams');
 INSERT INTO members ("strName") VALUES ('Morgan Fox');  -- 100
 INSERT INTO members ("strName") VALUES ('Nicholas Strawn');
+INSERT INTO members ("strName") VALUES ('Thomas Lipker');
+INSERT INTO members ("strName") VALUES ('Daniel Warner');
+INSERT INTO members ("strName") VALUES ('Ryan Karpuszka');
+INSERT INTO members ("strName") VALUES ('David Suignard');  -- 105
+INSERT INTO members ("strName") VALUES ('Caleb Middlebrook');
+INSERT INTO members ("strName") VALUES ('Nick Chu');
+INSERT INTO members ("strName") VALUES ('Ivan Suner');
+INSERT INTO members ("strName") VALUES ('Cher Yuan');
+INSERT INTO members ("strName") VALUES ('Dallas McDonald');  -- 110
+INSERT INTO members ("strName") VALUES ('Langdon Caldwell');
 
 -- all staff inserts
 ALTER SEQUENCE "staff_intStaffID_seq" RESTART WITH 1 INCREMENT BY 1;
@@ -205,7 +215,7 @@ INSERT INTO staff ("strPosition", "intMemberID", "intShowID") VALUES ('Costume D
 
 -- all pits inserts
 ALTER SEQUENCE "pits_intPitID_seq" RESTART WITH 1 INCREMENT BY 1;
-INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Flute', 34, 1);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Flute/Piccolo', 34, 1);
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Clarinet', 89, 1);
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Bassoon', 90, 1);
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Horn', 91, 1);
@@ -220,6 +230,21 @@ INSERT INTO pit ("strInstrument", "intSeat", "intMemberID", "intShowID") VALUES 
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Cello', 99, 1);
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Bass', 100, 1);
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Percussion', 101, 1);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Reed', 102, 3);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('Reed', 2, 103, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Trumpet', 104, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Viola', 105, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Cello', 106, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Guitar', 108, 3);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('Keyboard', 2, 107, 3);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('Guitar', 2, 109, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Drums', 110, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Percussion', 111, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Violin', 95, 3);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('Violin', 2, 98, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Keyboard', 54, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Reed', 5, 3);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Bass', 50, 3);
 
 ALTER SEQUENCE "exec_intExecID_seq" RESTART WITH 1 INCREMENT BY 1;
 INSERT INTO exec ("strPosition", "intMemberID", "intDateID") VALUES ('President', 1, 4);
