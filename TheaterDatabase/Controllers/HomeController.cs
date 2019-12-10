@@ -38,13 +38,76 @@ namespace TheaterDatabase.Controllers
             return View();
         }
 
+        #region REGION - CASTS
+
+        /*public ActionResult UpdateCasts()
+        {
+            return View();
+        }*/
+
+        #endregion
+
+        #region REGION - CLUBS
+
+        /*public ActionResult UpdateClubs()
+        {
+            return View();
+        }*/
+
+        #endregion
+
+        #region REGION - DATES
+
+        /*public ActionResult UpdateDates()
+        {
+            return View();
+        }*/
+
+        #endregion
+
+        #region REGION - EXEC
+
+        /*public ActionResult UpdateExec()
+        {
+            return View();
+        }*/
+
+        #endregion
+
+        #region REGION - MEMBERS
+
+        /*public ActionResult UpdeteMembers()
+        {
+            return View();
+        }*/
+
+        #endregion
+
+        #region REGION - PITS
+
+        /*public ActionResult UpdatePits()
+        {
+            return View();
+        }*/
+
+        #endregion
+
         #region REGION - SHOWS
 
-        //public ActionResult LstShows()
-        //{
-        //    ShowsVM vm = ShowsDAL.GetAllShows();
-        //    return 
-        //}
+        /*public ActionResult LstShows()
+        {
+            ShowsVM vm = ShowsDAL.GetAllShows();
+            return 
+        }*/
+
+        #endregion
+
+        #region REGION - STAFFS
+
+        /*public ActionResult UpdateStaffs()
+        {
+            return View();
+        }*/
 
         #endregion
     }
