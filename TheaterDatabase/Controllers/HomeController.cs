@@ -62,10 +62,41 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - DATES
 
-        /*public ActionResult UpdateDates()
+        public void InsertDates(string StrSemester, Semester semester, int IntYear)
         {
-            return View();
-        }*/
+            Date newDate = new Date
+            {
+                StrSemester = StrSemester,
+                Semester = semester,
+                IntYear = IntYear
+            };
+
+            bool success = DatesDAL.InsertDate(newDate);
+        }
+
+        public void DeleteDates(int IntDateID)
+        {
+            Date remDate = new Date
+            {
+                IntDateID = IntDateID
+            };
+
+            bool success = DatesDAL.DeleteDate(remDate);
+        }
+
+
+        public void UpdateDates(int IntDateID, string StrSemester, Semester semester, int IntYear)
+        {
+            Date upDate = new Date
+            {
+                IntDateID = IntDateID,
+                StrSemester = StrSemester,
+                Semester = semester,
+                IntYear = IntYear
+            };
+
+            bool success = DatesDAL.UpdateDate(upDate);
+        }
 
         #endregion
 
