@@ -44,10 +44,69 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - CASTS
 
-        /*public ActionResult UpdateCasts()
+        public ActionResult InsertCasts(string StrVoicePart, string StrRole, int IntMemberID, int IntShowID)
         {
-            return View();
-        }*/
+            Cast newCast = new Cast
+            {
+                StrVoicePart = StrVoicePart,
+                StrRole = StrRole,
+                IntMemberID = IntMemberID,
+                Member = MembersDAL.GetMember(IntMemberID),
+                IntShowID = IntShowID,
+                Show = ShowsDAL.GetShow(IntShowID)
+            };
+
+            bool success = CastsDAL.InsertCast(newCast);
+
+            CastsVM model = new CastsVM()
+            {
+                LstCasts = CastsDAL.GetAllCasts(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
+            };
+
+            return PartialView("CRUDPartials/_Casts", model);
+        }
+
+        public ActionResult DeleteCasts(int IntCastID)
+        {
+            Cast remCast = new Cast
+            {
+                IntCastID = IntCastID
+            };
+
+            bool success = CastsDAL.DeleteCast(remCast);
+
+            CastsVM model = new CastsVM()
+            {
+                LstCasts = CastsDAL.GetAllCasts(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
+            };
+
+            return PartialView("CRUDPartials/_Casts", model);
+        }
+
+        public ActionResult UpdateCasts(int IntCastID, int IntMemberID)
+        {
+            Cast upCast = new Cast
+            {
+                IntCastID = IntCastID,
+                IntMemberID = IntMemberID,
+                Member = MembersDAL.GetMember(IntMemberID)
+            };
+
+            bool success = CastsDAL.UpdateCast(upCast);
+
+            CastsVM model = new CastsVM()
+            {
+                LstCasts = CastsDAL.GetAllCasts(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
+            };
+
+            return PartialView("CRUDPartials/_Casts", model);
+        }
 
         #endregion
 
