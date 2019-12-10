@@ -27,7 +27,7 @@
                 </thead>
                 @foreach (var item in Model.LstStaff)
                 {
-                    <tr>
+                    <tr data-staff="@(item.IntStaffID + "_row")">
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntStaffID)</span>
                         </td>

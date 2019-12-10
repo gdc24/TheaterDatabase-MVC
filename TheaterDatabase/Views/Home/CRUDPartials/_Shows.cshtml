@@ -36,7 +36,7 @@
                 </thead>
                 @foreach (var item in Model.LstShows)
                 {
-                    <tr>
+                    <tr data-shows="@(item.IntShowID + "_row")">
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntShowID)</span>
                         </td>

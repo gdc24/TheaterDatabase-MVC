@@ -21,9 +21,9 @@
                 </thead>
                 @foreach (var item in Model.LstMembers)
                 {
-                    <tr>
+                    <tr data-members="@(item.IntMemberID + "_row")">
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntMemberID)</span>
+                            <span>@Html.DisplayFor(modelItem => item.IntMemberID)</span>
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
