@@ -1,5 +1,9 @@
 ﻿@model TheaterDatabase.ViewModels.CRUD_VMs.ShowsVM
 
+
+
+<h3>Shows</h3>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -50,6 +54,7 @@
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
+                            @Html.DropDownListFor(model => model.IntClubID, new SelectList(Model.LstAllClubs, "IntClubID", "StrClubName"))
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Date.StrSemester) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>

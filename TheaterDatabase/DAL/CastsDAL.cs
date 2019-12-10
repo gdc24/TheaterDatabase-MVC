@@ -88,17 +88,19 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO casts" +
-                           " (\"strVoicePart\")" +
-                           " (\"strRole\")" + " (\"intMemebrID\")" +
-                           " (\"intShowID\")" +
+                           " (\"strVoicePart\"," +
+                           " \"strRole\"," +
+                           " \"intMemberID\"," +
+                           " \"intShowID\")" +
                            " VALUES" +
-                           " (@strVoicePart, @strRole);";
+                           " (@strVoicePart, @strRole, @intMemberID, @intShowID);";
+
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("strVoicePart", cast.StrVoicePart);
             cmd.Parameters.AddWithValue("strRole", cast.StrRole);
             cmd.Parameters.AddWithValue("intMemberID", cast.IntMemberID);
             cmd.Parameters.AddWithValue("intShowID", cast.IntShowID);
-            
+
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -120,16 +122,11 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE casts " +
-                           " SET \"strVoicePart\" = @strVoicePart" +
-                           " SET \"strRole\" = @strRole" + " \"intMemberID\" = @intMemberID" +
-                           " \"intShowID\" = @intShowID" +
+                           " SET \"intMemberID\" = @intMemberID" +
                            " WHERE \"intCastID\" = @intCastID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strVoicePart", cast.StrVoicePart);
-            cmd.Parameters.AddWithValue("strRole", cast.StrRole);
             cmd.Parameters.AddWithValue("intCastID", cast.IntCastID);
             cmd.Parameters.AddWithValue("intMemberID", cast.IntMemberID);
-            cmd.Parameters.AddWithValue("intShowID", cast.IntShowID);
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();

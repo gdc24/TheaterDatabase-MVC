@@ -1,5 +1,9 @@
 ﻿@model TheaterDatabase.ViewModels.CRUD_VMs.ExecVM
 
+
+<h3>Exec</h3>
+
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -23,25 +27,25 @@
                 </thead>
                 @foreach (var item in Model.LstExec)
                 {
-                <tr>
-                    <td>
-                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntExecID)</span>
-                    </td>
-                    <td>
-                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrPosition)</span>
-                    </td>
-                    <td>
-                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
-                    </td>
-                    <td>
-                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Date.StrSemester) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.IntExecID }) |
-                        @Html.ActionLink("Detail", "Detail", new { id = item.IntExecID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.IntExecID })
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntExecID)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrPosition)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Date.StrSemester) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IntExecID }) |
+                            @Html.ActionLink("Detail", "Detail", new { id = item.IntExecID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IntExecID })
+                        </td>
+                    </tr>
                 }
             </table>
         </div>

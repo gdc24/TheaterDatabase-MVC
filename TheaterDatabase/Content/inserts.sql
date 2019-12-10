@@ -328,11 +328,10 @@ INSERT INTO exec ("strPosition", "intMemberID", "intDateID") VALUES ('Treasurer'
 INSERT INTO exec ("strPosition", "intMemberID", "intDateID") VALUES ('Vice President', 27, 1);
 INSERT INTO exec ("strPosition", "intMemberID", "intDateID") VALUES ('PR Manager', 28, 1);
 
-
 -- cast inserts
 ALTER SEQUENCE "casts_intCastID_seq" RESTART WITH 1 INCREMENT BY 1;
-INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Baritone', 'Narrator', 66, 1);
-INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Soprano', 'Cinderella', 67, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Bass', 'Narrator', 66, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Mezzo Soprano', 'Cinderella', 67, 1);
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Soprano', 'Rapunzel/Cinderellas Mother', 68, 1);
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Baritone', 'Baker', 69, 1);
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Bakers Wife', 70, 1);

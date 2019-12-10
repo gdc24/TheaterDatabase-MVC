@@ -4,26 +4,57 @@ function updateCasts(id) {
 
     var data = {
         IntCastID: id,
-        IntMemberID: $("[id='" + id + "_Member']").val()
+        IntMemberID: $("[id='" + id + "_member']").val()
     };
     console.log("data:");
     console.log(data);
     console.log(JSON.stringify(data));
-    AjaxCall('/Admin/Showbill/UpdateClass', JSON.stringify(data), 'POST').done(function (response) {
-        console.log("success");
-        console.log(response);
-        refresh('Class');
-        confirmUpdate();
+    AjaxCall('/Home/UpdateCasts', JSON.stringify(data), 'POST').done(function (response) {
+
+        $('#casts').html(response);
 
     }).fail(function (error) {
         console.log(error);
         alert(error.StatusText);
     });
-    var row = $("[id='" + id + "_row']");
-    $("td", row).each(function () {
-        $(this).find('.divYesEditing').toggle();
-        $(this).find('.divNoEditing').toggle();
+}
+
+function insertCasts() {
+    var data = {
+        StrVoicePart: $("[id='new_strVoicePart']").val(),
+        StrRole: $("[id='new_strRole']").val(),
+        IntMemberID: $("[id='new_memberID']").val(),
+        IntShowID: $("[id='new_showID']").val()
+    };
+    console.log("data:");
+    console.log(data);
+    console.log(JSON.stringify(data));
+    AjaxCall('/Home/InsertCasts', JSON.stringify(data), 'POST').done(function (response) {
+
+        $('#casts').html(response);
+
+    }).fail(function (error) {
+        console.log(error);
+        alert(error.StatusText);
     });
 }
 
 
+function deleteCasts(id) {
+    if (confirm("Are you sure you want to delete this row? This cannot be undone")) {
+        var data = {
+            IntCastID: id
+        };
+        console.log("data:");
+        console.log(data);
+        console.log(JSON.stringify(data));
+        AjaxCall('/Home/DeleteCasts', JSON.stringify(data), 'POST').done(function (response) {
+
+            $('#casts').html(response);
+
+        }).fail(function (error) {
+            console.log(error);
+            alert(error.StatusText);
+        });
+    }
+}

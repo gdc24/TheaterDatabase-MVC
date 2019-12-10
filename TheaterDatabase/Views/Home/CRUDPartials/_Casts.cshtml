@@ -1,9 +1,13 @@
 @model TheaterDatabase.ViewModels.CRUD_VMs.CastsVM
 
+
+
+<h3>Casts</h3>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="casts-table">
                 <thead>
                     <tr>
                         <th>
@@ -26,30 +30,67 @@
                 </thead>
                 @foreach (var item in Model.LstCasts)
                 {
-                    <tr>
+                    <tr id="@(item.IntCastID + "_row")">
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntCastID)</span>
+                            <span>@Html.DisplayFor(modelItem => item.IntCastID)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrVoicePart)</span>
+                            <span>@Html.DisplayFor(modelItem => item.StrVoicePart)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrRole)</span>
+                            <span>@Html.DisplayFor(modelItem => item.StrRole)</span>
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control divYesEditing", @id = item.IntCastID + "_member" })
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Show.StrName)</span>
+                            <span>@Html.DisplayFor(modelItem => item.Show.StrName)</span>
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.IntCastID }) |
-                            @Html.ActionLink("Detail", "Detail", new { id = item.IntCastID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.IntCastID })
+                            <button onclick="updateCasts(@item.IntCastID)" class="m-1 btn btn-primary divYesEditing">Update</button>
+                            <button onclick="editRow('casts', @item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
+                            <button onclick="deleteCasts(@item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('casts', @item.IntCastID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
             </table>
         </div>
     </div>
+
+
+
+
+    <br />
+    <hr />
+    <br />
+
+    <div class="row divNoNewRow">
+        <div class="col">
+            <p class="float-right">
+                <button class="m-1 btn btn-primary" onclick="showInsertRow('casts')">Insert Row</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 divYesNewRow">
+            @Html.EditorFor(model => model.StrVoicePart, new { htmlAttributes = new { @class = "form-control", @placeholder = "Voice Part", @id = "new_strVoicePart" } })
+        </div>
+        <div class="col-2 divYesNewRow">
+            @Html.EditorFor(model => model.StrRole, new { htmlAttributes = new { @class = "form-control", @placeholder = "Role", @id = "new_strRole" } })
+        </div>
+        <div class="col-3 divYesNewRow">
+            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @id = "new_memberID" })
+        </div>
+        <div class="col-3 divYesNewRow">
+            @Html.DropDownListFor(model => model.IntShowID, new SelectList(Model.LstAllShows, "IntShowID", "StrName"), new { @class = "form-control", @id = "new_showID" })
+        </div>
+        <div class="col divYesNewRow">
+            <button class="m-1 btn btn-primary" onclick="insertCasts()">Insert</button>
+            <button class="m-1 btn btn-primary" onclick="hideInsertRow('casts')">Cancel Insert</button>
+        </div>
+    </div>
+
 </div>

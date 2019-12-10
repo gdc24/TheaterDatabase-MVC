@@ -59,7 +59,7 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "SELECT intClubID, strClubName, strAdvisor, strUmbrellaOrg FROM clubs";
+            string query = "SELECT \"intClubID\", \"strClubName\", \"strAdvisor\", \"strUmbrellaOrg\" FROM clubs";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query

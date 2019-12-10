@@ -1,2 +1,19 @@
 ﻿body {
 }
+
+
+.divNoEditing {
+    display: block;
+}
+
+.divYesEditing {
+    display: none;
+}
+
+.divNoNewRow {
+    display: block;
+}
+
+.divYesNewRow {
+    display: none;
+}

@@ -10,5 +10,7 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
     {
 
         public IEnumerable<Exec> LstExec { get; set; }
+
+        
     }
 }
