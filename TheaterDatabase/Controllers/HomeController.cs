@@ -98,67 +98,11 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - SHOWS
 
-        public ActionResult InsertShows(string StrName, string StrAuthor, int IntBudget, bool YsnIsMusical, int IntClubID, int IntDateID)
+        /*public ActionResult LstShows()
         {
-            Show newShow = new Show
-            {
-                StrName = StrName,
-                StrAuthor = StrAuthor,
-                IntBudget = IntBudget,
-                YsnIsMusical = YsnIsMusical,
-                IntClubID = IntClubID,
-                Club = ClubsDAL.GetClub(IntClubID),
-                IntDateID = IntDateID,
-                Date = DatesDAL.GetDate(IntDateID)
-            };
-
-            bool success = ShowsDAL.InsertShow(newShow);
-
-            ShowsVM model = new ShowsVM()
-            {
-                LstAllClubs = ClubsDAL.GetAllClubs(),
-                LstShows = ShowsDAL.GetAllShows()
-            };
-
-            return PartialView("CRUDPartials/_Shows", model);
-        }
-
-        public ActionResult DeleteShows(int IntShowID)
-        {
-            Show remShow = new Show
-            {
-                IntShowID = IntShowID
-            };
-
-            bool success = ShowsDAL.DeleteShow(remShow);
-            
-            ShowsVM model = new ShowsVM()
-            {
-                LstAllClubs = ClubsDAL.GetAllClubs(),
-                LstShows = ShowsDAL.GetAllShows()
-            };
-
-            return PartialView("CRUDPartials/_Shows", model);
-        }
-
-        public ActionResult UpdateShows(int IntShowID, int IntBudget)
-        {
-            Show upShow = new Show
-            {
-                IntShowID = IntShowID,
-                IntBudget = IntBudget
-            };
-
-            bool success = ShowsDAL.UpdateShow(upShow);
-
-            ShowsVM model = new ShowsVM()
-            {
-                LstAllClubs = ClubsDAL.GetAllClubs(),
-                LstShows = ShowsDAL.GetAllShows()
-            };
-
-            return PartialView("CRUDPartials/_Shows", model);
-        }
+            ShowsVM vm = ShowsDAL.GetAllShows();
+            return 
+        }*/
 
         #endregion
 
