@@ -184,7 +184,7 @@ namespace TheaterDatabase.Controllers
             };
 
             bool success = ShowsDAL.DeleteShow(remShow);
-            
+
             ShowsVM model = new ShowsVM()
             {
                 LstAllClubs = ClubsDAL.GetAllClubs(),

@@ -1,6 +1,4 @@
-﻿
-
-function updateCasts(id) {
+﻿function updateCasts(id) {
 
     var data = {
         IntCastID: id,
