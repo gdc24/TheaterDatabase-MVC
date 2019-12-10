@@ -40,7 +40,7 @@ INSERT INTO members ("strName") VALUES ('Riley Bursh');
 INSERT INTO members ("strName") VALUES ('Ruth Cavano'); -- 15
 INSERT INTO members ("strName") VALUES ('Anna Pogharian');
 INSERT INTO members ("strName") VALUES ('Emma Burke');
-INSERT INTO members ("strName") VALUES ('Kegan Sulamoyo');
+INSERT INTO members ("strName") VALUES ('Audrey Zhu');
 INSERT INTO members ("strName") VALUES ('Milo Cassarino');
 INSERT INTO members ("strName") VALUES ('Shaun Furter');  -- 20
 INSERT INTO members ("strName") VALUES ('Casey Lockridge');
