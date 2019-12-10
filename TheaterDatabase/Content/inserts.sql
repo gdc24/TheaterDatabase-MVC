@@ -138,6 +138,10 @@ INSERT INTO members ("strName") VALUES ('Jacob Shaw');
 INSERT INTO members ("strName") VALUES ('Maryann Veyon');
 INSERT INTO members ("strName") VALUES ('Maggie McClarren');
 INSERT INTO members ("strName") VALUES ('Christian Troelstrup');  -- 115
+INSERT INTO members ("strName") VALUES ('Kyle Rickert');
+INSERT INTO members ("strName") VALUES ('Marc Franquesa');
+INSERT INTO members ("strName") VALUES ('Aman Shankardass');
+INSERT INTO members ("strName") VALUES ('Trey Costales');
 
 -- all staff inserts
 ALTER SEQUENCE "staff_intStaffID_seq" RESTART WITH 1 INCREMENT BY 1;
@@ -318,3 +322,20 @@ INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Baritone', 'Jeremys Dad/Mr Reyes/Scary Stockboy', 87, 2);
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 88, 2);
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 65, 2);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Elizabeth', 11, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Josh', 116, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Lucas', 79, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Baritone', 'Stephen', 65, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Elena', 2, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Kate', 51, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Anne', 8, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'David', 20, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 88, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 6, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 7, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 21, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 78, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 14, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 117, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 118, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 119, 3);
