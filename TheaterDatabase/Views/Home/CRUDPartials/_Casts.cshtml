@@ -44,9 +44,9 @@
                                 <span>@Html.DisplayFor(modelItem => item.Show.StrName)</span>
                             </td>
                             <td>
-                                <button onclick="updateCasts('casts', @item.IntCastID)" class="m-1 btn btn-primary divYesEditing">Update</button>
-                                <button onclick="editCasts('casts', @item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
-                                <button onclick="deleteCasts('casts', @item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
+                                <button onclick="updateCasts(@item.IntCastID)" class="m-1 btn btn-primary divYesEditing">Update</button>
+                                <button onclick="editRow('casts', @item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
+                                <button onclick="deleteCasts(@item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
                                 <button onclick="cancelEditRow('casts', @item.IntCastID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
                             </td>
                         </tr>
@@ -84,7 +84,7 @@
                 @Html.DropDownListFor(model => model.IntShowID, new SelectList(Model.LstAllShows, "IntShowID", "StrName"), new { @class = "form-control", @id = "new_showID" })
             </div>
             <div class="col divYesNewRow">
-                <button class="m-1 btn btn-primary">Insert</button>
+                <button class="m-1 btn btn-primary" onclick="insertCasts()">Insert</button>
                 <button class="m-1 btn btn-primary" onclick="hideInsertRow('casts')">Cancel Insert</button>
             </div>
         </div>

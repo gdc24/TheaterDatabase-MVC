@@ -1,4 +1,4 @@
-﻿function editCasts(tableName, id) {
+﻿function editRow(tableName, id) {
     var contextRow = $('#' + tableName + '-table #' + id + '_row');
     $(contextRow).find('.divNoEditing').hide();
     $(contextRow).find('.divYesEditing').show();
@@ -32,10 +32,3 @@ function AjaxCall(url, data, type) {
         async: false
     });
 }
-//function loadPartialView(str, action) {
-//    var id = str.substring(0, str.indexOf(":"));
-//    var obj = { intClassNumber: id };
-//    AjaxCall('/Home/' + action, JSON.stringify(obj), 'POST').done(function (response) {
-//        $('#viewToLoad').html(response);
-//    });
-//}
