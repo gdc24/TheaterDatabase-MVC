@@ -45,7 +45,8 @@ CREATE TABLE "exec" (
   "intExecID" SERIAL PRIMARY KEY,
   "strPosition" varchar NOT NULL,
   "intMemberID" int NOT NULL,
-  "intDateID" int NOT NULL
+  "intDateID" int NOT NULL,
+  "intClubID" int NOT NULL
 );
 
 CREATE TABLE "casts" (
@@ -71,6 +72,8 @@ ALTER TABLE "pits" ADD FOREIGN KEY ("intShowID") REFERENCES "shows" ("intShowID"
 ALTER TABLE "exec" ADD FOREIGN KEY ("intMemberID") REFERENCES "members" ("intMemberID");
 
 ALTER TABLE "exec" ADD FOREIGN KEY ("intDateID") REFERENCES "dates" ("intDateID");
+
+ALTER TABLE "exec" ADD FOREIGN KEY ("intClubID") REFERENCES "clubs" ("intClubID");
 
 ALTER TABLE "casts" ADD FOREIGN KEY ("intMemberID") REFERENCES "members" ("intMemberID");
 
