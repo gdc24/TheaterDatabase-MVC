@@ -142,6 +142,20 @@ INSERT INTO members ("strName") VALUES ('Kyle Rickert');
 INSERT INTO members ("strName") VALUES ('Marc Franquesa');
 INSERT INTO members ("strName") VALUES ('Aman Shankardass');
 INSERT INTO members ("strName") VALUES ('Trey Costales');
+INSERT INTO members ("strName") VALUES ('Olivia McNee');  -- 120
+INSERT INTO members ("strName") VALUES ('Ethan Kinstler');
+INSERT INTO members ("strName") VALUES ('Johnathan Sequeira');
+INSERT INTO members ("strName") VALUES ('Kegan Sulamoyo');
+INSERT INTO members ("strName") VALUES ('Kehley Coleman');
+INSERT INTO members ("strName") VALUES ('Alex Lenhart');  -- 125
+INSERT INTO members ("strName") VALUES ('Harue Suzuki');
+INSERT INTO members ("strName") VALUES ('Dana DOrlando');
+INSERT INTO members ("strName") VALUES ('Tyler Burleyson');
+INSERT INTO members ("strName") VALUES ('Dan Tomazin');
+INSERT INTO members ("strName") VALUES ('Allison Seikmann');  -- 130
+INSERT INTO members ("strName") VALUES ('Tim Orlando');
+INSERT INTO members ("strName") VALUES ('Johanna Fritzinger');
+INSERT INTO members ("strName") VALUES ('Nick Pogharian');
 
 -- all staff inserts
 ALTER SEQUENCE "staff_intStaffID_seq" RESTART WITH 1 INCREMENT BY 1;
@@ -260,6 +274,28 @@ INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Trumpet',
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Drums', 114, 2);
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Guitar', 115, 2);
 INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Bass', 50, 2);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Bassoon', 90, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Trumpet', 93, 4);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('Trumpet', 2, 125, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Bass Trombone', 99, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Flute/Piccolo', 126, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Oboe/English Horn', 127, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Clarinet', 89, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('French Horn', 128, 4);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('French Horn', 2, 129, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Flute/Clarinet', 103, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Clarinet/Bass Clarinet', 37, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Drums', 110, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Percussion', 111, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Violin', 130, 4);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('Violin', 2, 131, 4);
+INSERT INTO pit ("strInstrument", "intSeatID", "intMemberID", "intShowID") VALUES ('Violin', 3, 95, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Cello', 104, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Bass', 66, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Keyboard', 132, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Synthesizer', 50, 4);
+INSERT INTO pit ("strInstrument", "intMemberID", "intShowID") VALUES ('Tenor Trombone', 133, 4);
+
 
 ALTER SEQUENCE "exec_intExecID_seq" RESTART WITH 1 INCREMENT BY 1;
 INSERT INTO exec ("strPosition", "intMemberID", "intDateID") VALUES ('President', 1, 4);
@@ -339,3 +375,17 @@ INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 117, 3);
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 118, 3);
 INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Ensemble', 119, 3);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Alice Nutting/Edwin Drood', 11, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Clive Paget/John Jasper', 116, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Angela Prysock/Princess Puffer', 120, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Chairperson/Mayor Sapsea', 14, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Soprano', 'Deirdre Peregrine/Rosa Bud', 8, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Baritone', 'Victor Grinstead/Neville Landless', 117, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Cedric Moncrieffe/Reverend Crisparkle', 12, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Janet Conover/Helena Landless', 88, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Baritone', 'Phillip Bax/Bazzard', 121, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Nick Cricker Sr/Durdles', 122, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Nick Cricer Jr/Deputy', 123, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Florence Gill', 13, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Beatrice', 124, 4);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Stage Manager/Wendy', 38, 4);
