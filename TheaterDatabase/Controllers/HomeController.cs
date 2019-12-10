@@ -108,10 +108,61 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - STAFFS
 
-        /*public ActionResult UpdateStaffs()
+        public ActionResult InsertStaffs(string StrPosition, int IntMemberID, int IntShowID)
         {
-            return View();
-        }*/
+            Staff newStaff = new Staff
+            {
+                StrPosition = StrPosition,
+                IntMemberID = IntMemberID,
+                Member = MembersDAL.GetMember(IntMemberID),
+                IntShowID = IntShowID,
+                Show = ShowsDAL.GetShow(IntShowID)
+            };
+
+            bool success = StaffDAL.InsertStaff(newStaff);
+
+            StaffVM model = new StaffVM()
+            {
+                LstStaff = StaffDAL.GetAllStaff()
+            };
+
+            return PartialView("CRUDPartials/_Staff", model);
+        }
+
+        public ActionResult DeleteStaff(int IntStaffID)
+        {
+            Staff remStaff = new Staff
+            {
+                IntStaffID = IntStaffID
+            };
+
+            bool success = StaffDAL.DeleteStaff(remStaff);
+
+            StaffVM model = new StaffVM()
+            {
+                LstStaff = StaffDAL.GetAllStaff()
+            };
+
+            return PartialView("CRUDPartials/_Staff", model);
+        }
+
+        public ActionResult UpdateStaff(int IntStaffID, int IntMemberID)
+        {
+            Staff upStaff = new Staff
+            {
+                IntStaffID = IntStaffID,
+                IntMemberID = IntMemberID
+            };
+
+            bool success = StaffDAL.UpdateStaff(upStaff);
+
+            StaffVM model = new StaffVM()
+            {
+                LstStaff = StaffDAL.GetAllStaff()
+            };
+
+            return PartialView("CRUDPartials/_Staff", model);
+        }
 
         #endregion
 
