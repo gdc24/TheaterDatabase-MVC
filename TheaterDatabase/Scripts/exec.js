@@ -21,7 +21,8 @@ function insertExec() {
     var data = {
         StrPosition: $("[id='new_strPosition']").val(),
         IntMemberID: $("[id='new_memberID']").val(),
-        IntDateID: $("[id='new_dateID']").val()
+        IntDateID: $("[id='new_dateID']").val(),
+        IntClubID: $("[id='new_clubID']").val()
     };
     console.log("data:");
     console.log(data);
