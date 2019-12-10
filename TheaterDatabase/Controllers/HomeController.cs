@@ -89,10 +89,63 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - PITS
 
-        /*public ActionResult UpdatePits()
+        public ActionResult InsertPits(string StrInstrument, int IntSeat, int IntMemberID, int IntShowID)
         {
-            return View();
-        }*/
+            Pit newPit = new Pit
+            {
+                StrInstrument = StrInstrument,
+                IntSeat = IntSeat,
+                IntMemberID = IntMemberID,
+                Member = MembersDAL.GetMember(IntMemberID),
+                IntShowID = IntShowID,
+                Show = ShowsDAL.GetShow(IntShowID)
+            };
+
+            bool success = PitsDAL.InsertPit(newPit);
+
+            PitsVM model = new PitsVM()
+            {
+                LstPits = PitsDAL.GetAllPits()
+            };
+
+            return PartialView("CRUDPartials/_Pits", model);
+        }
+
+        public ActionResult DeletePits(int IntPitID)
+        {
+            Pit remPit = new Pit
+            {
+                IntPitID = IntPitID
+            };
+
+            bool success = PitsDAL.DeletePit(remPit);
+
+            PitsVM model = new PitsVM()
+            {
+                LstPits = PitsDAL.GetAllPits()
+            };
+
+            return PartialView("CRUDPartials/_Pits", model);
+        }
+
+        public ActionResult UpdatePits(int IntPitID, int IntMemberID)
+        {
+            Pit upPit = new Pit
+            {
+                IntPitID = IntPitID,
+                IntMemberID = IntMemberID,
+                Member = MembersDAL.GetMember(IntMemberID)
+            };
+
+            bool success = PitsDAL.UpdatePit(upPit);
+
+            PitsVM model = new PitsVM()
+            {
+                LstPits = PitsDAL.GetAllPits()
+            };
+
+            return PartialView("CRUDPartials/_Pits", model);
+        }
 
         #endregion
 
