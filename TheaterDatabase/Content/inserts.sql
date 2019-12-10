@@ -88,6 +88,18 @@ INSERT INTO members ("strName") VALUES ('Kathryn Lemoine');
 INSERT INTO members ("strName") VALUES ('Brian Gould');
 INSERT INTO members ("strName") VALUES ('Caroline Vieira');
 INSERT INTO members ("strName") VALUES ('Nathan Waniorek');  -- 65
+INSERT INTO members ("strName") VALUES ('Steve Kerby');
+INSERT INTO members ("strName") VALUES ('Amanda Rulis');
+INSERT INTO members ("strName") VALUES ('Cindy Dong');
+INSERT INTO members ("strName") VALUES ('Alec Frye');
+INSERT INTO members ("strName") VALUES ('Bessie Bulman');  -- 70
+INSERT INTO members ("strName") VALUES ('Ben Baierl');
+INSERT INTO members ("strName") VALUES ('Jay Lee');
+INSERT INTO members ("strName") VALUES ('Alex Meltsner');
+INSERT INTO members ("strName") VALUES ('Ashlen Trapalis');
+INSERT INTO members ("strName") VALUES ('Madi Hillyard');  -- 75
+INSERT INTO members ("strName") VALUES ('Emma Wyckoff');
+INSERT INTO members ("strName") VALUES ('Nicole Coury');
 
 -- all staff inserts
 ALTER SEQUENCE "staff_intStaffID_seq" RESTART WITH 1 INCREMENT BY 1;
@@ -205,8 +217,20 @@ INSERT INTO exec ("strPosition", "intMemberID", "intDateID") VALUES ('PR Manager
 ALTER SEQUENCE "casts_intCastID_seq" RESTART WITH 1 INCREMENT BY 1;
 -- cast inserts
 
-
-
-
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Bass', 'Narrator', 66, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Mezzo Soprano', 'Cinderella', 67, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Soprano', 'Rapunzel/Cinderellas Mother', 68, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Baker', 69, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Mezzo Soprano', 'Bakers Wife', 70, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Tenor', 'Jack', 71, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Bass', 'Cinderellas Prince/Wolf', 72, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Bass', 'Rapunzels Prince/Mysterious Man', 73, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES (NULL, 'Milky White/Granny/Steward', 74, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Mezzo Soprano', 'Cinderellas Stepmother', 75, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Soprano', 'Florinda/Sleeping Beauty', 76, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Soprano', 'Lucinda/Snow White', 77, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Mezzo Soprano', 'Witch', 2, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Alto', 'Little Red Ridinghood', 51, 1);
+INSERT INTO casts ("strVoicePart", "strRole", "intMemberID", "intShowID") VALUES ('Soprano', 'Jacks Mother', 55, 1);
 
 
