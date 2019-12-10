@@ -35,104 +35,20 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - SHOWS
 
-        /*public ActionResult UpdateShows(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //public ActionResult EditShows(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
 
-            var employee = _context.Employees.SingleOrDefault(e => e.EmployeeId == id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
-        }*/
-
-        #endregion
-
-        #region REGION - MEMBERS
-
-        /*public ActionResult UpdateMembers(int? id)
-        {
-            if(id == null)
-            {
-                return new HTTPStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            return View();
-        }*/
-
-        #endregion
-
-        #region REGION - DATES
-
-        /*public ActionResult UpdateDates(int? id)
-        {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            return View();
-        }*/
-
-        #endregion
-
-        #region REGION - PITS
-
-        /*public ActionResult UpdatePits(int? id)
-        {
-            if(id==null)
-            {
-                return new HTTPStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            return View();
-        }*/
-
-        #endregion
-
-        #region REGION - SHOWS
-
-        /*public ActionResult UpdateShows(int? id)
-        {
-            if(id==null)
-            {
-                return new HTTPStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            return View();
-        }*/
-
-        #endregion
-
-        #region REGION - STAFFS
-
-        /*public ActionResult UpdateStaffs(int? id)
-        {
-            if(id==null)
-            {
-               return new HTTPStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            return View();
-        }*/
-
-        #endregion
-
-        #region REGION - EXEC
-
-        /*public ActionResult UpdateExec(int? id)
-        {
-            if(id==null)
-            {
-                return new HTTPStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-        
-            return View();
-        }*/
+        //    var employee = _context.Employees.SingleOrDefault(e => e.EmployeeId == id);
+        //    if (employee == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(employee);
+        //}
 
         #endregion
     }
