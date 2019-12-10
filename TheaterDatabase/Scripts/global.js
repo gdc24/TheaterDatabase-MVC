@@ -1,11 +1,11 @@
 ﻿function editRow(tableName, id) {
-    var contextRow = $('#' + tableName + '-table #' + id + '_row');
+    var contextRow = $('#' + tableName + '-table [data-' + tableName + '=' + id + '_row]');
     $(contextRow).find('.divNoEditing').hide();
     $(contextRow).find('.divYesEditing').show();
 }
 
 function cancelEditRow(tableName, id) {
-    var contextRow = $('#' + tableName + '-table #' + id + '_row');
+    var contextRow = $('#' + tableName + '-table [data-' + tableName + '=' + id + '_row]');
     $(contextRow).find('.divNoEditing').show();
     $(contextRow).find('.divYesEditing').hide();
 }

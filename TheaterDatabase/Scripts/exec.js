@@ -1,8 +1,13 @@
-﻿function updateExecs(id) {
+﻿
+function initExecTab() {
+    initDataTable('exec-table');
+}
+
+function updateExecs(id) {
 
     var data = {
         IntExecID: id,
-        IntMemberID: $("[id='" + id + "_member']").val()
+        IntMemberID: $("[data-exec='" + id + "_member']").val()
     };
     console.log("data:");
     console.log(data);
@@ -19,10 +24,10 @@
 
 function insertExec() {
     var data = {
-        StrPosition: $("[id='new_strPosition']").val(),
-        IntMemberID: $("[id='new_memberID']").val(),
-        IntDateID: $("[id='new_dateID']").val(),
-        IntClubID: $("[id='new_clubID']").val()
+        StrPosition: $("[data-exec='new_strPosition']").val(),
+        IntMemberID: $("[data-exec='new_memberID']").val(),
+        IntDateID: $("[data-exec='new_dateID']").val(),
+        IntClubID: $("[data-exec='new_clubID']").val()
     };
     console.log("data:");
     console.log(data);

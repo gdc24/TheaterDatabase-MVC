@@ -56,7 +56,7 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "SELECT intDateID, strSemester, intYear FROM dates";
+            string query = "SELECT \"intDateID\", \"strSemester\", \"intYear\" FROM dates";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query

@@ -25,12 +25,18 @@ namespace TheaterDatabase.Models
         
         public Semester Semester { get; set; }
 
+
+        [Display(Name = "Semester & Year")]
+
+        public string SemAndYear { get; set; }
+
         private Date(int intDateID, string strSemester, Semester semester, int intYear)
         {
             this.IntDateID = intDateID;
             this.StrSemester = strSemester;
             this.Semester = semester;
             this.IntYear = intYear;
+            this.SemAndYear = semester + " " + intYear;
         }
 
         public Date() {  }

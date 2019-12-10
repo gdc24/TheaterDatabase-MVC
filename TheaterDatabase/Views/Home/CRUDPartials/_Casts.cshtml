@@ -30,7 +30,7 @@
                 </thead>
                 @foreach (var item in Model.LstCasts)
                 {
-                    <tr id="@(item.IntCastID + "_row")">
+                    <tr data-casts="@(item.IntCastID + "_row")">
                         <td>
                             <span>@Html.DisplayFor(modelItem => item.IntCastID)</span>
                         </td>
@@ -42,7 +42,7 @@
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
-                            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control divYesEditing", @id = item.IntCastID + "_member" })
+                            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control divYesEditing", @data_cast = item.IntCastID + "_member" })
                         </td>
                         <td>
                             <span>@Html.DisplayFor(modelItem => item.Show.StrName)</span>
@@ -76,16 +76,16 @@
 
     <div class="row">
         <div class="col-2 divYesNewRow">
-            @Html.EditorFor(model => model.StrVoicePart, new { htmlAttributes = new { @class = "form-control", @placeholder = "Voice Part", @id = "new_strVoicePart" } })
+            @Html.EditorFor(model => model.StrVoicePart, new { htmlAttributes = new { @class = "form-control", @placeholder = "Voice Part", @data_cast = "new_strVoicePart" } })
         </div>
         <div class="col-2 divYesNewRow">
-            @Html.EditorFor(model => model.StrRole, new { htmlAttributes = new { @class = "form-control", @placeholder = "Role", @id = "new_strRole" } })
+            @Html.EditorFor(model => model.StrRole, new { htmlAttributes = new { @class = "form-control", @placeholder = "Role", @data_cast = "new_strRole" } })
         </div>
         <div class="col-3 divYesNewRow">
-            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @id = "new_memberID" })
+            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @data_cast = "new_memberID" })
         </div>
         <div class="col-3 divYesNewRow">
-            @Html.DropDownListFor(model => model.IntShowID, new SelectList(Model.LstAllShows, "IntShowID", "StrName"), new { @class = "form-control", @id = "new_showID" })
+            @Html.DropDownListFor(model => model.IntShowID, new SelectList(Model.LstAllShows, "IntShowID", "StrName"), new { @class = "form-control", @data_cast = "new_showID" })
         </div>
         <div class="col divYesNewRow">
             <button class="m-1 btn btn-primary" onclick="insertCasts()">Insert</button>

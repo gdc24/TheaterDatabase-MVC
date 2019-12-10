@@ -11,6 +11,12 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
 
         public IEnumerable<Exec> LstExec { get; set; }
 
-        
+        public IEnumerable<Member> LstAllMembers { get; set; }
+
+        public IEnumerable<Club> LstAllClubs { get; set; }
+
+        public IEnumerable<Date> LstAllDates { get; set; }
+
+
     }
 }

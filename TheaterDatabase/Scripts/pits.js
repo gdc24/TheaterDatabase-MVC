@@ -1,8 +1,13 @@
-﻿function updatePits(id) {
+﻿function initPitsTab() {
+    initDataTable('pits-table');
+}
+
+
+function updatePits(id) {
 
     var data = {
         IntPitID: id,
-        IntMemberID: $("[id='" + id + "_member']").val()
+        IntMemberID: $("[data-pits='" + id + "_member']").val()
     };
     console.log("data:");
     console.log(data);
@@ -19,10 +24,10 @@
 
 function insertPits() {
     var data = {
-        StrInstrument: $("[id='new_strInstrument']").val(),
-        IntSeat: $("[id='new_intSeat']").val(),
-        IntMemberID: $("[id='new_memberID']").val(),
-        IntShowID: $("[id='new_showID']").val()
+        StrInstrument: $("[data-pits='new_strInstrument']").val(),
+        IntSeat: $("[data-pits='new_intSeat']").val(),
+        IntMemberID: $("[data-pits='new_memberID']").val(),
+        IntShowID: $("[data-pits='new_showID']").val()
     };
     console.log("data:");
     console.log(data);
