@@ -1,0 +1,13 @@
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.BudgetAverageVM
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h3>average PTG budget vs average Footlighters budget</h3>
+            @Html.Hidden("budgetAvgHidden", Json.Encode(Model.LstBudgetAverages))
+            <canvas id="budget-avg-chart" width="800" height="450"></canvas>
+        </div>
+    </div>
+</div>

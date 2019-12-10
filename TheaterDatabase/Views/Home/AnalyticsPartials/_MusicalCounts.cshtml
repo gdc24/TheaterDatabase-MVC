@@ -1,0 +1,13 @@
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.MusicalsCountVM
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h3>Musicals vs Plays</h3>
+            @Html.Hidden("musicalCountsHidden", Json.Encode(Model.LstMusicalCounts))
+            <canvas id="musical-counts-chart" width="800" height="450"></canvas>
+        </div>
+    </div>
+</div>
+
+

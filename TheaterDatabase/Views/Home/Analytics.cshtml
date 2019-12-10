@@ -1,7 +1,24 @@
-﻿@{
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.AnalyticsVM
+
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div>
+    <h3>budget averages</h3>
+    @{ @Html.Partial("AnalyticsPartials/_BudgetAverages", Model._budgetAverage_vm) }
+</div>
+
+<div>
+    <h3>Musical Counts</h3>
+    @{ @Html.Partial("AnalyticsPartials/_MusicalCounts", Model._musicalsCount_vm) }
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+        makeBudgetAvgGraph();
+        makeMusicalCountsGraph();
+    });
+</script>
