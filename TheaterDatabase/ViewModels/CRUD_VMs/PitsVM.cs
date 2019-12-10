@@ -9,5 +9,6 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
     public class PitsVM : Pit
     {
         public IEnumerable<Pit> LstPits { get; set; }
+        public IEnumerable<Member> LstAllMembers { get; set; }
     }
 }

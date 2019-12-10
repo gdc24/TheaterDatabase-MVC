@@ -1,8 +1,15 @@
-﻿function updateCasts(id) {
+﻿
+function initCastsTab() {
+    initDataTable('casts-table');
+}
+
+
+
+function updateCasts(id) {
 
     var data = {
         IntCastID: id,
-        IntMemberID: $("[id='" + id + "_member']").val()
+        IntMemberID: $("[data-cast='cast_" + id + "_member']").val()
     };
     console.log("data:");
     console.log(data);
@@ -10,6 +17,7 @@
     AjaxCall('/Home/UpdateCasts', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#casts').html(response);
+        initCastsTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -19,10 +27,10 @@
 
 function insertCasts() {
     var data = {
-        StrVoicePart: $("[id='new_strVoicePart']").val(),
-        StrRole: $("[id='new_strRole']").val(),
-        IntMemberID: $("[id='new_memberID']").val(),
-        IntShowID: $("[id='new_showID']").val()
+        StrVoicePart: $("[data-cast='cast_new_strVoicePart']").val(),
+        StrRole: $("[data-cast='cast_new_strRole']").val(),
+        IntMemberID: $("[data-cast='cast_new_memberID']").val(),
+        IntShowID: $("[data-cast='cast_new_showID']").val()
     };
     console.log("data:");
     console.log(data);

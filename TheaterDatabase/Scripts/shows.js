@@ -1,4 +1,7 @@
-﻿function updateShow(id) {
+﻿function initShowsTab() {
+    initDataTable('shows-table');
+}
+function updateShow(id) {
 
     var data = {
         IntShowID: id,

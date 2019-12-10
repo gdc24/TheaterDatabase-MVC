@@ -1,8 +1,12 @@
-﻿function updateStaff(id) {
+﻿function initStaffTab() {
+    initDataTable('staff-table');
+}
+
+function updateStaff(id) {
 
     var data = {
         IntStaffID: id,
-        IntMemberID: $("[id='" + id + "_member']").val()
+        IntMemberID: $("[data-staff='" + id + "_member']").val()
     };
     console.log("data:");
     console.log(data);
@@ -19,9 +23,9 @@
 
 function insertStaff() {
     var data = {
-        StrPosition: $("[id='new_strPosition']").val(),
-        IntMemberID: $("[id='new_memberID']").val(),
-        IntShowID: $("[id='new_showID']").val()
+        StrPosition: $("[data-staff='new_strPosition']").val(),
+        IntMemberID: $("[data-staff='new_memberID']").val(),
+        IntShowID: $("[data-staff='new_showID']").val()
     };
     console.log("data:");
     console.log(data);

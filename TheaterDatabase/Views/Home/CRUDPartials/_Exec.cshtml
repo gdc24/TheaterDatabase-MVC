@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="exec-table">
                 <thead>
                     <tr>
                         <th>
@@ -20,10 +20,10 @@
                             <span>@Html.DisplayNameFor(m => m.Member)</span>
                         </th>
                         <th>
-                            <span>@Html.DisplayNameFor(m => m.Date)</span>
+                            <span>@Html.DisplayNameFor(m => m.Club)</span>
                         </th>
                         <th>
-                            <span>@Html.DisplayNameFor(m => m.Club)</span>
+                            <span>@Html.DisplayNameFor(m => m.Date)</span>
                         </th>
                         <th></th>
                     </tr>
@@ -32,28 +32,65 @@
                 {
                     <tr>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntExecID)</span>
+                            <span>@Html.DisplayFor(modelItem => item.IntExecID)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrPosition)</span>
+                            <span>@Html.DisplayFor(modelItem => item.StrPosition)</span>
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                            @Html.DropDownListFor(model => model.IntExecID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control divYesEditing", @data_exec = item.IntExecID + "_member" })
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
+                            <span>@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Date.StrSemester) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>
+                            <span>@Html.DisplayFor(modelItem => item.Date.SemAndYear)</span>
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.IntExecID }) |
-                            @Html.ActionLink("Detail", "Detail", new { id = item.IntExecID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.IntExecID })
+                            <button onclick="updateExec(@item.IntExecID)" class="m-1 btn btn-primary divYesEditing">Update</button>
+                            <button onclick="editRow('exec', @item.IntExecID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
+                            <button onclick="deleteExec(@item.IntExecID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('exec', @item.IntExecID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
             </table>
         </div>
     </div>
+
+
+
+    <br />
+    <hr />
+    <br />
+
+    <div class="row divNoNewRow">
+        <div class="col">
+            <p class="float-right">
+                <button class="m-1 btn btn-primary" onclick="showInsertRow('exec')">Insert Row</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3 divYesNewRow">
+            @Html.EditorFor(model => model.StrPosition, new { htmlAttributes = new { @class = "form-control", @placeholder = "Position", @data_cast = "new_strPosition" } })
+        </div>
+        <div class="col-3 divYesNewRow">
+            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @data_cast = "new_memberID" })
+        </div>
+        <div class="col-2 divYesNewRow">
+            @Html.DropDownListFor(model => model.IntClubID, new SelectList(Model.LstAllClubs, "IntClubID", "StrClubName"), new { @class = "form-control", @data_cast = "new_clubID" })
+        </div>
+        <div class="col-3 divYesNewRow">
+            @Html.DropDownListFor(model => model.IntDateID, new SelectList(Model.LstAllDates, "IntDateID", "SemAndYear"), new { @class = "form-control", @data_cast = "new_dateID" })
+        </div>
+        <div class="col divYesNewRow">
+            <button class="m-1 btn btn-primary" onclick="insertExec()">Insert</button>
+            <button class="m-1 btn btn-primary" onclick="hideInsertRow('exec')">Cancel Insert</button>
+        </div>
+    </div>
+
+
 </div>

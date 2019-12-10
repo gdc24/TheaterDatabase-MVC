@@ -1,4 +1,7 @@
-﻿function updateMembers(id) {
+﻿function initMembersTab() {
+    initDataTable('members-table');
+}
+function updateMembers(id) {
 
     var data = {
         IntMemberID: id
