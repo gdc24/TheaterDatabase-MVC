@@ -1,1 +1,49 @@
-﻿
+﻿@model TheaterDatabase.ViewModels.CRUD_VMs.StaffVM
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.IntStaffID)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.StrPosition)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.Member)</span>
+                        </th>
+                        <th>
+                            <span>@Html.DisplayNameFor(m => m.Show)</span>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.LstStaff)
+                {
+                <tr>
+                    <td>
+                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntStaffID)</span>
+                    </td>
+                    <td>
+                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrPosition)</span>
+                    </td>
+                    <td>
+                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                    </td>
+                    <td>
+                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Show.StrName)</span>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IntStaffID }) |
+                        @Html.ActionLink("Detail", "Detail", new { id = item.IntStaffID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IntStaffID })
+                    </td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

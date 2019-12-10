@@ -209,10 +209,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\CastsDAL.cs" />
     <Compile Include="DAL\ClubsDAL.cs" />
     <Compile Include="DAL\DatabaseConnection.cs" />
     <Compile Include="DAL\DatesDAL.cs" />
+    <Compile Include="DAL\ExecDAL.cs" />
+    <Compile Include="DAL\MembersDAL.cs" />
+    <Compile Include="DAL\PitsDAL.cs" />
     <Compile Include="DAL\ShowsDAL.cs" />
+    <Compile Include="DAL\StaffDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,7 +249,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Casts.js" />
     <Content Include="Scripts\global.js" />
+    <Content Include="Scripts\shows.js" />
     <Content Include="Styles\new-global.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

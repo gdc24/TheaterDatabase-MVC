@@ -13,12 +13,9 @@ namespace TheaterDatabase.DAL
         private static Member GetMemberFromDR(NpgsqlDataReader dr)
         {
             int intMemberID = Convert.ToInt32(dr["intMemberID"]);
-            string strMemberName = dr["strMemberName"].ToString();
+            string strName = dr["strName"].ToString();
 
-            Club club = ClubsDAL.GetClub(intClubID);
-            Date date = DatesDAL.GetDate(intDateID);
-
-            Member member = Member.Of(intMemberID, strMemberName);
+            Member member = Member.Of(intMemberID, strName);
             return member;
         }
         
@@ -85,11 +82,11 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO members" +
-                           " (\"strMemberName\")" +
+                           " (\"strName\")" +
                            " VALUES" +
-                           " (@strMemberName);";
+                           " (@strName);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strMemberName", show.StrMemberName);
+            cmd.Parameters.AddWithValue("strName", member.StrName);
             
 
             // Execute a query
@@ -112,11 +109,11 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE members " +
-                           " SET \"strMemberName\" = @strMemberName" +
+                           " SET \"strName\" = @strName" +
                            " WHERE \"intMemberID\" = @intMemberID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strMemberName", show.StrMemberName);
-            cmd.Parameters.AddWithValue("intMemberID", show.IntMemberID);
+            cmd.Parameters.AddWithValue("strName", member.StrName);
+            cmd.Parameters.AddWithValue("intMemberID", member.IntMemberID);
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -140,7 +137,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM members WHERE \"intMemberID\" = @intMemberID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intMemberID", show.intMemberID);
+            cmd.Parameters.AddWithValue("intMemberID", member.IntMemberID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();

@@ -14,11 +14,14 @@ namespace TheaterDatabase.DAL
         {
             int intExecID = Convert.ToInt32(dr["intExecID"]);
             string strPosition = dr["strPosition"].ToString();
+            int intMemberID = Convert.ToInt32(dr["intMemberID"]);
+            int intDateID = Convert.ToInt32(dr["intDateID"]);
 
-            Club club = ClubsDAL.GetClub(intClubID);
+            Member member = MembersDAL.GetMember(intMemberID);
             Date date = DatesDAL.GetDate(intDateID);
+            
 
-            Exec exec = Exec.Of(intExecID, strPosition);
+            Exec exec = Exec.Of(intExecID, strPosition, intMemberID, member, intDateID, date);
             return exec;
         }
         
@@ -52,7 +55,7 @@ namespace TheaterDatabase.DAL
 
         public static IEnumerable<Exec> GetAllExec()
         {
-            List<Member> retval = new List<Member>();
+            List<Exec> retval = new List<Exec>();
 
             // create and open a connection
             NpgsqlConnection conn = DatabaseConnection.GetConnection();
@@ -86,10 +89,14 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "INSERT INTO exec" +
                            " (\"strPosition\")" +
+                           " (\"intMemebrID\")" +
+                           " (\"intDateID\")" +
                            " VALUES" +
-                           " (@strMemberName);";
+                           " (@strName, @intMemberID, @intDateID);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strExecName", show.StrExecName);
+            cmd.Parameters.AddWithValue("strPosition", exec.StrPosition);
+            cmd.Parameters.AddWithValue("intMemberID", exec.IntMemberID);
+            cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
             
 
             // Execute a query
@@ -113,10 +120,14 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "UPDATE exec " +
                            " SET \"strPosition\" = @strPosition" +
+                           " \"intMemberID\" = @intMemberID" +
+                           " \"intDateID\" = @intDateID" +
                            " WHERE \"intExecID\" = @intExecID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strPosition", show.StrPosition);
-            cmd.Parameters.AddWithValue("intExecID", show.IntExecID);
+            cmd.Parameters.AddWithValue("strPosition", exec.StrPosition);
+            cmd.Parameters.AddWithValue("intMemberID", exec.IntMemberID);
+            cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
+            cmd.Parameters.AddWithValue("intExecID", exec.IntExecID);
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -140,7 +151,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM exec WHERE \"intExecID\" = @intExecID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intExecID", show.intExecID);
+            cmd.Parameters.AddWithValue("intExecID", exec.IntExecID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();

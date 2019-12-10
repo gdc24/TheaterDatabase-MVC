@@ -15,12 +15,14 @@ namespace TheaterDatabase.DAL
             int intCastID = Convert.ToInt32(dr["intCastID"]);
             string strVoicePart = dr["strVoicePart"].ToString();
             string strRole = dr["strRole"].ToString();
+            int intMemberID = Convert.ToInt32(dr["intMemberID"]);
+            int intShowID = Convert.ToInt32(dr["intShowID"]);
 
             Show show = ShowsDAL.GetShow(intShowID);
             Member member = MembersDAL.GetMember(intMemberID);
 
-            Cast cast = Cast.Of(intCastID, strVoicePart, strRole);
-            return member;
+            Cast cast = Cast.Of(intCastID, strVoicePart, strRole, intMemberID, member, intShowID, show);
+            return cast;
         }
         
         public static Cast GetCast(int intCastID)
@@ -68,7 +70,7 @@ namespace TheaterDatabase.DAL
 
             while (dr.Read())
             {
-                Show show = GetCastFromDR(dr);
+                Cast cast = GetCastFromDR(dr);
                 retval.Add(cast);
             }
 
@@ -87,12 +89,15 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "INSERT INTO casts" +
                            " (\"strVoicePart\")" +
-                           " (\"strRole\")" +
+                           " (\"strRole\")" + " (\"intMemebrID\")" +
+                           " (\"intShowID\")" +
                            " VALUES" +
                            " (@strVoicePart, @strRole);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strVoicePart", show.StrVoicePart);
-            cmd.Parameters.AddWithValue("strRole", show.StrRole);
+            cmd.Parameters.AddWithValue("strVoicePart", cast.StrVoicePart);
+            cmd.Parameters.AddWithValue("strRole", cast.StrRole);
+            cmd.Parameters.AddWithValue("intMemberID", cast.IntMemberID);
+            cmd.Parameters.AddWithValue("intShowID", cast.IntShowID);
             
 
             // Execute a query
@@ -116,12 +121,15 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "UPDATE casts " +
                            " SET \"strVoicePart\" = @strVoicePart" +
-                           " SET \"strRole\" = @strRole" +
+                           " SET \"strRole\" = @strRole" + " \"intMemberID\" = @intMemberID" +
+                           " \"intShowID\" = @intShowID" +
                            " WHERE \"intCastID\" = @intCastID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strVoicePart", show.StrVoicePart);
-            cmd.Parameters.AddWithValue("strRole", show.StrRole);
-            cmd.Parameters.AddWithValue("intCastID", show.IntCastID);
+            cmd.Parameters.AddWithValue("strVoicePart", cast.StrVoicePart);
+            cmd.Parameters.AddWithValue("strRole", cast.StrRole);
+            cmd.Parameters.AddWithValue("intCastID", cast.IntCastID);
+            cmd.Parameters.AddWithValue("intMemberID", cast.IntMemberID);
+            cmd.Parameters.AddWithValue("intShowID", cast.IntShowID);
             
             // Execute a query
             int result = cmd.ExecuteNonQuery();
@@ -145,7 +153,7 @@ namespace TheaterDatabase.DAL
             // Define a query
             string query = "DELETE FROM casts WHERE \"intCastID\" = @intCastID ";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("intCastID", show.intCastID);
+            cmd.Parameters.AddWithValue("intCastID", cast.IntCastID);
 
             // Execute a query
             int result = cmd.ExecuteNonQuery();

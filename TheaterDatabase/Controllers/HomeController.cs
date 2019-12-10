@@ -21,7 +21,12 @@ namespace TheaterDatabase.Controllers
             ViewBag.Message = "Create, Read, Update, and Delete table info here";
 
             CRUDVM model = new CRUDVM();
+            model._casts_vm.LstCasts = CastsDAL.GetAllCasts();
+            model._exec_vm.LstExec = ExecDAL.GetAllExec();
+            model._members_vm.LstMembers = MembersDAL.GetAllMembers();
+            model._pits_vm.LstPits = PitsDAL.GetAllPits();
             model._shows_vm.LstShows = ShowsDAL.GetAllShows();
+            model._staff_vm.LstStaff = StaffDAL.GetAllStaff();
 
             return View(model);
         }
@@ -35,19 +40,10 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - SHOWS
 
-        //public ActionResult EditShows(int? id)
+        //public ActionResult LstShows()
         //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-
-        //    var employee = _context.Employees.SingleOrDefault(e => e.EmployeeId == id);
-        //    if (employee == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(employee);
+        //    ShowsVM vm = ShowsDAL.GetAllShows();
+        //    return 
         //}
 
         #endregion

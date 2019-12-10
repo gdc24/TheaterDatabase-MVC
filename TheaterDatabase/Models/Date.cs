@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -31,6 +32,8 @@ namespace TheaterDatabase.Models
             this.Semester = semester;
             this.IntYear = intYear;
         }
+
+        public Date() {  }
 
         public static Date Of(int intDateID, string strSemester, Semester semester, int intYear)
         {
