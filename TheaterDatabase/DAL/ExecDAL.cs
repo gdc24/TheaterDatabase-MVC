@@ -16,12 +16,14 @@ namespace TheaterDatabase.DAL
             string strPosition = dr["strPosition"].ToString();
             int intMemberID = Convert.ToInt32(dr["intMemberID"]);
             int intDateID = Convert.ToInt32(dr["intDateID"]);
+            int intClubID = Convert.ToInt32(dr["intClubID"]);
 
             Member member = MembersDAL.GetMember(intMemberID);
             Date date = DatesDAL.GetDate(intDateID);
+            Club club = ClubsDAL.GetClub(intClubID);
             
 
-            Exec exec = Exec.Of(intExecID, strPosition, intMemberID, member, intDateID, date);
+            Exec exec = Exec.Of(intExecID, strPosition, intMemberID, member, intDateID, date, intClubID, club);
             return exec;
         }
         
@@ -88,14 +90,16 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO exec" +
-                           " (\"strPosition\")" +
-                           " (\"intMemebrID\")" +
-                           " (\"intDateID\")" +
+                           " (\"strPosition\"" +
+                           " \"intMemberID\"" +
+                           " \"intClubID\"" +
+                           " \"intDateID\")" +
                            " VALUES" +
-                           " (@strName, @intMemberID, @intDateID);";
+                           " (@strPosition, @intMemberID, @intClubID, @intDateID);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("strPosition", exec.StrPosition);
             cmd.Parameters.AddWithValue("intMemberID", exec.IntMemberID);
+            cmd.Parameters.AddWithValue("intClubID", exec.IntClubID);
             cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
             
 
@@ -119,13 +123,15 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE exec " +
-                           " SET \"strPosition\" = @strPosition" +
-                           " \"intMemberID\" = @intMemberID" +
+                           " SET \"strPosition\" = @strPosition," +
+                           " \"intMemberID\" = @intMemberID," +
+                           " \"intClubID\" = @intClubID," +
                            " \"intDateID\" = @intDateID" +
                            " WHERE \"intExecID\" = @intExecID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("strPosition", exec.StrPosition);
             cmd.Parameters.AddWithValue("intMemberID", exec.IntMemberID);
+            cmd.Parameters.AddWithValue("intClubID", exec.IntClubID);
             cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
             cmd.Parameters.AddWithValue("intExecID", exec.IntExecID);
             
