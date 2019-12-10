@@ -252,8 +252,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\casts.js" />
+    <Content Include="Scripts\exec.js" />
     <Content Include="Scripts\global.js" />
+    <Content Include="Scripts\members.js" />
+    <Content Include="Scripts\pits.js" />
     <Content Include="Scripts\shows.js" />
+    <Content Include="Scripts\staff.js" />
     <Content Include="Styles\new-global.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

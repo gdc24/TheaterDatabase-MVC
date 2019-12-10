@@ -1,5 +1,9 @@
 ﻿@model TheaterDatabase.ViewModels.CRUD_VMs.MembersVM
 
+
+
+<h3>Members</h3>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -17,19 +21,19 @@
                 </thead>
                 @foreach (var item in Model.LstMembers)
                 {
-                <tr>
-                    <td>
-                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntMemberID)</span>
-                    </td>
-                    <td>
-                        <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.IntMemberID }) |
-                        @Html.ActionLink("Detail", "Detail", new { id = item.IntMemberID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.IntMemberID })
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntMemberID)</span>
+                        </td>
+                        <td>
+                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IntMemberID }) |
+                            @Html.ActionLink("Detail", "Detail", new { id = item.IntMemberID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IntMemberID })
+                        </td>
+                    </tr>
                 }
             </table>
         </div>
