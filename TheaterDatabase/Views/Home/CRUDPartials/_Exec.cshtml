@@ -48,10 +48,10 @@
                             <span>@Html.DisplayFor(modelItem => item.Date.SemAndYear)</span>
                         </td>
                         <td>
-                            <button onclick="updateExec(@item.IntExecID)" class="m-1 btn btn-primary divYesEditing">Update</button>
-                            <button onclick="editRow('exec', @item.IntExecID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
-                            <button onclick="deleteExec(@item.IntExecID)" class="m-1 btn btn-danger divNoEditing">Delete</button>
-                            <button onclick="cancelEditRow('exec', @item.IntExecID)" class="m-1 btn btn-secondary divYesEditing">Cancel</button>
+                            <button onclick="updateExec(@item.IntExecID)" class="m-1 btn btn-primary divYesEditing"><i class="fas fa-check-circle"></i></button>
+                            <button onclick="editRow('exec', @item.IntExecID)" class="m-1 btn btn-primary divNoEditing"><i class="fas fa-pen"></i></button>
+                            <button onclick="deleteExec(@item.IntExecID)" class="m-1 btn btn-danger divNoEditing"><i class="fas fa-trash"></i></button>
+                            <button onclick="cancelEditRow('exec', @item.IntExecID)" class="m-1 btn btn-secondary divYesEditing"><i class="fas fa-window-close"></i></button>
                         </td>
                     </tr>
                 }

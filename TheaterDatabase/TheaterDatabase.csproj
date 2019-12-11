@@ -263,7 +263,11 @@
     <Content Include="Scripts\pits.js" />
     <Content Include="Scripts\shows.js" />
     <Content Include="Scripts\staff.js" />
+    <Content Include="Styles\css\all.css" />
     <Content Include="Styles\new-global.css" />
+    <Content Include="Styles\webfonts\fa-brands-400.svg" />
+    <Content Include="Styles\webfonts\fa-regular-400.svg" />
+    <Content Include="Styles\webfonts\fa-solid-900.svg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -308,6 +312,18 @@
     <Content Include="Views\Home\AnalyticsPartials\_RepeatStaffs.cshtml" />
     <Content Include="Views\Home\AnalyticsPartials\_MembersByVoicePart.cshtml" />
     <Content Include="Views\Home\AnalyticsPartials\_ShowsByInstrument.cshtml" />
+    <Content Include="Styles\webfonts\fa-brands-400.eot" />
+    <Content Include="Styles\webfonts\fa-brands-400.ttf" />
+    <Content Include="Styles\webfonts\fa-brands-400.woff" />
+    <Content Include="Styles\webfonts\fa-brands-400.woff2" />
+    <Content Include="Styles\webfonts\fa-regular-400.eot" />
+    <Content Include="Styles\webfonts\fa-regular-400.ttf" />
+    <Content Include="Styles\webfonts\fa-regular-400.woff" />
+    <Content Include="Styles\webfonts\fa-regular-400.woff2" />
+    <Content Include="Styles\webfonts\fa-solid-900.eot" />
+    <Content Include="Styles\webfonts\fa-solid-900.ttf" />
+    <Content Include="Styles\webfonts\fa-solid-900.woff" />
+    <Content Include="Styles\webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
