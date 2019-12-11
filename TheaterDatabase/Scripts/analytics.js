@@ -65,3 +65,40 @@ function updateRepeatStaffsTable() {
         alert(error.StatusText);
     });
 }
+
+function updateVoicePartsTable() {
+    var strVPFromDropdown = $('[data-voice-part="strVoicePart"]').val();
+    var data = {
+        strVoicePart: strVPFromDropdown,
+    };
+    console.log("data:");
+    console.log(data);
+    console.log(JSON.stringify(data));
+    AjaxCall('/Home/GetMemberByVoicePart', JSON.stringify(data), 'POST').done(function (response) {
+
+        $('#voice-parts').html(response);
+
+    }).fail(function (error) {
+        console.log(error);
+        alert(error.StatusText);
+    });
+}
+
+
+function updateShowsByInstrumentTable() {
+    var strSearchTerm = $('[data-show-by-instrument="strSearchTerm"]').val();
+    var data = {
+        strSearch: strSearchTerm,
+    };
+    console.log("data:");
+    console.log(data);
+    console.log(JSON.stringify(data));
+    AjaxCall('/Home/GetShowsByInstrument', JSON.stringify(data), 'POST').done(function (response) {
+
+        $('#shows-by-instrument').html(response);
+
+    }).fail(function (error) {
+        console.log(error);
+        alert(error.StatusText);
+    });
+}

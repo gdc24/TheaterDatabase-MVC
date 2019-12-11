@@ -1,0 +1,55 @@
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.MembersByVoicePartVM
+
+<h3>Members By Voice Part</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h4>View list of members & how many times they have played a role with a given voice part.</h4>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            @Html.DropDownListFor(model => model.StrVoicePart, new SelectList(Model.LstAllVoiceParts), "Select a Voice Part ", new { @class = "form-control m-2", @data_voice_part = "strVoicePart", @onchange = "updateVoicePartsTable()" })
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            @if (Model.LstMembersByVoicePart == null)
+            {
+                <p>Please select a voice part from the dropdown to see club members who have played such roles & how many times.</p>
+
+            }
+            else if (Model.LstMembersByVoicePart.Count() > 0)
+            {
+            <h5 class="text-center">@Html.DisplayNameFor(m => m.StrVoicePart): @Model.StrVoicePart</h5>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.StrName)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.IntCount)</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.LstMembersByVoicePart)
+                    {
+                        <tr>
+                            <td>
+                                <span>@Html.DisplayFor(modelItem => item.StrName)</span>
+                            </td>
+                            <td>
+                                <span>@Html.DisplayFor(modelItem => item.IntCount)</span>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</div>
+

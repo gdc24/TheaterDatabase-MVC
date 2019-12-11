@@ -68,6 +68,7 @@ namespace TheaterDatabase.Controllers
             model._budgetAverage_vm.LstBudgetAverages = AnalyticsDAL.GetBudgetAverages();
             model._musicalsCount_vm.LstMusicalCounts = AnalyticsDAL.GetMusicalCounts();
             model._repeatStaffPositions_vm.LstPossiblePositions = AnalyticsDAL.GetPossiblePositions();
+            model._membersByVoicePart_vm.LstAllVoiceParts = AnalyticsDAL.GetPossibleVoiceParts();
 
             return View(model);
         }
@@ -82,6 +83,35 @@ namespace TheaterDatabase.Controllers
             };
 
             return PartialView("AnalyticsPartials/_RepeatStaffs", model);
+        }
+
+        public ActionResult GetMemberByVoicePart(string strVoicePart)
+        {
+            MembersByVoicePartVM model = new MembersByVoicePartVM()
+            {
+                LstAllVoiceParts = AnalyticsDAL.GetPossibleVoiceParts(),
+                LstMembersByVoicePart = AnalyticsDAL.GetMembersByVoicePart(strVoicePart),
+                StrVoicePart = strVoicePart
+            };
+
+            return PartialView("AnalyticsPartials/_MembersByVoicePart", model);
+        }
+
+
+        public ActionResult GetShowsByInstrument(string strSearch)
+        {
+            ShowsByInstrumentVM model = new ShowsByInstrumentVM()
+            {
+                LstShowsByInstrument = AnalyticsDAL.GetShowsByInstrument(strSearch),
+                StrSearch = strSearch
+            };
+
+            foreach (var showsByInstrument in model.LstShowsByInstrument)
+            {
+                showsByInstrument.Show = ShowsDAL.GetShow(showsByInstrument.IntShowID);
+            }
+
+            return PartialView("AnalyticsPartials/_ShowsByInstrument", model);
         }
 
         #region REGION - CASTS

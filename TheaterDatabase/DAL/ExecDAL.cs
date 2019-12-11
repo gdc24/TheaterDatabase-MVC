@@ -90,9 +90,9 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO exec" +
-                           " (\"strPosition\"" +
-                           " \"intMemberID\"" +
-                           " \"intClubID\"" +
+                           " (\"strPosition\"," +
+                           " \"intMemberID\"," +
+                           " \"intClubID\"," +
                            " \"intDateID\")" +
                            " VALUES" +
                            " (@strPosition, @intMemberID, @intClubID, @intDateID);";

@@ -3,7 +3,7 @@ function initExecTab() {
     initDataTable('exec-table');
 }
 
-function updateExecs(id) {
+function updateExec(id) {
 
     var data = {
         IntExecID: id,

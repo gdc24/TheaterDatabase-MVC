@@ -1,0 +1,68 @@
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.ShowsByInstrumentVM
+
+
+
+<h3>Shows by Instrument</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h4>Search an instrument and see what shows we have done with that instrument!</h4>
+        </div>
+    </div>
+
+    <div class="row justify-content-center m-2 align-items-center">
+        <div class="col-1"></div>
+        <div class="col-8">
+            <div class="input-group mb-3">
+                @Html.EditorFor(model => model.StrSearch, new { htmlAttributes = new { @class = "form-control", @data_show_by_instrument = "strSearchTerm" } })
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-info" onclick="updateShowsByInstrumentTable()">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            @if (Model.LstShowsByInstrument == null)
+            {
+                <p>Please input a search term and click "search" above.</p>
+
+            }
+            else if (Model.LstShowsByInstrument.Count() > 0)
+            {
+                <h5 class="text-center">@Html.DisplayNameFor(m => m.StrSearch): @Model.StrSearch</h5>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.Show.StrName)</span>
+                            </th>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.StrInstrument)</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.LstShowsByInstrument)
+                    {
+                        <tr>
+                            <td>
+                                <span>@Html.DisplayFor(modelItem => item.Show.StrName)</span>
+                            </td>
+                            <td>
+                                <span>@Html.DisplayFor(modelItem => item.StrInstrument)</span>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else if (Model.LstShowsByInstrument.Count() == 0)
+            {
+                <p>Looks like we haven't done any shows with that instrument. Try searching something else!</p>
+            }
+        </div>
+    </div>
+</div>
+

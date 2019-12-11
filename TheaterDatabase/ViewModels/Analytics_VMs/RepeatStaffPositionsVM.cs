@@ -11,6 +11,7 @@ namespace TheaterDatabase.ViewModels.Analytics_VMs
 
         public IEnumerable<RepeatStaffPositionsVM> LstRepeatStaffPositions { get; set; }
 
+        [Display(Name = "Position")]
         public string StrPosition { get; set; }
 
         [Display(Name="Name")]

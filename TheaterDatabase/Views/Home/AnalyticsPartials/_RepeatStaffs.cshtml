@@ -29,8 +29,8 @@
                 }
                 else if (Model.LstRepeatStaffPositions.Count() > 0)
                 {
-                    <h5 class="text-center">Position: @Model.StrPosition</h5>
-                    <table class="table table-bordered">
+                <h5 class="text-center">@Html.DisplayNameFor(m => m.StrPosition): @Model.StrPosition</h5>
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>

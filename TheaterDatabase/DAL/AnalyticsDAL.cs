@@ -158,5 +158,104 @@ namespace TheaterDatabase.DAL
 
             return retval;
         }
+        
+        public static IEnumerable<string> GetPossibleVoiceParts()
+        {
+
+            List<string> retval = new List<string>();
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "SELECT DISTINCT \"strVoicePart\" FROM casts";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            string tmpVoicePart;
+
+            while (dr.Read())
+            {
+                tmpVoicePart = dr["strVoicePart"].ToString();
+                retval.Add(tmpVoicePart);
+            }
+
+            conn.Close();
+
+            return retval;
+
+        }
+
+        public static IEnumerable<MembersByVoicePartVM> GetMembersByVoicePart(string strVoicePart)
+        {
+            List<MembersByVoicePartVM> retval = new List<MembersByVoicePartVM>();
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "Select m.\"strName\", COUNT(m.\"strName\")" +
+                " FROM members m, casts c" +
+                " WHERE m.\"intMemberID\" = c.\"intMemberID\"" +
+                " AND c.\"strVoicePart\" = '" + strVoicePart + "'" +
+                " GROUP BY m.\"strName\"";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                MembersByVoicePartVM tmpMemberByVoicePart = new MembersByVoicePartVM
+                {
+                    StrName = dr["strName"].ToString(),
+                    IntCount = Convert.ToInt32(dr["count"])
+                };
+                retval.Add(tmpMemberByVoicePart);
+            }
+
+            conn.Close();
+
+            return retval;
+        }
+        
+        public static IEnumerable<ShowsByInstrumentVM> GetShowsByInstrument(string strSearch)
+        {
+            List<ShowsByInstrumentVM> retval = new List<ShowsByInstrumentVM>();
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "SELECT DISTINCT s.\"intShowID\", p.\"strInstrument\"" +
+                " FROM pits p, shows s" +
+                " WHERE p.\"intShowID\" = s.\"intShowID\"" +
+                " and p.\"strInstrument\" ILIKE '%" + strSearch + "%'";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                ShowsByInstrumentVM tmpShowByInstrument = new ShowsByInstrumentVM
+                {
+                    IntShowID = Convert.ToInt32(dr["intShowID"]),
+                    StrInstrument = dr["strInstrument"].ToString()
+                };
+                retval.Add(tmpShowByInstrument);
+            }
+
+            conn.Close();
+
+            return retval;
+        }
+
+
     }
 }

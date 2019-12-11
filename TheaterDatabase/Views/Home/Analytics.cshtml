@@ -10,6 +10,13 @@
 <hr />
 <br />
 
+<div id="shows-by-instrument">
+    @{ @Html.Partial("AnalyticsPartials/_ShowsByInstrument", Model._showsByInstrument_vm) }
+</div>
+<br />
+<hr />
+<br />
+
 <div>
     @{ @Html.Partial("AnalyticsPartials/_MusicalCounts", Model._musicalsCount_vm) }
 </div>
@@ -18,8 +25,8 @@
 <hr />
 <br />
 
-<div id="repeat-staffs">
-    @{ @Html.Partial("AnalyticsPartials/_RepeatStaffs", Model._repeatStaffPositions_vm) }
+<div id="voice-parts">
+    @{ @Html.Partial("AnalyticsPartials/_MembersByVoicePart", Model._membersByVoicePart_vm) }
 </div>
 
 <br />
@@ -28,6 +35,14 @@
 
 <div>
     @{ @Html.Partial("AnalyticsPartials/_BudgetAverages", Model._budgetAverage_vm) }
+</div>
+
+<br />
+<hr />
+<br />
+
+<div id="repeat-staffs">
+    @{ @Html.Partial("AnalyticsPartials/_RepeatStaffs", Model._repeatStaffPositions_vm) }
 </div>
 
 <script>

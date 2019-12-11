@@ -89,7 +89,7 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO pits" +
-                           " (\"strInstrument\"" +
+                           " (\"strInstrument\"," +
                            " \"intSeat\"," +
                            " \"intMemberID\"," +
                            " \"intShowID\")" + 
