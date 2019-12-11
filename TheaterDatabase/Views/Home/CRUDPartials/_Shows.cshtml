@@ -70,3 +70,38 @@
         </div>
     </div>
 </div>
+
+
+
+
+<br />
+<hr />
+<br />
+
+<div class="row divNoNewRow">
+    <div class="col">
+        <p class="float-right">
+            <button class="m-1 btn btn-primary" onclick="showInsertRow('staff')">Insert Row</button>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2 divYesNewRow">
+        @Html.EditorFor(model => model.StrName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Instrument", @data_cast = "new_strInstrument" } })
+    </div>
+    <div class="col-2 divYesNewRow">
+        @Html.EditorFor(model => model.StrAuthor, new { htmlAttributes = new { @class = "form-control", @placeholder = "Seat", @data_cast = "new_intSeat" } })
+    </div>
+    <div class="col-3 divYesNewRow">
+        @Html.DropDownListFor(model => model.YsnIsMusical, new { htmlAttributes = new { @class = "form-control", @placeholder = "IsMusical", @data_cast = "new_ysnIsMusical" } })
+    </div>
+    </div>
+    <div class="col-3 divYesNewRow">
+        @Html.DropDownListFor(model => model.IntBudget, new { htmlAttributes = new { @class = "form-control", @placeholder = "Budget", @data_cast = "new_intBudget } })
+    </div>
+    <div class="col divYesNewRow">
+        <button class="m-1 btn btn-primary" onclick="insertShows()">Insert</button>
+        <button class="m-1 btn btn-primary" onclick="hideInsertRow('shows')">Cancel Insert</button>
+    </div>
+</div>
