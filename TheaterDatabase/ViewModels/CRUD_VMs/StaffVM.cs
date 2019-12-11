@@ -10,5 +10,6 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
     {
         public IEnumerable<Staff> LstStaff { get; set; }
         public IEnumerable<Member> LstAllMembers { get; set; }
+        public IEnumerable<Show> LstAllShows { get; set; }
     }
 }

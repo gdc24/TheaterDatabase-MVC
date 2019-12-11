@@ -11,5 +11,6 @@ namespace TheaterDatabase.ViewModels.CRUD_VMs
         public IEnumerable<Show> LstShows { get; set; }
 
         public IEnumerable<Club> LstAllClubs { get; set; }
+        public IEnumerable<Date> LstAllDates { get; set; }
     }
 }

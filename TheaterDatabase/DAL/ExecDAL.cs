@@ -123,18 +123,15 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE exec " +
-                           " SET \"strPosition\" = @strPosition," +
-                           " \"intMemberID\" = @intMemberID," +
-                           " \"intClubID\" = @intClubID," +
-                           " \"intDateID\" = @intDateID" +
+                           " SET \"intMemberID\" = @intMemberID" +
                            " WHERE \"intExecID\" = @intExecID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strPosition", exec.StrPosition);
+            //cmd.Parameters.AddWithValue("strPosition", exec.StrPosition);
             cmd.Parameters.AddWithValue("intMemberID", exec.IntMemberID);
-            cmd.Parameters.AddWithValue("intClubID", exec.IntClubID);
-            cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
+            //cmd.Parameters.AddWithValue("intClubID", exec.IntClubID);
+            //cmd.Parameters.AddWithValue("intDateID", exec.IntDateID);
             cmd.Parameters.AddWithValue("intExecID", exec.IntExecID);
-            
+
             // Execute a query
             int result = cmd.ExecuteNonQuery();
 

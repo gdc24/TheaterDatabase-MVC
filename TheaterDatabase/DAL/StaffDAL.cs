@@ -87,10 +87,11 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO staff" +
-                           " (\"strPosition\")" + " (\"intMemebrID\")" +
-                           " (\"intShowID\")" + 
+                           " (\"strPosition\"," + 
+                           " \"intMemberID\"," +
+                           " \"intShowID\")" + 
                            " VALUES" +
-                           " (@strPosition);";
+                           " (@strPosition, @intMemberID, @intShowID);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("strPosition", staff.StrPosition);
             cmd.Parameters.AddWithValue("intMemberID", staff.IntMemberID);
@@ -117,14 +118,13 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE staff " +
-                           " SET \"strPosition\" = @strPosition" + " \"intMemberID\" = @intMemberID" +
-                           " \"intShowID\" = @intShowID" +
+                           " SET \"intMemberID\" = @intMemberID" +
                            " WHERE \"intStaffID\" = @intStaffID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strPosition", staff.StrPosition);
+            //cmd.Parameters.AddWithValue("strPosition", staff.StrPosition);
             cmd.Parameters.AddWithValue("intStaffID", staff.IntStaffID);
             cmd.Parameters.AddWithValue("intMemberID", staff.IntMemberID);
-            cmd.Parameters.AddWithValue("intShowID", staff.IntShowID);
+            //cmd.Parameters.AddWithValue("intShowID", staff.IntShowID);
             
             
             // Execute a query

@@ -7,12 +7,13 @@ function updatePits(id) {
 
     var data = {
         IntPitID: id,
+        IntSeat: $("[data-pits='" + id + "_intSeat']").val(),
         IntMemberID: $("[data-pits='" + id + "_member']").val()
     };
     console.log("data:");
     console.log(data);
     console.log(JSON.stringify(data));
-    AjaxCall('/Home/UpdatePits', JSON.stringify(data), 'POST').done(function (response) {
+    AjaxCall('/Home/UpdatePit', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#pits').html(response);
 
@@ -32,7 +33,7 @@ function insertPits() {
     console.log("data:");
     console.log(data);
     console.log(JSON.stringify(data));
-    AjaxCall('/Home/InsertPits', JSON.stringify(data), 'POST').done(function (response) {
+    AjaxCall('/Home/InsertPit', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#pits').html(response);
 
@@ -51,7 +52,7 @@ function deletePits(id) {
         console.log("data:");
         console.log(data);
         console.log(JSON.stringify(data));
-        AjaxCall('/Home/DeletePits', JSON.stringify(data), 'POST').done(function (response) {
+        AjaxCall('/Home/DeletePit', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#pits').html(response);
 

@@ -90,7 +90,12 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "INSERT INTO shows" +
-                           " (\"strName\", \"strAuthor\", \"intBudget\", \"ysnIsMusical\", \"intClubID\", \"intDateID\")" +
+                           " (\"strName\", " +
+                           " \"strAuthor\", " +
+                           " \"intBudget\", " +
+                           " \"ysnIsMusical\", " +
+                           " \"intClubID\", " +
+                           " \"intDateID\")" +
                            " VALUES" +
                            " (@strName, @strAuthor, @intBudget, @ysnIsMusical, @intClubID, @intDateID);";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
@@ -121,22 +126,17 @@ namespace TheaterDatabase.DAL
 
             // Define a query
             string query = "UPDATE shows " +
-                           " SET \"strName\" = @strName" +
-                           " \"strAuthor\" = @strAuthor" +
-                           " \"intBudget\" = @intBudget" +
-                           " \"ysnIsMusical\" = @ysnIsMusical" +
-                           " \"intClubID\" = @intClubID" +
-                           " \"intDateID\" = @intDateID" +
+                           " SET \"intBudget\" = @intBudget" +
                            " WHERE \"intShowID\" = @intShowID;";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("strName", show.StrName);
-            cmd.Parameters.AddWithValue("strAuthor", show.StrAuthor);
+            //cmd.Parameters.AddWithValue("strName", show.StrName);
+            //cmd.Parameters.AddWithValue("strAuthor", show.StrAuthor);
             cmd.Parameters.AddWithValue("intBudget", show.IntBudget);
-            cmd.Parameters.AddWithValue("ysnIsMusical", show.YsnIsMusical);
-            cmd.Parameters.AddWithValue("intClubID", show.IntClubID);
-            cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
+            //cmd.Parameters.AddWithValue("ysnIsMusical", show.YsnIsMusical);
+            //cmd.Parameters.AddWithValue("intClubID", show.IntClubID);
+            //cmd.Parameters.AddWithValue("intDateID", show.IntDateID);
             cmd.Parameters.AddWithValue("intShowID", show.IntShowID);
-            
+
             // Execute a query
             int result = cmd.ExecuteNonQuery();
 

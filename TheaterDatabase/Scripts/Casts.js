@@ -9,12 +9,12 @@ function updateCasts(id) {
 
     var data = {
         IntCastID: id,
-        IntMemberID: $("[data-cast='cast_" + id + "_member']").val()
+        IntMemberID: $("[data-cast='" + id + "_member']").val()
     };
     console.log("data:");
     console.log(data);
     console.log(JSON.stringify(data));
-    AjaxCall('/Home/UpdateCasts', JSON.stringify(data), 'POST').done(function (response) {
+    AjaxCall('/Home/UpdateCast', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#casts').html(response);
         initCastsTab();
@@ -27,15 +27,15 @@ function updateCasts(id) {
 
 function insertCasts() {
     var data = {
-        StrVoicePart: $("[data-cast='cast_new_strVoicePart']").val(),
-        StrRole: $("[data-cast='cast_new_strRole']").val(),
-        IntMemberID: $("[data-cast='cast_new_memberID']").val(),
-        IntShowID: $("[data-cast='cast_new_showID']").val()
+        StrVoicePart: $("[data-cast='new_strVoicePart']").val(),
+        StrRole: $("[data-cast='new_strRole']").val(),
+        IntMemberID: $("[data-cast='new_memberID']").val(),
+        IntShowID: $("[data-cast='new_showID']").val()
     };
     console.log("data:");
     console.log(data);
     console.log(JSON.stringify(data));
-    AjaxCall('/Home/InsertCasts', JSON.stringify(data), 'POST').done(function (response) {
+    AjaxCall('/Home/InsertCast', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#casts').html(response);
 
@@ -54,7 +54,7 @@ function deleteCasts(id) {
         console.log("data:");
         console.log(data);
         console.log(JSON.stringify(data));
-        AjaxCall('/Home/DeleteCasts', JSON.stringify(data), 'POST').done(function (response) {
+        AjaxCall('/Home/DeleteCast', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#casts').html(response);
 

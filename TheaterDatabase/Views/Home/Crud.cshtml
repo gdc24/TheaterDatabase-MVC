@@ -29,22 +29,22 @@
 </ul>
 
 <div class="tab-content">
-    <div id="shows" class="m-2 tab-pane active">
+    <div id="shows" class="m-2 tab-pane fade show active" role="tabpanel">
         @Html.Partial("CRUDPartials/_Shows", Model._shows_vm)
     </div>
-    <div id="members" class="m-2 tab-pane fade">
+    <div id="members" class="m-2 tab-pane fade" role="tabpanel">
         @Html.Partial("CRUDPartials/_Members", Model._members_vm)
     </div>
-    <div id="exec" class="m-2 tab-pane fade">
+    <div id="exec" class="m-2 tab-pane fade" role="tabpanel">
         @Html.Partial("CRUDPartials/_Exec", Model._exec_vm)
     </div>
-    <div id="casts" class="m-2 tab-pane fade">
+    <div id="casts" class="m-2 tab-pane fade" role="tabpanel">
         @Html.Partial("CRUDPartials/_Casts", Model._casts_vm)
     </div>
-    <div id="staff" class="m-2 tab-pane fade">
+    <div id="staff" class="m-2 tab-pane fade" role="tabpanel">
         @Html.Partial("CRUDPartials/_Staff", Model._staff_vm)
     </div>
-    <div id="pits" class="m-2 tab-pane fade">
+    <div id="pits" class="m-2 tab-pane fade" role="tabpanel">
         @Html.Partial("CRUDPartials/_Pits", Model._pits_vm)
     </div>
 </div>

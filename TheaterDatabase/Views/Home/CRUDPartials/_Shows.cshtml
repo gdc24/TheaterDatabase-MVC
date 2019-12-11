@@ -38,70 +38,77 @@
                 {
                     <tr data-shows="@(item.IntShowID + "_row")">
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntShowID)</span>
+                            <span>@Html.DisplayFor(modelItem => item.IntShowID)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
+                            <span>@Html.DisplayFor(modelItem => item.StrName)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrAuthor)</span>
+                            <span>@Html.DisplayFor(modelItem => item.StrAuthor)</span>
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntBudget)</span>
+                            @Html.EditorFor(model => model.IntBudget, new { htmlAttributes = new { @class = "form-control divYesEditing", @data_show = item.IntShowID + "_budget", @Value = item.IntBudget } } )
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.YsnIsMusical)</span>
+                            <span>@Html.DisplayFor(modelItem => item.YsnIsMusical)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
-                            @Html.DropDownListFor(model => model.IntClubID, new SelectList(Model.LstAllClubs, "IntClubID", "StrClubName"))
+                            <span>@Html.DisplayFor(modelItem => item.Club.StrClubName)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Date.StrSemester) @Html.DisplayFor(modelItem => item.Date.IntYear)</span>
+                            <span>@Html.DisplayFor(modelItem => item.Date.SemAndYear)</span>
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.IntShowID }) |
-                            @Html.ActionLink("Detail", "Detail", new { id = item.IntShowID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.IntShowID })
+                            <button onclick="updateShow(@item.IntShowID)" class="m-1 btn btn-primary divYesEditing">Update</button>
+                            <button onclick="editRow('shows', @item.IntShowID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
+                            <button onclick="deleteShow(@item.IntShowID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('shows', @item.IntShowID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
             </table>
         </div>
     </div>
-</div>
 
+    <br />
+    <hr />
+    <br />
 
+    <div class="row divNoNewRow">
+        <div class="col">
+            <p class="float-right">
+                <button class="m-1 btn btn-primary" onclick="showInsertRow('shows')">Insert Row</button>
+            </p>
+        </div>
+    </div>
 
+    <div class="row justify-content-around p-1">
+        <div class="col-2 divYesNewRow">
+            @Html.EditorFor(model => model.StrName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @data_show = "new_strName" } })
+        </div>
+        <div class="col-2 divYesNewRow">
+            @Html.EditorFor(model => model.StrAuthor, new { htmlAttributes = new { @class = "form-control", @placeholder = "Author", @data_show = "new_strAuthor" } })
+        </div>
+        <div class="col-2 divYesNewRow">
+            @Html.EditorFor(model => model.IntBudget, new { htmlAttributes = new { @class = "form-control", @placeholder = "Budget", @data_show = "new_intBudget" } })
+        </div>
+        <div class="col-1 divYesNewRow">
+            @Html.EditorFor(model => model.YsnIsMusical, new { htmlAttributes = new { @class = "form-check", @placeholder = "Musical?", @data_show = "new_ysnIsMusical" } })
+            <label class="form-check-label" for="YsnIsMusical">
+                Musical?
+            </label>
+        </div>
+        <div class="col-2 divYesNewRow">
+            @Html.DropDownListFor(model => model.IntClubID, new SelectList(Model.LstAllClubs, "IntClubID", "StrClubName"), new { @class = "form-control", @data_show = "new_clubID" })
+        </div>
+        <div class="col-2 divYesNewRow">
+            @Html.DropDownListFor(model => model.IntDateID, new SelectList(Model.LstAllDates, "IntDateID", "SemAndYear"), new { @class = "form-control", @data_show = "new_dateID" })
+        </div>
+        <div class="col divYesNewRow">
+            <button class="m-1 btn btn-primary" onclick="insertShows()">Insert</button>
+            <button class="m-1 btn btn-primary" onclick="hideInsertRow('shows')">Cancel Insert</button>
+        </div>
 
-<br />
-<hr />
-<br />
-
-<div class="row divNoNewRow">
-    <div class="col">
-        <p class="float-right">
-            <button class="m-1 btn btn-primary" onclick="showInsertRow('staff')">Insert Row</button>
-        </p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-2 divYesNewRow">
-        @Html.EditorFor(model => model.StrName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Instrument", @data_cast = "new_strInstrument" } })
-    </div>
-    <div class="col-2 divYesNewRow">
-        @Html.EditorFor(model => model.StrAuthor, new { htmlAttributes = new { @class = "form-control", @placeholder = "Seat", @data_cast = "new_intSeat" } })
-    </div>
-    <div class="col-3 divYesNewRow">
-        @Html.DropDownListFor(model => model.YsnIsMusical, new { htmlAttributes = new { @class = "form-control", @placeholder = "IsMusical", @data_cast = "new_ysnIsMusical" } })
-    </div>
-    </div>
-    <div class="col-3 divYesNewRow">
-        @Html.DropDownListFor(model => model.IntBudget, new { htmlAttributes = new { @class = "form-control", @placeholder = "Budget", @data_cast = "new_intBudget } })
-    </div>
-    <div class="col divYesNewRow">
-        <button class="m-1 btn btn-primary" onclick="insertShows()">Insert</button>
-        <button class="m-1 btn btn-primary" onclick="hideInsertRow('shows')">Cancel Insert</button>
     </div>
 </div>

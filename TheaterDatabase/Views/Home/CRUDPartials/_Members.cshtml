@@ -27,11 +27,12 @@
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrName)</span>
+                            @Html.EditorFor(model => model.StrName, new { htmlAttributes = new { @class = "form-control divYesEditing", @data_members = item.IntMemberID + "_strName", @Value = item.StrName } })
                         </td>
                         <td>
-                            <button onclick="updateMembers(@item.IntMemberID)" class="m-1 btn btn-primary divYesEditing">Update</button>
+                            <button onclick="updateMember(@item.IntMemberID)" class="m-1 btn btn-primary divYesEditing">Update</button>
                             <button onclick="editRow('members', @item.IntMemberID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
-                            <button onclick="deleteMembers(@item.IntMemberID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
+                            <button onclick="deleteMember(@item.IntMemberID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
                             <button onclick="cancelEditRow('members', @item.IntMemberID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
                         </td>
                     </tr>
@@ -57,7 +58,7 @@
 
     <div class="row">
         <div class="col-3 divYesNewRow">
-            @Html.EditorFor(model => model.StrName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @data_cast = "new_strName" } })
+            @Html.EditorFor(model => model.StrName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @data_members = "new_strName" } })
         </div>
         <div class="col divYesNewRow">
             <button class="m-1 btn btn-primary" onclick="insertMember()">Insert</button>

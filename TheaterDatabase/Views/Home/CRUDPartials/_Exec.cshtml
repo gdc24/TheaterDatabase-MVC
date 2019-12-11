@@ -75,16 +75,16 @@
 
     <div class="row">
         <div class="col-3 divYesNewRow">
-            @Html.EditorFor(model => model.StrPosition, new { htmlAttributes = new { @class = "form-control", @placeholder = "Position", @data_cast = "new_strPosition" } })
+            @Html.EditorFor(model => model.StrPosition, new { htmlAttributes = new { @class = "form-control", @placeholder = "Position", @data_exec = "new_strPosition" } })
         </div>
         <div class="col-3 divYesNewRow">
-            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @data_cast = "new_memberID" })
+            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @data_exec = "new_memberID" })
         </div>
         <div class="col-2 divYesNewRow">
-            @Html.DropDownListFor(model => model.IntClubID, new SelectList(Model.LstAllClubs, "IntClubID", "StrClubName"), new { @class = "form-control", @data_cast = "new_clubID" })
+            @Html.DropDownListFor(model => model.IntClubID, new SelectList(Model.LstAllClubs, "IntClubID", "StrClubName"), new { @class = "form-control", @data_exec = "new_clubID" })
         </div>
         <div class="col-3 divYesNewRow">
-            @Html.DropDownListFor(model => model.IntDateID, new SelectList(Model.LstAllDates, "IntDateID", "SemAndYear"), new { @class = "form-control", @data_cast = "new_dateID" })
+            @Html.DropDownListFor(model => model.IntDateID, new SelectList(Model.LstAllDates, "IntDateID", "SemAndYear"), new { @class = "form-control", @data_exec = "new_dateID" })
         </div>
         <div class="col divYesNewRow">
             <button class="m-1 btn btn-primary" onclick="insertExec()">Insert</button>

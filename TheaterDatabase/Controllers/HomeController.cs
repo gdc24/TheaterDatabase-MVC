@@ -34,6 +34,9 @@ namespace TheaterDatabase.Controllers
             IEnumerable<Staff> allStaff = StaffDAL.GetAllStaff();
 
 
+            model._shows_vm.LstShows = allShows;
+            model._shows_vm.LstAllClubs = allClubs;
+            model._shows_vm.LstAllDates = allDates;
 
             model._casts_vm.LstCasts = allCasts;
             model._casts_vm.LstAllMembers = allMembers;
@@ -47,11 +50,13 @@ namespace TheaterDatabase.Controllers
             model._members_vm.LstMembers = allMembers;
 
             model._pits_vm.LstPits = allPits;
+            model._pits_vm.LstAllMembers = allMembers;
+            model._pits_vm.LstAllShows = allShows;
 
-            model._shows_vm.LstShows = allShows;
-            model._shows_vm.LstAllClubs = allClubs;
 
             model._staff_vm.LstStaff = allStaff;
+            model._staff_vm.LstAllMembers = allMembers;
+            model._staff_vm.LstAllShows = allShows;
 
             return View(model);
         }
@@ -81,7 +86,7 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - CASTS
 
-        public ActionResult InsertCasts(string StrVoicePart, string StrRole, int IntMemberID, int IntShowID)
+        public ActionResult InsertCast(string StrVoicePart, string StrRole, int IntMemberID, int IntShowID)
         {
             Cast newCast = new Cast
             {
@@ -105,7 +110,7 @@ namespace TheaterDatabase.Controllers
             return PartialView("CRUDPartials/_Casts", model);
         }
 
-        public ActionResult DeleteCasts(int IntCastID)
+        public ActionResult DeleteCast(int IntCastID)
         {
             Cast remCast = new Cast
             {
@@ -124,16 +129,16 @@ namespace TheaterDatabase.Controllers
             return PartialView("CRUDPartials/_Casts", model);
         }
 
-        public ActionResult UpdateCasts(int IntCastID, int IntMemberID)
+        public ActionResult UpdateCast(int IntCastID, int IntMemberID)
         {
-            Cast upCast = new Cast
+            Cast updCast = new Cast
             {
                 IntCastID = IntCastID,
                 IntMemberID = IntMemberID,
                 Member = MembersDAL.GetMember(IntMemberID)
             };
 
-            bool success = CastsDAL.UpdateCast(upCast);
+            bool success = CastsDAL.UpdateCast(updCast);
 
             CastsVM model = new CastsVM()
             {
@@ -247,7 +252,10 @@ namespace TheaterDatabase.Controllers
 
             ExecVM model = new ExecVM()
             {
-                LstExec = ExecDAL.GetAllExec()
+                LstExec = ExecDAL.GetAllExec(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllClubs = ClubsDAL.GetAllClubs(),
+                LstAllDates = DatesDAL.GetAllDates()
             };
 
             return PartialView("CRUDPartials/_Exec", model);
@@ -264,7 +272,10 @@ namespace TheaterDatabase.Controllers
 
             ExecVM model = new ExecVM()
             {
-                LstExec = ExecDAL.GetAllExec()
+                LstExec = ExecDAL.GetAllExec(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllClubs = ClubsDAL.GetAllClubs(),
+                LstAllDates = DatesDAL.GetAllDates()
             };
 
             return PartialView("CRUDPartials/_Exec", model);
@@ -272,18 +283,21 @@ namespace TheaterDatabase.Controllers
 
         public ActionResult UpdateExec(int IntExecID, int IntMemberID)
         {
-            Exec upExec = new Exec
+            Exec updExec = new Exec
             {
                 IntExecID = IntExecID,
                 IntMemberID = IntMemberID,
                 Member = MembersDAL.GetMember(IntMemberID)
             };
 
-            bool success = ExecDAL.UpdateExec(upExec);
+            bool success = ExecDAL.UpdateExec(updExec);
 
             ExecVM model = new ExecVM()
             {
-                LstExec = ExecDAL.GetAllExec()
+                LstExec = ExecDAL.GetAllExec(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllClubs = ClubsDAL.GetAllClubs(),
+                LstAllDates = DatesDAL.GetAllDates()
             };
 
             return PartialView("CRUDPartials/_Exec", model);
@@ -293,7 +307,7 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - MEMBERS
 
-        public ActionResult InsertMembers(string StrName)
+        public ActionResult InsertMember(string StrName)
         {
             Member newMember = new Member
             {
@@ -310,7 +324,7 @@ namespace TheaterDatabase.Controllers
             return PartialView("CRUDPartials/_Members", model);
         }
 
-        public ActionResult DeleteMembers(int IntMemberID)
+        public ActionResult DeleteMember(int IntMemberID)
         {
             Member remMember = new Member
             {
@@ -327,7 +341,7 @@ namespace TheaterDatabase.Controllers
             return PartialView("CRUDPartials/_Members", model);
         }
 
-        public ActionResult UpdateMembers(int IntMemberID, string StrName)
+        public ActionResult UpdateMember(int IntMemberID, string StrName)
         {
             Member upMember = new Member
             {
@@ -349,7 +363,7 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - PITS
 
-        public ActionResult InsertPits(string StrInstrument, int IntSeat, int IntMemberID, int IntShowID)
+        public ActionResult InsertPit(string StrInstrument, int IntSeat, int IntMemberID, int IntShowID)
         {
             Pit newPit = new Pit
             {
@@ -365,13 +379,15 @@ namespace TheaterDatabase.Controllers
 
             PitsVM model = new PitsVM()
             {
-                LstPits = PitsDAL.GetAllPits()
+                LstPits = PitsDAL.GetAllPits(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
             };
 
             return PartialView("CRUDPartials/_Pits", model);
         }
 
-        public ActionResult DeletePits(int IntPitID)
+        public ActionResult DeletePit(int IntPitID)
         {
             Pit remPit = new Pit
             {
@@ -382,17 +398,20 @@ namespace TheaterDatabase.Controllers
 
             PitsVM model = new PitsVM()
             {
-                LstPits = PitsDAL.GetAllPits()
+                LstPits = PitsDAL.GetAllPits(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
             };
 
             return PartialView("CRUDPartials/_Pits", model);
         }
 
-        public ActionResult UpdatePits(int IntPitID, int IntMemberID)
+        public ActionResult UpdatePit(int IntPitID, int IntSeat, int IntMemberID)
         {
             Pit upPit = new Pit
             {
                 IntPitID = IntPitID,
+                IntSeat = IntSeat,
                 IntMemberID = IntMemberID,
                 Member = MembersDAL.GetMember(IntMemberID)
             };
@@ -401,7 +420,9 @@ namespace TheaterDatabase.Controllers
 
             PitsVM model = new PitsVM()
             {
-                LstPits = PitsDAL.GetAllPits()
+                LstPits = PitsDAL.GetAllPits(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
             };
 
             return PartialView("CRUDPartials/_Pits", model);
@@ -411,7 +432,7 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - SHOWS
 
-        public ActionResult InsertShows(string StrName, string StrAuthor, int IntBudget, bool YsnIsMusical, int IntClubID, int IntDateID)
+        public ActionResult InsertShow(string StrName, string StrAuthor, int IntBudget, bool YsnIsMusical, int IntClubID, int IntDateID)
         {
             Show newShow = new Show
             {
@@ -430,13 +451,14 @@ namespace TheaterDatabase.Controllers
             ShowsVM model = new ShowsVM()
             {
                 LstAllClubs = ClubsDAL.GetAllClubs(),
-                LstShows = ShowsDAL.GetAllShows()
+                LstShows = ShowsDAL.GetAllShows(),
+                LstAllDates = DatesDAL.GetAllDates()
             };
 
             return PartialView("CRUDPartials/_Shows", model);
         }
 
-        public ActionResult DeleteShows(int IntShowID)
+        public ActionResult DeleteShow(int IntShowID)
         {
             Show remShow = new Show
             {
@@ -454,15 +476,15 @@ namespace TheaterDatabase.Controllers
             return PartialView("CRUDPartials/_Shows", model);
         }
 
-        public ActionResult UpdateShows(int IntShowID, int IntBudget)
+        public ActionResult UpdateShow(int IntShowID, int IntBudget)
         {
-            Show upShow = new Show
+            Show updShow = new Show
             {
                 IntShowID = IntShowID,
                 IntBudget = IntBudget
             };
 
-            bool success = ShowsDAL.UpdateShow(upShow);
+            bool success = ShowsDAL.UpdateShow(updShow);
 
             ShowsVM model = new ShowsVM()
             {
@@ -477,7 +499,7 @@ namespace TheaterDatabase.Controllers
 
         #region REGION - STAFFS
 
-        public ActionResult InsertStaffs(string StrPosition, int IntMemberID, int IntShowID)
+        public ActionResult InsertStaff(string StrPosition, int IntMemberID, int IntShowID)
         {
             Staff newStaff = new Staff
             {
@@ -492,7 +514,9 @@ namespace TheaterDatabase.Controllers
 
             StaffVM model = new StaffVM()
             {
-                LstStaff = StaffDAL.GetAllStaff()
+                LstStaff = StaffDAL.GetAllStaff(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
             };
 
             return PartialView("CRUDPartials/_Staff", model);
@@ -509,7 +533,9 @@ namespace TheaterDatabase.Controllers
 
             StaffVM model = new StaffVM()
             {
-                LstStaff = StaffDAL.GetAllStaff()
+                LstStaff = StaffDAL.GetAllStaff(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
             };
 
             return PartialView("CRUDPartials/_Staff", model);
@@ -517,17 +543,19 @@ namespace TheaterDatabase.Controllers
 
         public ActionResult UpdateStaff(int IntStaffID, int IntMemberID)
         {
-            Staff upStaff = new Staff
+            Staff updStaff = new Staff
             {
                 IntStaffID = IntStaffID,
                 IntMemberID = IntMemberID
             };
 
-            bool success = StaffDAL.UpdateStaff(upStaff);
+            bool success = StaffDAL.UpdateStaff(updStaff);
 
             StaffVM model = new StaffVM()
             {
-                LstStaff = StaffDAL.GetAllStaff()
+                LstStaff = StaffDAL.GetAllStaff(),
+                LstAllMembers = MembersDAL.GetAllMembers(),
+                LstAllShows = ShowsDAL.GetAllShows()
             };
 
             return PartialView("CRUDPartials/_Staff", model);

@@ -1,15 +1,17 @@
 ﻿function initMembersTab() {
     initDataTable('members-table');
 }
-function updateMembers(id) {
+
+function updateMember(id) {
 
     var data = {
-        IntMemberID: id
+        IntMemberID: id,
+        StrName: $("[data-members='" + id + "_strName']").val()
     };
     console.log("data:");
     console.log(data);
     console.log(JSON.stringify(data));
-    AjaxCall('/Home/UpdateMembers', JSON.stringify(data), 'POST').done(function (response) {
+    AjaxCall('/Home/UpdateMember', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#members').html(response);
 
@@ -19,14 +21,14 @@ function updateMembers(id) {
     });
 }
 
-function insertMembers() {
+function insertMember() {
     var data = {
-        StrName: $("[id='new_strName']").val()
+        StrName: $("[data-members='new_strName']").val()
     };
     console.log("data:");
     console.log(data);
     console.log(JSON.stringify(data));
-    AjaxCall('/Home/InsertMembers', JSON.stringify(data), 'POST').done(function (response) {
+    AjaxCall('/Home/InsertMember', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#members').html(response);
 
@@ -45,7 +47,7 @@ function deleteMember(id) {
         console.log("data:");
         console.log(data);
         console.log(JSON.stringify(data));
-        AjaxCall('/Home/DeleteMembers', JSON.stringify(data), 'POST').done(function (response) {
+        AjaxCall('/Home/DeleteMember', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#members').html(response);
 

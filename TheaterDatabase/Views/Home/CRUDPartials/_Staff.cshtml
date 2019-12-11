@@ -29,21 +29,23 @@
                 {
                     <tr data-staff="@(item.IntStaffID + "_row")">
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.IntStaffID)</span>
+                            <span>@Html.DisplayFor(modelItem => item.IntStaffID)</span>
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.StrPosition)</span>
+                            <span>@Html.DisplayFor(modelItem => item.StrPosition)</span>
                         </td>
                         <td>
                             <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                            @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control divYesEditing", @data_staff = item.IntStaffID + "_member" })
                         </td>
                         <td>
-                            <span class="divNoEditing">@Html.DisplayFor(modelItem => item.Show.StrName)</span>
+                            <span>@Html.DisplayFor(modelItem => item.Show.StrName)</span>
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.IntStaffID }) |
-                            @Html.ActionLink("Detail", "Detail", new { id = item.IntStaffID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.IntStaffID })
+                            <button onclick="updateStaff(@item.IntStaffID)" class="m-1 btn btn-primary divYesEditing">Update</button>
+                            <button onclick="editRow('staff', @item.IntStaffID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
+                            <button onclick="deleteStaff(@item.IntStaffID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('staff', @item.IntStaffID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
@@ -69,13 +71,13 @@
 
 <div class="row">
     <div class="col-2 divYesNewRow">
-        @Html.EditorFor(model => model.StrPosition, new { htmlAttributes = new { @class = "form-control", @placeholder = "Position", @data_cast = "new_strPosition" } })
+        @Html.EditorFor(model => model.StrPosition, new { htmlAttributes = new { @class = "form-control", @placeholder = "Position", @data_staff = "new_strPosition" } })
     </div>
     <div class="col-3 divYesNewRow">
-        @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @data_cast = "new_memberID" })
+        @Html.DropDownListFor(model => model.IntMemberID, new SelectList(Model.LstAllMembers, "IntMemberID", "StrName"), new { @class = "form-control", @data_staff = "new_memberID" })
     </div>
     <div class="col-3 divYesNewRow">
-        @Html.DropDownListFor(model => model.IntShowID, new SelectList(Model.LstAllShows, "IntShowID", "StrName"), new { @class = "form-control", @data_cast = "new_showID" })
+        @Html.DropDownListFor(model => model.IntShowID, new SelectList(Model.LstAllShows, "IntShowID", "StrName"), new { @class = "form-control", @data_staff = "new_showID" })
     </div>
     <div class="col divYesNewRow">
         <button class="m-1 btn btn-primary" onclick="insertStaff()">Insert</button>

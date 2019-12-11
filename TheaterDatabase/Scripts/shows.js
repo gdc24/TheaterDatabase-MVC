@@ -5,7 +5,7 @@ function updateShow(id) {
 
     var data = {
         IntShowID: id,
-        IntClubID: $("[id='" + id + "_club']").val()
+        IntBudget: $("[data-show='" + id + "_budget']").val()
     };
     console.log("data:");
     console.log(data);
@@ -22,11 +22,12 @@ function updateShow(id) {
 
 function insertShow() {
     var data = {
-        StrName: $("[id='new_strName']").val(),
-        StrAuthor: $("[id='new_strAuthor']").val(),
-        IntBudget: $("[id='new_intBudget']").val(),
-        YsnIsMusical: $("[id='new_ysnIsMusical']").val(),
-        IntClubID: $("[id='new_clubID']").val()
+        StrName: $("[data-show='new_strName']").val(),
+        StrAuthor: $("[data-show='new_strAuthor']").val(),
+        IntBudget: $("[data-show='new_intBudget']").val(),
+        YsnIsMusical: $("[data-show='new_ysnIsMusical']").val(),
+        IntClubID: $("[data-show='new_clubID']").val(),
+        IntDateID: $("[data-show='new_dateID']").val()
     };
     console.log("data:");
     console.log(data);
