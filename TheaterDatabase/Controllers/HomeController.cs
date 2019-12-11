@@ -470,7 +470,8 @@ namespace TheaterDatabase.Controllers
             ShowsVM model = new ShowsVM()
             {
                 LstAllClubs = ClubsDAL.GetAllClubs(),
-                LstShows = ShowsDAL.GetAllShows()
+                LstShows = ShowsDAL.GetAllShows(),
+                LstAllDates = DatesDAL.GetAllDates()
             };
 
             return PartialView("CRUDPartials/_Shows", model);
@@ -489,7 +490,8 @@ namespace TheaterDatabase.Controllers
             ShowsVM model = new ShowsVM()
             {
                 LstAllClubs = ClubsDAL.GetAllClubs(),
-                LstShows = ShowsDAL.GetAllShows()
+                LstShows = ShowsDAL.GetAllShows(),
+                LstAllDates = DatesDAL.GetAllDates()
             };
 
             return PartialView("CRUDPartials/_Shows", model);

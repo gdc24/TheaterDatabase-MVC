@@ -50,8 +50,8 @@
                         <td>
                             <button onclick="updateCasts(@item.IntCastID)" class="m-1 btn btn-primary divYesEditing">Update</button>
                             <button onclick="editRow('casts', @item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
-                            <button onclick="deleteCasts(@item.IntCastID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
-                            <button onclick="cancelEditRow('casts', @item.IntCastID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
+                            <button onclick="deleteCasts(@item.IntCastID)" class="m-1 btn btn-danger divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('casts', @item.IntCastID)" class="m-1 btn btn-secondary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
@@ -89,7 +89,7 @@
         </div>
         <div class="col divYesNewRow">
             <button class="m-1 btn btn-primary" onclick="insertCasts()">Insert</button>
-            <button class="m-1 btn btn-primary" onclick="hideInsertRow('casts')">Cancel Insert</button>
+            <button class="m-1 btn btn-secondary" onclick="hideInsertRow('casts')">Cancel Insert</button>
         </div>
     </div>
 

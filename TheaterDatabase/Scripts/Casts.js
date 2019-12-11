@@ -38,6 +38,7 @@ function insertCasts() {
     AjaxCall('/Home/InsertCast', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#casts').html(response);
+        initCastsTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -57,6 +58,7 @@ function deleteCasts(id) {
         AjaxCall('/Home/DeleteCast', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#casts').html(response);
+            initCastsTab();
 
         }).fail(function (error) {
             console.log(error);

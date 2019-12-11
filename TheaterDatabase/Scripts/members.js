@@ -14,6 +14,7 @@ function updateMember(id) {
     AjaxCall('/Home/UpdateMember', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#members').html(response);
+        initMembersTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -31,6 +32,7 @@ function insertMember() {
     AjaxCall('/Home/InsertMember', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#members').html(response);
+        initMembersTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -50,6 +52,7 @@ function deleteMember(id) {
         AjaxCall('/Home/DeleteMember', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#members').html(response);
+            initMembersTab();
 
         }).fail(function (error) {
             console.log(error);

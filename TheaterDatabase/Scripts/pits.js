@@ -16,6 +16,7 @@ function updatePits(id) {
     AjaxCall('/Home/UpdatePit', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#pits').html(response);
+        initPitsTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -36,6 +37,7 @@ function insertPits() {
     AjaxCall('/Home/InsertPit', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#pits').html(response);
+        initPitsTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -55,6 +57,7 @@ function deletePits(id) {
         AjaxCall('/Home/DeletePit', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#pits').html(response);
+            initPitsTab();
 
         }).fail(function (error) {
             console.log(error);

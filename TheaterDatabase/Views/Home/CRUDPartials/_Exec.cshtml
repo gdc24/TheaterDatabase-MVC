@@ -50,8 +50,8 @@
                         <td>
                             <button onclick="updateExec(@item.IntExecID)" class="m-1 btn btn-primary divYesEditing">Update</button>
                             <button onclick="editRow('exec', @item.IntExecID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
-                            <button onclick="deleteExec(@item.IntExecID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
-                            <button onclick="cancelEditRow('exec', @item.IntExecID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
+                            <button onclick="deleteExec(@item.IntExecID)" class="m-1 btn btn-danger divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('exec', @item.IntExecID)" class="m-1 btn btn-secondary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
@@ -88,7 +88,7 @@
         </div>
         <div class="col divYesNewRow">
             <button class="m-1 btn btn-primary" onclick="insertExec()">Insert</button>
-            <button class="m-1 btn btn-primary" onclick="hideInsertRow('exec')">Cancel Insert</button>
+            <button class="m-1 btn btn-secondary" onclick="hideInsertRow('exec')">Cancel Insert</button>
         </div>
     </div>
 

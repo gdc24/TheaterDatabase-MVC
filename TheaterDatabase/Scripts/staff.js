@@ -14,6 +14,7 @@ function updateStaff(id) {
     AjaxCall('/Home/UpdateStaff', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#staff').html(response);
+        initStaffTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -33,6 +34,7 @@ function insertStaff() {
     AjaxCall('/Home/InsertStaff', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#staff').html(response);
+        initStaffTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -52,6 +54,7 @@ function deleteStaff(id) {
         AjaxCall('/Home/DeleteStaff', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#staff').html(response);
+            initStaffTab();
 
         }).fail(function (error) {
             console.log(error);

@@ -15,6 +15,7 @@ function updateExecs(id) {
     AjaxCall('/Home/UpdateExec', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#exec').html(response);
+        initExecTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -35,6 +36,7 @@ function insertExec() {
     AjaxCall('/Home/InsertExec', JSON.stringify(data), 'POST').done(function (response) {
 
         $('#exec').html(response);
+        initExecTab();
 
     }).fail(function (error) {
         console.log(error);
@@ -54,6 +56,7 @@ function deleteExec(id) {
         AjaxCall('/Home/DeleteExec', JSON.stringify(data), 'POST').done(function (response) {
 
             $('#exec').html(response);
+            initExecTab();
 
         }).fail(function (error) {
             console.log(error);

@@ -62,8 +62,8 @@
                         <td>
                             <button onclick="updateShow(@item.IntShowID)" class="m-1 btn btn-primary divYesEditing">Update</button>
                             <button onclick="editRow('shows', @item.IntShowID)" class="m-1 btn btn-primary divNoEditing">Edit</button>
-                            <button onclick="deleteShow(@item.IntShowID)" class="m-1 btn btn-primary divNoEditing">Delete</button>
-                            <button onclick="cancelEditRow('shows', @item.IntShowID)" class="m-1 btn btn-primary divYesEditing">Cancel</button>
+                            <button onclick="deleteShow(@item.IntShowID)" class="m-1 btn btn-danger divNoEditing">Delete</button>
+                            <button onclick="cancelEditRow('shows', @item.IntShowID)" class="m-1 btn btn-secondary divYesEditing">Cancel</button>
                         </td>
                     </tr>
                 }
@@ -94,7 +94,7 @@
             @Html.EditorFor(model => model.IntBudget, new { htmlAttributes = new { @class = "form-control", @placeholder = "Budget", @data_show = "new_intBudget" } })
         </div>
         <div class="col-1 divYesNewRow">
-            @Html.EditorFor(model => model.YsnIsMusical, new { htmlAttributes = new { @class = "form-check", @placeholder = "Musical?", @data_show = "new_ysnIsMusical" } })
+            @Html.EditorFor(model => model.YsnIsMusical, new { htmlAttributes = new { @class = "form-control", @placeholder = "Musical?", @data_show = "new_ysnIsMusical" } })
             <label class="form-check-label" for="YsnIsMusical">
                 Musical?
             </label>
@@ -106,8 +106,8 @@
             @Html.DropDownListFor(model => model.IntDateID, new SelectList(Model.LstAllDates, "IntDateID", "SemAndYear"), new { @class = "form-control", @data_show = "new_dateID" })
         </div>
         <div class="col divYesNewRow">
-            <button class="m-1 btn btn-primary" onclick="insertShows()">Insert</button>
-            <button class="m-1 btn btn-primary" onclick="hideInsertRow('shows')">Cancel Insert</button>
+            <button class="m-1 btn btn-primary" onclick="insertShow()">Insert</button>
+            <button class="m-1 btn btn-secondary" onclick="hideInsertRow('shows')">Cancel Insert</button>
         </div>
 
     </div>
