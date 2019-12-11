@@ -21,6 +21,11 @@ INSERT INTO shows ("strName", "strAuthor", "intBudget", "ysnIsMusical", "intClub
 INSERT INTO shows ("strName", "strAuthor", "intBudget", "ysnIsMusical", "intClubID", "intDateID") VALUES ('She Loves Me', 'Joe Masteroff', 19935, TRUE, 1, 5);
 INSERT INTO shows ("strName", "strAuthor", "intBudget", "ysnIsMusical", "intClubID", "intDateID") VALUES ('Head Over Heels', 'Jeff Whitty', 16490, TRUE, 1, 6);
 
+-- PTG shows
+INSERT INTO shows ("strName", "strAuthor", "intBudget", "ysnIsMusical", "intClubID", "intDateID") VALUES ('The Glass Menagerie', 'Tennessee Williams', 500, FALSE, 2, 5);
+INSERT INTO shows ("strName", "strAuthor", "intBudget", "ysnIsMusical", "intClubID", "intDateID") VALUES ('Revolt She Said Revolt Again', 'Alice Birch', 250, FALSE, 2, 5);
+INSERT INTO shows ("strName", "strAuthor", "intBudget", "ysnIsMusical", "intClubID", "intDateID") VALUES ('Beware of Falling Deer', 'Adam Steel', 500, FALSE, 2, 5);
+
 -- all members inserts
 ALTER SEQUENCE "members_intMemberID_seq" RESTART WITH 1 INCREMENT BY 1;
 INSERT INTO members ("strName") VALUES ('Ryan Arvizu');

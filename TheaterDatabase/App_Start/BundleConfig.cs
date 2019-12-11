@@ -14,7 +14,8 @@ namespace TheaterDatabase
                    "~/Scripts/members.js",
                    "~/Scripts/pits.js",
                    "~/Scripts/shows.js",
-                   "~/Scripts/staff.js"
+                   "~/Scripts/staff.js",
+                   "~/Scripts/analytics.js"
                    ));
 
             bundles.Add(new StyleBundle("~/bundles/global-styles").Include(

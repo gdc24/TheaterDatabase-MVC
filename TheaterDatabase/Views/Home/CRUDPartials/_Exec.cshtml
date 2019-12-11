@@ -30,7 +30,7 @@
                 </thead>
                 @foreach (var item in Model.LstExec)
                 {
-                    <tr>
+                    <tr data-exec="@(item.IntExecID + "_row")">
                         <td>
                             <span>@Html.DisplayFor(modelItem => item.IntExecID)</span>
                         </td>

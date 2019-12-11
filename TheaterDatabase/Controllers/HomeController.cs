@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using TheaterDatabase.DAL;
 using TheaterDatabase.Models;
+using TheaterDatabase.ViewModels.Analytics_VMs;
 using TheaterDatabase.ViewModels.CRUD_VMs;
 
 namespace TheaterDatabase.Controllers
@@ -57,9 +58,12 @@ namespace TheaterDatabase.Controllers
 
         public ActionResult Analytics()
         {
-            ViewBag.Message = "Analytics";
+            AnalyticsVM model = new AnalyticsVM();
 
-            return View();
+            model._budgetAverage_vm.LstBudgetAverages = AnalyticsDAL.GetBudgetAverages();
+            model._musicalsCount_vm.LstMusicalCounts = AnalyticsDAL.GetMusicalCounts();
+
+            return View(model);
         }
 
         #region REGION - CASTS
@@ -588,5 +592,6 @@ namespace TheaterDatabase.Controllers
         //}
 
         #endregion
+
     }
 }

@@ -1,4 +1,28 @@
-﻿function editRow(tableName, id) {
+﻿function makeChartJS(canvasID, type, dataset, title, colorScheme) {
+
+    var retval = {
+        type: type,
+        data: dataset,
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: title
+            },
+            plugins: {
+                colorschemes: {
+                    scheme: colorScheme
+                }
+            }
+        }
+    }
+
+    new Chart($('#' + canvasID), retval);
+
+}
+
+
+function editRow(tableName, id) {
     var contextRow = $('#' + tableName + '-table [data-' + tableName + '=' + id + '_row]');
     $(contextRow).find('.divNoEditing').hide();
     $(contextRow).find('.divYesEditing').show();
