@@ -233,6 +233,7 @@
     <Compile Include="ViewModels\Analytics_VMs\AnalyticsVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\BudgetAverageVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\MusicalsCountVM.cs" />
+    <Compile Include="ViewModels\Analytics_VMs\RepeatStaffPositionsVM.cs" />
     <Compile Include="ViewModels\CRUD_VMs\CastsVM.cs" />
     <Compile Include="ViewModels\CRUD_VMs\CRUDVM.cs" />
     <Compile Include="ViewModels\CRUD_VMs\ExecVM.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Home\CRUDPartials\_Pits.cshtml" />
     <Content Include="Views\Home\AnalyticsPartials\_BudgetAverages.cshtml" />
     <Content Include="Views\Home\AnalyticsPartials\_MusicalCounts.cshtml" />
+    <Content Include="Views\Home\AnalyticsPartials\_RepeatStaffs.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

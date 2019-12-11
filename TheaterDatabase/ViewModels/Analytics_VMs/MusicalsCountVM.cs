@@ -21,9 +21,9 @@ namespace TheaterDatabase.ViewModels.Analytics_VMs
             this.StrShowType = strShowType;
         }
 
-        public static MusicalsCountVM Of(int IntCount, string StrShowType)
+        public static MusicalsCountVM Of(int intCount, string strShowType)
         {
-            return new MusicalsCountVM(IntCount, StrShowType);
+            return new MusicalsCountVM(intCount, strShowType);
         }
 
 

@@ -1,19 +1,33 @@
 ﻿@model TheaterDatabase.ViewModels.Analytics_VMs.AnalyticsVM
 
 @{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Analytics";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
-<div>
-    <h3>budget averages</h3>
-    @{ @Html.Partial("AnalyticsPartials/_BudgetAverages", Model._budgetAverage_vm) }
-</div>
+<br />
+<hr />
+<br />
 
 <div>
-    <h3>Musical Counts</h3>
     @{ @Html.Partial("AnalyticsPartials/_MusicalCounts", Model._musicalsCount_vm) }
+</div>
+
+<br />
+<hr />
+<br />
+
+<div id="repeat-staffs">
+    @{ @Html.Partial("AnalyticsPartials/_RepeatStaffs", Model._repeatStaffPositions_vm) }
+</div>
+
+<br />
+<hr />
+<br />
+
+<div>
+    @{ @Html.Partial("AnalyticsPartials/_BudgetAverages", Model._budgetAverage_vm) }
 </div>
 
 <script>

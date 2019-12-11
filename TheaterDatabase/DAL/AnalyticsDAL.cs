@@ -94,6 +94,69 @@ namespace TheaterDatabase.DAL
             return retval;
         }
 
+        public static IEnumerable<string> GetPossiblePositions()
+        {
 
+            List<string> retval = new List<string>();
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "SELECT DISTINCT \"strPosition\" FROM staff";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            string tmpPosition;
+
+            while (dr.Read())
+            {
+                tmpPosition = dr["strPosition"].ToString();
+                retval.Add(tmpPosition);
+            }
+
+            conn.Close();
+
+            return retval;
+
+        }
+
+        public static IEnumerable<RepeatStaffPositionsVM> GetRepeatStaffPositions(string strPositionName)
+        {
+            List<RepeatStaffPositionsVM> retval = new List<RepeatStaffPositionsVM>();
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "SELECT m.\"strName\", count(m.*)" +
+                " FROM members m, staff s" +
+                " WHERE s.\"strPosition\" = '" + strPositionName + "'" +
+                " AND s.\"intMemberID\" = m.\"intMemberID\"" +
+                " GROUP BY m.\"strName\"" +
+                " HAVING count(m.*) >= 2";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                RepeatStaffPositionsVM tmpRepeatStaff = new RepeatStaffPositionsVM
+                {
+                    StrName = dr["strName"].ToString(),
+                    IntCount = Convert.ToInt32(dr["count"])
+                };
+                retval.Add(tmpRepeatStaff);
+            }
+
+            conn.Close();
+
+            return retval;
+        }
     }
 }

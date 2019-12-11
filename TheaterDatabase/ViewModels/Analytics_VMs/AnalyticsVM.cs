@@ -12,10 +12,13 @@ namespace TheaterDatabase.ViewModels.Analytics_VMs
 
         public MusicalsCountVM _musicalsCount_vm { get; set; }
 
+        public RepeatStaffPositionsVM _repeatStaffPositions_vm { get; set; }
+
         public AnalyticsVM()
         {
             _budgetAverage_vm = new BudgetAverageVM();
             _musicalsCount_vm = new MusicalsCountVM();
+            _repeatStaffPositions_vm = new RepeatStaffPositionsVM();
         }
 
     }

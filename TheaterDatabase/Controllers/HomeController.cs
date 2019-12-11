@@ -62,8 +62,21 @@ namespace TheaterDatabase.Controllers
 
             model._budgetAverage_vm.LstBudgetAverages = AnalyticsDAL.GetBudgetAverages();
             model._musicalsCount_vm.LstMusicalCounts = AnalyticsDAL.GetMusicalCounts();
+            model._repeatStaffPositions_vm.LstPossiblePositions = AnalyticsDAL.GetPossiblePositions();
 
             return View(model);
+        }
+
+        public ActionResult GetRepeatStaff(string strPosition)
+        {
+            RepeatStaffPositionsVM model = new RepeatStaffPositionsVM()
+            {
+                LstPossiblePositions = AnalyticsDAL.GetPossiblePositions(),
+                LstRepeatStaffPositions = AnalyticsDAL.GetRepeatStaffPositions(strPosition),
+                StrPosition = strPosition
+            };
+
+            return PartialView("AnalyticsPartials/_RepeatStaffs", model);
         }
 
         #region REGION - CASTS

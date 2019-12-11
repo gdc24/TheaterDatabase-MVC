@@ -1,0 +1,60 @@
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.RepeatStaffPositionsVM
+
+
+    <h3>Repeat Staffs</h3>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h4>View list of members who have served on a production staff in a given role more than once.</h4>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-4">
+                @Html.DropDownListFor(model => model.StrPosition, new SelectList(Model.LstPossiblePositions), "Select a Position ", new { @class = "form-control m-2", @data_repeat_staff = "strPositionName", @onchange = "updateRepeatStaffsTable()" })
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+                @if (Model.LstRepeatStaffPositions == null)
+                {
+                    <p>Please select a position from the dropdown to see club members who have served in that position more than once.</p>
+
+                }
+                else if (Model.LstRepeatStaffPositions.Count() == 0)
+                {
+                    <p>No club member has served in that position more than once.</p>
+                }
+                else if (Model.LstRepeatStaffPositions.Count() > 0)
+                {
+                    <h5 class="text-center">Position: @Model.StrPosition</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span>@Html.DisplayNameFor(m => m.StrName)</span>
+                                </th>
+                                <th>
+                                    <span>@Html.DisplayNameFor(m => m.IntCount)</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.LstRepeatStaffPositions)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@Html.DisplayFor(modelItem => item.StrName)</span>
+                                </td>
+                                <td>
+                                    <span>@Html.DisplayFor(modelItem => item.IntCount)</span>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+

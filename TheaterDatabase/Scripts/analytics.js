@@ -46,3 +46,22 @@ function makeMusicalCountsGraph() {
 
     makeChartJS('musical-counts-chart', 'pie', dataset, 'Type of Show', 'brewer.GnBu3');
 }
+
+
+function updateRepeatStaffsTable() {
+    var strPositionFromDropdown = $('#StrPosition').val();
+    var data = {
+        strPosition: strPositionFromDropdown,
+    };
+    console.log("data:");
+    console.log(data);
+    console.log(JSON.stringify(data));
+    AjaxCall('/Home/GetRepeatStaff', JSON.stringify(data), 'POST').done(function (response) {
+
+        $('#repeat-staffs').html(response);
+
+    }).fail(function (error) {
+        console.log(error);
+        alert(error.StatusText);
+    });
+}
