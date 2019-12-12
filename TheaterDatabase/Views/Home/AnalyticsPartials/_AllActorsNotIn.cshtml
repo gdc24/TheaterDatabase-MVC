@@ -1,0 +1,50 @@
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.AllActorsNotInVM
+
+<h3>All Actors Not In ...</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h4>View list of actors who have acted but NOT in a given show.</h4>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            @Html.DropDownListFor(model => model.IntShowID, new SelectList(Model.LstAllShows, "IntShowID", "StrName"), "Select a Show", new { @class = "form-control m-2", @data_not_in = "intShowID", @onchange = "updateAllActorsNotInTable()" })
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            @if (Model.LstAllActorsNotIn == null)
+            {
+                <p>Please select a show from the dropdown to see all actors who did not participate in that show.</p>
+
+            }
+            else if (Model.LstAllActorsNotIn.Count() > 0)
+            {
+                <h5 class="text-center">@Html.DisplayNameFor(m => m.Show): @Model.Show.StrName</h5>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.Member.StrName)</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.LstAllActorsNotIn)
+                    {
+                        <tr>
+                            <td>
+                                <span>@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
+

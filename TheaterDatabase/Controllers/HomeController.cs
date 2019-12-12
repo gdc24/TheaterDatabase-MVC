@@ -69,6 +69,8 @@ namespace TheaterDatabase.Controllers
             model._musicalsCount_vm.LstMusicalCounts = AnalyticsDAL.GetMusicalCounts();
             model._repeatStaffPositions_vm.LstPossiblePositions = AnalyticsDAL.GetPossiblePositions();
             model._membersByVoicePart_vm.LstAllVoiceParts = AnalyticsDAL.GetPossibleVoiceParts();
+            model._nonSinging_vm.LstNonSingingMembers = AnalyticsDAL.GetNonSingingMembers();
+            model._allActorsNotIn_vm.LstAllShows = ShowsDAL.GetAllShows();
 
             return View(model);
         }
@@ -97,7 +99,6 @@ namespace TheaterDatabase.Controllers
             return PartialView("AnalyticsPartials/_MembersByVoicePart", model);
         }
 
-
         public ActionResult GetShowsByInstrument(string strSearch)
         {
             ShowsByInstrumentVM model = new ShowsByInstrumentVM()
@@ -112,6 +113,19 @@ namespace TheaterDatabase.Controllers
             }
 
             return PartialView("AnalyticsPartials/_ShowsByInstrument", model);
+        }
+
+
+        public ActionResult GetAllActorsNotIn(int intShowID)
+        {
+            AllActorsNotInVM model = new AllActorsNotInVM()
+            {
+                LstAllShows = ShowsDAL.GetAllShows(),
+                LstAllActorsNotIn = AnalyticsDAL.GetAllActorsNotIn(intShowID),
+                Show = ShowsDAL.GetShow(intShowID)
+            };
+
+            return PartialView("AnalyticsPartials/_AllActorsNotIn", model);
         }
 
         #region REGION - CASTS

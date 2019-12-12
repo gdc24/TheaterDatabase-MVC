@@ -25,6 +25,14 @@
 <hr />
 <br />
 
+<div>
+    @{ @Html.Partial("AnalyticsPartials/_NonSinging", Model._nonSinging_vm) }
+</div>
+
+<br />
+<hr />
+<br />
+
 <div id="voice-parts">
     @{ @Html.Partial("AnalyticsPartials/_MembersByVoicePart", Model._membersByVoicePart_vm) }
 </div>
@@ -43,6 +51,14 @@
 
 <div id="repeat-staffs">
     @{ @Html.Partial("AnalyticsPartials/_RepeatStaffs", Model._repeatStaffPositions_vm) }
+</div>
+
+<br />
+<hr />
+<br />
+
+<div id="actors-not-in">
+    @{ @Html.Partial("AnalyticsPartials/_AllActorsNotIn", Model._allActorsNotIn_vm) }
 </div>
 
 <script>

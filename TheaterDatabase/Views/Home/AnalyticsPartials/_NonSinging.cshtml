@@ -1,0 +1,44 @@
+﻿@model TheaterDatabase.ViewModels.Analytics_VMs.NonSingingVM
+
+
+<h3>Non-Singing Musical Actors</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h4>See a table below of people who have played non-singing roles in musicals.</h4>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            @if (Model.LstNonSingingMembers == null || Model.LstNonSingingMembers.Count() == 0)
+            {
+                <p>No actors have played non-singing roles in musicals.</p>
+
+            }
+            else if (Model.LstNonSingingMembers.Count() > 0)
+            {
+                <table id="non-singing-table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>@Html.DisplayNameFor(m => m.Member.StrName)</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.LstNonSingingMembers)
+                    {
+                        <tr>
+                            <td>
+                                <span>@Html.DisplayFor(modelItem => item.Member.StrName)</span>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
+

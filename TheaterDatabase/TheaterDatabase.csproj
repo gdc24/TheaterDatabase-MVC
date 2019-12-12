@@ -230,10 +230,12 @@
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\UmbrellaOrg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Analytics_VMs\AllActorsNotInVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\AnalyticsVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\BudgetAverageVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\MembersByVoicePartVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\MusicalsCountVM.cs" />
+    <Compile Include="ViewModels\Analytics_VMs\NonSingingVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\RepeatStaffPositionsVM.cs" />
     <Compile Include="ViewModels\Analytics_VMs\ShowsByInstrumentVM.cs" />
     <Compile Include="ViewModels\CRUD_VMs\CastsVM.cs" />
@@ -324,6 +326,8 @@
     <Content Include="Styles\webfonts\fa-solid-900.ttf" />
     <Content Include="Styles\webfonts\fa-solid-900.woff" />
     <Content Include="Styles\webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Home\AnalyticsPartials\_NonSinging.cshtml" />
+    <Content Include="Views\Home\AnalyticsPartials\_AllActorsNotIn.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

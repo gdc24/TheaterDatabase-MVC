@@ -158,7 +158,7 @@ namespace TheaterDatabase.DAL
 
             return retval;
         }
-        
+
         public static IEnumerable<string> GetPossibleVoiceParts()
         {
 
@@ -249,6 +249,78 @@ namespace TheaterDatabase.DAL
                     StrInstrument = dr["strInstrument"].ToString()
                 };
                 retval.Add(tmpShowByInstrument);
+            }
+
+            conn.Close();
+
+            return retval;
+        }
+
+        
+        public static IEnumerable<NonSingingVM> GetNonSingingMembers()
+        {
+            List<NonSingingVM> retval = new List<NonSingingVM>();
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "SELECT m.\"intMemberID\"" +
+                " FROM members m" +
+                " WHERE EXISTS(SELECT *" +
+                "              FROM casts c, shows s" +
+                "              WHERE c.\"intMemberID\" = m.\"intMemberID\"" +
+                "              AND c.\"intShowID\" = s.\"intShowID\"" +
+                "              AND s.\"ysnIsMusical\" = TRUE" +
+                "              AND c.\"strVoicePart\" IS NULL)";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                int id = Convert.ToInt32(dr["intMemberID"]);
+
+                NonSingingVM nonSingingMember = NonSingingVM.Of(id);
+
+                retval.Add(nonSingingMember);
+            }
+
+            conn.Close();
+
+            return retval;
+        }
+
+        public static IEnumerable<AllActorsNotInVM> GetAllActorsNotIn(int intShowID)
+        {
+            List<AllActorsNotInVM> retval = new List<AllActorsNotInVM>();
+
+            // create and open a connection
+            NpgsqlConnection conn = DatabaseConnection.GetConnection();
+            conn.Open();
+
+            // Define a query
+            string query = "select DISTINCT m.\"intMemberID\"" +
+                " from members m, casts c" +
+                " WHERE m.\"intMemberID\" = c.\"intMemberID\" " +
+                " EXCEPT(select m2.\"intMemberID\" " +
+                "        from members m2, shows s, casts c2" +
+                "        where m2.\"intMemberID\" = c2.\"intMemberID\"" +
+                "        and c2.\"intShowID\" = s.\"intShowID\"" +
+                "        and s.\"intShowID\" = " + intShowID + ")";
+            NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
+
+            // Execute a query
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                int id = Convert.ToInt32(dr["intMemberID"]);
+
+                AllActorsNotInVM tmpActorNotIn = AllActorsNotInVM.Of(id);
+                retval.Add(tmpActorNotIn);
             }
 
             conn.Close();

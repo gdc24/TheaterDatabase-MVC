@@ -18,6 +18,10 @@ namespace TheaterDatabase.ViewModels.Analytics_VMs
 
         public ShowsByInstrumentVM _showsByInstrument_vm { get; set; }
 
+        public NonSingingVM _nonSinging_vm { get; set; }
+
+        public AllActorsNotInVM _allActorsNotIn_vm { get; set; }
+
         public AnalyticsVM()
         {
             _budgetAverage_vm = new BudgetAverageVM();
@@ -25,6 +29,8 @@ namespace TheaterDatabase.ViewModels.Analytics_VMs
             _repeatStaffPositions_vm = new RepeatStaffPositionsVM();
             _membersByVoicePart_vm = new MembersByVoicePartVM();
             _showsByInstrument_vm = new ShowsByInstrumentVM();
+            _nonSinging_vm = new NonSingingVM();
+            _allActorsNotIn_vm = new AllActorsNotInVM();
         }
 
     }

@@ -102,3 +102,22 @@ function updateShowsByInstrumentTable() {
         alert(error.StatusText);
     });
 }
+
+
+function updateAllActorsNotInTable() {
+    var strShowFromDropdown = $('[data-not-in="intShowID"]').val();
+    var data = {
+        IntShowID: strShowFromDropdown,
+    };
+    console.log("data:");
+    console.log(data);
+    console.log(JSON.stringify(data));
+    AjaxCall('/Home/GetAllActorsNotIn', JSON.stringify(data), 'POST').done(function (response) {
+
+        $('#actors-not-in').html(response);
+
+    }).fail(function (error) {
+        console.log(error);
+        alert(error.StatusText);
+    });
+}
