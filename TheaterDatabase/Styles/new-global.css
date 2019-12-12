@@ -17,3 +17,8 @@
 .divYesNewRow {
     display: none;
 }
+
+
+h2, h3 {
+    text-align: center;
+}

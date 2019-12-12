@@ -2,10 +2,10 @@
 @model TheaterDatabase.ViewModels.CRUD_VMs.CRUDVM
 
 @{
-    ViewBag.Title = "CRUD (Create Read Update Delete) Operations";
+    ViewBag.Title = "CRUD Operations";
 }
 <h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
+<h3 class="mb-3">@ViewBag.Message</h3>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -28,7 +28,7 @@
     </li>
 </ul>
 
-<div class="tab-content">
+<div class="tab-content mt-4">
     <div id="shows" class="m-2 tab-pane fade show active" role="tabpanel">
         @Html.Partial("CRUDPartials/_Shows", Model._shows_vm)
     </div>
