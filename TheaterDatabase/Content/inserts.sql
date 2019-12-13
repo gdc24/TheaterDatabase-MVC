@@ -163,6 +163,15 @@ INSERT INTO members ("strName") VALUES ('Johanna Fritzinger');
 INSERT INTO members ("strName") VALUES ('Nick Pogharian');
 INSERT INTO members ("strName") VALUES ('Max Welsh');
 INSERT INTO members ("strName") VALUES ('Micah Klassen');  -- 135
+INSERT INTO members ("strName") VALUES ('Jay Kuo');
+INSERT INTO members ("strName") VALUES ('Manya Aronin');
+INSERT INTO members ("strName") VALUES ('Tia Li');
+INSERT INTO members ("strName") VALUES ('Dane Mizuno');
+INSERT INTO members ("strName") VALUES ('Eric Juneau');  -- 140
+INSERT INTO members ("strName") VALUES ('Bradley Castle');
+INSERT INTO members ("strName") VALUES ('Tim Cao');
+INSERT INTO members ("strName") VALUES ('Sam Reeder');
+INSERT INTO members ("strName") VALUES ('Becky Schneirov');
 
 -- all staff inserts
 ALTER SEQUENCE "staff_intStaffID_seq" RESTART WITH 1 INCREMENT BY 1;
@@ -302,6 +311,21 @@ INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Bass', 6
 INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Keyboard', 132, 4);
 INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Synthesizer', 50, 4);
 INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Tenor Trombone', 133, 4);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Violin', 136, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Reed', 16, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Piano', 36, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Viola', 139, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Cello', 99, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Bass', 15, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Trumpet', 142, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Horn', 92, 5);
+INSERT INTO pits ("strInstrument", "intMemberID", "intShowID") VALUES ('Percussion', 141, 5);
+INSERT INTO pits ("strInstrument", "intSeat", "intMemberID", "intShowID") VALUES ('Violin', 2, 137, 5);
+INSERT INTO pits ("strInstrument", "intSeat", "intMemberID", "intShowID") VALUES ('Violin', 3, 138, 5);
+INSERT INTO pits ("strInstrument", "intSeat", "intMemberID", "intShowID") VALUES ('Reed', 2, 143, 5);
+INSERT INTO pits ("strInstrument", "intSeat", "intMemberID", "intShowID") VALUES ('Reed', 3, 112, 5);
+INSERT INTO pits ("strInstrument", "intSeat", "intMemberID", "intShowID") VALUES ('Reed', 3, 144, 5);
+INSERT INTO pits ("strInstrument", "intSeat", "intMemberID", "intShowID") VALUES ('Piano', 2, 140, 5);
 
 
 ALTER SEQUENCE "exec_intExecID_seq" RESTART WITH 1 INCREMENT BY 1;
