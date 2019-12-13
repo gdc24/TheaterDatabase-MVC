@@ -198,7 +198,7 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "Select m.\"strName\", COUNT(m.\"strName\")" +
+            string query = "SELECT m.\"strName\", COUNT(m.\"strName\")" +
                 " FROM members m, casts c" +
                 " WHERE m.\"intMemberID\" = c.\"intMemberID\"" +
                 " AND c.\"strVoicePart\" = '" + strVoicePart + "'" +
@@ -235,7 +235,7 @@ namespace TheaterDatabase.DAL
             string query = "SELECT DISTINCT s.\"intShowID\", p.\"strInstrument\"" +
                 " FROM pits p, shows s" +
                 " WHERE p.\"intShowID\" = s.\"intShowID\"" +
-                " and p.\"strInstrument\" ILIKE '%" + strSearch + "%'";
+                " AND p.\"strInstrument\" ILIKE '%" + strSearch + "%'";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
@@ -302,14 +302,14 @@ namespace TheaterDatabase.DAL
             conn.Open();
 
             // Define a query
-            string query = "select DISTINCT m.\"intMemberID\"" +
-                " from members m, casts c" +
+            string query = "SELECT DISTINCT m.\"intMemberID\"" +
+                " FROM members m, casts c" +
                 " WHERE m.\"intMemberID\" = c.\"intMemberID\" " +
-                " EXCEPT(select m2.\"intMemberID\" " +
-                "        from members m2, shows s, casts c2" +
-                "        where m2.\"intMemberID\" = c2.\"intMemberID\"" +
-                "        and c2.\"intShowID\" = s.\"intShowID\"" +
-                "        and s.\"intShowID\" = " + intShowID + ")";
+                " EXCEPT(SELECT m2.\"intMemberID\" " +
+                "        FROM members m2, shows s, casts c2" +
+                "        WHERE m2.\"intMemberID\" = c2.\"intMemberID\"" +
+                "        AND c2.\"intShowID\" = s.\"intShowID\"" +
+                "        AND s.\"intShowID\" = " + intShowID + ")";
             NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
 
             // Execute a query
